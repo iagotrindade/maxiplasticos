@@ -1,0 +1,163 @@
+/* Google Font Import - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+:root {
+    --primary-color: #fff;
+}
+
+.login-body, .recover-body, .signup-body {
+    background-color: #111;
+}
+
+.login-form-header {
+    color: #f30000;
+    text-align: center;
+}
+
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-modal-area, .recover-area, .signup-area {
+    margin-top: 80px;
+}
+
+.login-modal {
+    background-color: var(--primary-color);
+    width: 100%;
+    padding: 25px;
+    border-radius: 5px;
+    border: 1px solid #f30000;;
+}
+
+.login-form-area {
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.change-pass-form-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-form-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.create-account-link, .recover-password-link {
+    margin: 10px;
+    padding-left: 5px;
+    color: #f30000
+    ;
+}
+
+.create-account-link a, .recover-password-link a {
+    text-decoration: none;
+    color: #f30000
+    ;
+}
+
+.create-account-link a:hover, .recover-password-link a:hover {
+    border-bottom: 1px solid #f30000
+    ;
+}
+
+.login-warning-success {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    background-color: green;
+    height: 45px;
+    border-radius: 5px;
+    padding-left: 5px;
+    color: #fff;
+}
+
+.password-hold {
+    display: flex;
+    align-items: center;
+}
+
+.show-pass-icon, .hide-pass-icon {
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: -45px;
+}
+
+.login-form input {
+    font-size: 16px;
+    width: 380px;
+    height: 45px;
+    margin: 10px;
+    border: 1px solid #f30000;
+    border-radius: 5px;
+    padding-left: 5px;
+    outline: 0;
+}
+
+.add-student-form-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+}
+
+.add-button-submit, .login-button-submit {
+    font-size: 15px;
+    color:var(--primary-color) ;
+    background-color: #f30000;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.add-button-submit:hover, .login-button-submit:hover {
+    background-color: var(--primary-color);
+    color: #f30000;
+    border: 1px solid #f30000;
+}
+
+@media (max-width: 725px) {
+    
+}
+
+@media (max-width: 545px) {
+    .login-modal-area {
+        width: 90vw;
+    }
+
+    .login-form input {
+        width: auto;
+    }
+
+    .create-account-link, .recover-password-link {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+}
