@@ -5,13 +5,15 @@ $router = new Router();
 
 $router->get('/', 'HomeController@index');
 
-$router->get('/adm-login', 'AdmController@index');
+$router->get('/adm-login', 'LoginController@signin');
 
-$router->get('/cadastro', 'LoginController@signup');
+$router->get('/adm-panel', 'PanelController@index');
 
-$router->post('/login', 'LoginController@index');
+$router->post('/login', 'LoginController@signinAction');
 
 $router->get('/recover', 'LoginController@recover');
+
+$router->get('/adm-painel', 'AdmController@index');
 
 $router->get('/sobre/{nome}', 'HomeController@sobreP');
 

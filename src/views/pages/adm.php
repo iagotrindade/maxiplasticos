@@ -10,8 +10,7 @@
 </head>
 <body class = "login-body">
     <header>
-    <section class="login-section">
-        <!--for demo wrap-->
+    <section class="login-section"> 
         <div class="login-area">
             <section class="login-modal-area">
                 <div class="login-modal">
