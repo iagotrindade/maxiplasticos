@@ -29,9 +29,10 @@
                                    <p><?php echo ($flash)?></p>
                                 </div>
                             <?php endif; ?>
-                            <input type="text" name="name" placeholder="Nome:">
-                            <input type="text" name="function" placeholder="Função:">
+                            <input type="text" name="name" placeholder="Nome Completo:">
+                            <input type="text" name="surname" placeholder="Nome de Usuário:">
                             <input type="text" name="email" placeholder="E-mail:">
+                            <input type="text" name="function" placeholder="Cargo:">
                             <input type="password" name="password" placeholder="Senha:"> 
                             
                             <div class="login-form-buttons">
