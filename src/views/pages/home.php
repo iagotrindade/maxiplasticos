@@ -94,23 +94,152 @@
                         </svg>                        
                     PRODUTOS EM DESTAQUES
                 </h3>
+
+                <a href="<?=$base;?>/assets/files/catalogo.pdf" download="catalogo.pdf">
+                    <p>VER TODOS -></p>
+                </a>
             </div>
             <!-- Swiper -->
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                <div class="swiper-slide">Slide 1</div>
-                <div class="swiper-slide">Slide 2</div>
-                <div class="swiper-slide">Slide 3</div>
-                <div class="swiper-slide">Slide 4</div>
-                <div class="swiper-slide">Slide 5</div>
-                <div class="swiper-slide">Slide 6</div>
-                <div class="swiper-slide">Slide 7</div>
-                <div class="swiper-slide">Slide 8</div>
-                <div class="swiper-slide">Slide 9</div>
+                    <div class="swiper-slide">
+                        <div class = "product-box">
+                            <div class = "product-box-img">
+                                <img src = "<?=$base;?>/assets/images/products/pasta-catalogo.png"/>
+                            </div>
+                            <div class = "product-box-description">
+                                Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut labore nostrum aut reprehenderit soluta. Ad culpa pariatur et ipsa sun...
+                            </div>
+
+                            <div class="budget-button">
+                                <a href="<?=$base;?>/cart">
+                                    ORÇAMENTO
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="swiper-slide">
+                        <div class = "product-box">
+                            <div class = "product-box-img">
+                                <img src = "<?=$base;?>/assets/images/products/pasta-catalogo.png"/>
+                            </div>
+                            <div class = "product-box-description">
+                                Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut labore nostrum aut reprehenderit soluta. Ad culpa pariatur et ipsa sun...
+                            </div>
+
+                            <div class="budget-button">
+                                <a href="<?=$base;?>/cart">
+                                    ORÇAMENTO
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class = "product-box">
+                            <div class = "product-box-img">
+                                <img src = "<?=$base;?>/assets/images/products/pasta-catalogo.png"/>
+                            </div>
+                            <div class = "product-box-description">
+                                Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut labore nostrum aut reprehenderit soluta. Ad culpa pariatur et ipsa sun...
+                            </div>
+
+                            <div class="budget-button">
+                                <a href="<?=$base;?>/cart">
+                                    ORÇAMENTO
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class = "product-box">
+                            <div class = "product-box-img">
+                                <img src = "<?=$base;?>/assets/images/products/pasta-catalogo.png"/>
+                            </div>
+                            <div class = "product-box-description">
+                                Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut labore nostrum aut reprehenderit soluta. Ad culpa pariatur et ipsa sun...
+                            </div>
+
+                            <div class="budget-button">
+                                <a href="<?=$base;?>/cart">
+                                    ORÇAMENTO
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class = "product-box">
+                            <div class = "product-box-img">
+                                <img src = "<?=$base;?>/assets/images/products/pasta-catalogo.png"/>
+                            </div>
+                            <div class = "product-box-description">
+                                Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut labore nostrum aut reprehenderit soluta. Ad culpa pariatur et ipsa sun...
+                            </div>
+
+                            <div class="budget-button">
+                                <a href="<?=$base;?>/cart">
+                                    ORÇAMENTO
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class = "product-box">
+                            <div class = "product-box-img">
+                                <img src = "<?=$base;?>/assets/images/products/pasta-catalogo.png"/>
+                            </div>
+                            <div class = "product-box-description">
+                                Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut labore nostrum aut reprehenderit soluta. Ad culpa pariatur et ipsa sun...
+                            </div>
+
+                            <div class="budget-button">
+                                <a href="<?=$base;?>/cart">
+                                    ORÇAMENTO
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class = "product-box">
+                            <div class = "product-box-img">
+                                <img src = "<?=$base;?>/assets/images/products/pasta-catalogo.png"/>
+                            </div>
+                            <div class = "product-box-description">
+                                Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut labore nostrum aut reprehenderit soluta. Ad culpa pariatur et ipsa sun...
+                            </div>
+
+                            <div class="budget-button">
+                                <a href="<?=$base;?>/cart">
+                                    ORÇAMENTO
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class = "product-box">
+                            <div class = "product-box-img">
+                                <img src = "<?=$base;?>/assets/images/products/pasta-catalogo.png"/>
+                            </div>
+                            <div class = "product-box-description">
+                                Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut labore nostrum aut reprehenderit soluta. Ad culpa pariatur et ipsa sun...
+                            </div>
+
+                            <div class="budget-button">
+                                <a href="<?=$base;?>/cart">
+                                    ORÇAMENTO
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
             </div>
         
             <!-- Swiper JS -->
@@ -135,5 +264,7 @@
                 });
             </script>
         </section>
+
+            
     </body>
 </html>
