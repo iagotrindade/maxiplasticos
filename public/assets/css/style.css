@@ -631,8 +631,7 @@ body.dark .switch::before {
 }
 
 .products-carrousell {
-    height: 350px;
-    margin: 0 100px;
+    margin: 0 90px;
 }
 
 .products-carrousell-tittle {
@@ -682,6 +681,14 @@ body.dark .switch::before {
 .swiper-button-next::after, .swiper-button-prev:after {
     font-size: 18px !important;
     width: auto !important;
+}
+
+.swiper-button-prev {
+    left: -10px !important;
+}
+
+.swiper-button-next {
+    right: -10px !important;
 }
 
 .product-box {
