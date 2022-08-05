@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <meta http-equiv="Cache-Control" content="no-sotore">
       
     <!----======== CSS ======== -->
@@ -15,86 +15,24 @@
     <title>Painél Administrativo Maxiplásticos</title>
 </head>
 
-<body class = 'adm-panel-body'>
-    <nav class="sidebar close">
-        <header>
-            <div class="logo-area">
-                <span class="image">
-                    
-                </span>
+<body>
+    <header>
+        <div class = "section-adm-panel-header-menu-area">
+            <div class="section-header-adm-panel">
+                <div class="header-adm-panel-logo">
+                    <a href="">
+                        <img src="<?=$base?>/assets/images/icons/logo-maxi.png"> 
+                        <p class="text-logo"><strong>MAXI</strong>Pásticos</p>
+                    </a>
+                </div>
 
-                <div class="text logo-text">
-                    
+                <div class="header-search-form">
+                    <form class="form-search-index" name = 'search' method = 'GET' action = '<?=$base;?>/search'>
+                        <i class='header-menu-lupa bx bx-search' ></i>
+                        <input type="text" placeholder="Buscar produto..." name = "searching">
+                    </form>
                 </div>
             </div>
-        </header>
-
-        <div class="menu-bar">
-            <div class="menu">
-
-                <!--<li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <form name = 'search' method = 'GET' action = '<?=$base;?>/search'>
-                        <input type="text" placeholder="Procurar..." name = "searching">
-                    </form>
-                </li>-->
-
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="<?=$base?>/adm-panel">
-                            <i class='bx bx-home-alt icon'></i>
-                            <span class="text nav-text">Home</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a onclick="openModal()">
-                            <i class='bx bx-user' style = "font-size: 22px;"></i>
-                            <span class="text nav-text">Usuários</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-category' style = "font-size: 22px;"></i>
-                            <span class="text nav-text">Categorias</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="about">
-                            <i class='bx bx-category-alt' style = "font-size: 22px;"></i>
-                            <span class="text nav-text">Subcategorias</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="about">
-                            <i class='bx bx-package' style = "font-size: 22px;"></i>
-                            <span class="text nav-text">Produtos</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="about">
-                            <i class='bx bx-trash' style = "font-size: 22px;"></i>
-                            <span class="text nav-text">Lixeira</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="bottom-content">
-                <li class="">
-                    <a href="<?=$base;?>/sair" onclick='return confirmExit()'>
-                        <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                </li>
-            </div>
         </div>
-    </nav>
-
-    <div class = "tittle-adm-panel">
-        <h2>Painel Administrativo Maxiplásticos</h2>
-    </div>
+    </header>
+</body>

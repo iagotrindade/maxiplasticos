@@ -14,9 +14,15 @@
         <div class="login-area">
             <section class="login-modal-area">
                 <div class="login-modal">
-                    <h2 class="login-form-header">Login</h2>
+                    <h3 class="login-form-header">Login</h3>
+
+                    <div class = "login-form-logo">
+                        <div class = "login-form-logo-circle">
+                            <img src="<?=$base?>/assets/images/icons/logo-maxi.png"> 
+                        </div>     
+                    </div>
+
                     <div class="login-form-area">
-                        
                         <form class="login-form" method="POST" action="<?=$base;?>/login">
                             <?php if(!empty($flash)): ?>
                                <div class="warning">

@@ -21,7 +21,13 @@
         <div class="recover-area">
             <section class="login-modal-area" style="margin: 0; margin-bottom: 10px">
                 <div class="login-modal">
-                    <h2 class="login-form-header">Recupere sua senha</h2>
+                    <h3 class="login-form-header">Recupere sua senha</h3>
+
+                    <div class = "recover-form-logo">
+                        <div class = "recover-form-logo-circle">
+                            <img src="<?=$base?>/assets/images/icons/logo-maxi.png"> 
+                        </div>     
+                    </div>
 
                     <div class="login-form-area">
                         <form class="login-form" method="POST" action="<?=$base;?>/send_mail">

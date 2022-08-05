@@ -22,7 +22,7 @@ class LoginHandler {
                 return $loggedUser;
             }
         }
-        return false;
+        return true;
     }
 
     public static function verifyLogin($email, $password) {
