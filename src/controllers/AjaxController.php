@@ -2,9 +2,10 @@
 namespace src\controllers;
 
 use \core\Controller;
-use \src\handlers\LoginHandler;
+use src\handlers\ProfileHandler;
 
-class PanelController extends Controller {
+class AjaxController extends Controller {
+
     private $loggedUser;
 
     public function __construct() {
@@ -15,10 +16,8 @@ class PanelController extends Controller {
         }
     }
 
-    public function index () {  
-        $this->render('adm-panel', [
-            'loggedUser' => $this->loggedUser
-        ]);
+    public function upload () {
+        
     }
 
 }

@@ -16,32 +16,76 @@
     background-color: #FAFAFB;
 }
 
-.login-form-header {
+.login-form-header, .profile-form-header {
+    font-weight: 600;
     color: #ababab;
     text-align: center;
 }
 
-.login-form-logo, .recover-form-logo {
+.profile-form-header {
+    border-bottom: 1px solid #bdbdbd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.login-form-logo, .recover-form-logo, .profile-form-image  {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px ;
+    margin: 15px ;
 }
 
-.login-form-logo-circle, .recover-form-logo-circle {
+.login-form-logo-circle, .recover-form-logo-circle, .profile-form-image-circle {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #000;
     border-radius: 90px;
-    width: 100px;
-    height: 100px;
 }
 
-.login-section {
+.profile-form-image-circle, .profile-form-image-circle img {
+    width: 110px;
+    height: 110px;
+}
+
+.profile-form-image-circle img {
+    border-radius: 90px;
+}
+
+.login-form-logo-circle img {
+    width: 60px;
+}
+
+.profile-form-image-circle input {
+    position: fixed;
+    top: -10000px;
+}
+
+.profile-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-name h4 {
+    color: #F30000;
+    margin-bottom: 5px;
+}
+
+.profile-name p {
+    color: #9B9B9B;
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.login-section, .profile-section {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 80px;
 }
 
 .login-modal-area, .recover-area, .signup-area {
@@ -50,7 +94,7 @@
 
 .login-modal {
     background-color: var(--primary-color);
-    width: 350px;
+    width: 380px;
     padding: 25px;
     border-radius: 5px;
     filter: drop-shadow(-1px 1px 4px rgba(0, 0, 0, 0.25));
@@ -60,6 +104,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+label p {
+    font-size: 12px;
+    color: #9B9B9B;
+}
+
+.label-tel {
+    margin-right: 10px;
 }
 
 .change-pass-form-area {
@@ -84,14 +137,12 @@
 .create-account-link, .recover-password-link {
     margin: 10px 10px 30px 10px;
     padding-left: 5px;
-    color: #f30000
-    ;
+    color: #f30000;
 }
 
 .create-account-link a, .recover-password-link a {
     text-decoration: none;
-    color: #f30000
-    ;
+    color: #f30000;
 }
 
 .create-account-link a:hover, .recover-password-link a:hover {
@@ -110,6 +161,10 @@
     color: #fff;
 }
 
+.warning {
+    text-align: center;
+}
+
 .password-hold {
     display: flex;
     align-items: center;
@@ -118,18 +173,22 @@
 .show-pass-icon, .hide-pass-icon {
     cursor: pointer;
     font-size: 20px;
-    margin-left: -45px;
+    margin: 15px 0 0 -40px;
 }
 
 .login-form input {
     font-size: 16px;
     width: 320px;
     height: 40px;
-    margin: 10px;
+    margin: 10px 0;
     border: 1px solid #f30000;
     border-radius: 5px;
-    padding-left: 5px;
+    padding-left: 10px;
     outline: 0;
+}
+
+.login-form label p {
+    padding-left: 10px;
 }
 
 .add-student-form-buttons {
@@ -141,11 +200,12 @@
 
 .add-button-submit, .login-button-submit {
     font-size: 15px;
+    font-weight: 700;
     color:var(--primary-color) ;
     background-color: #f30000;
     border: 1px solid var(--primary-color);
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     height: 45px;
     cursor: pointer;
 }
@@ -158,9 +218,101 @@
 
 /*Adm Panel CSS*/
 
+.section-index-adm-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vw;
+}
+
+.section-index-adm-panel h1 {
+    color: #F30000;
+    margin-bottom: 10px;
+}
+
+.section-index-adm-panel h2 {
+    color: #bdbdbd;
+}
+
 .header-adm-panel-logo {
     display: flex;
     margin: 0;
+}
+
+.header-adm-panel-user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.user-picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f30000;
+    width: 40px;
+    height: 40px;
+    border-radius: 360px;
+    margin-right: 10px;
+}
+
+.user-picture {
+    font-size: 25px;
+}
+
+.adm-panel-menu-aside {
+    background-color: #F30000;
+    width: 80px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+}
+
+.adm-panel-menu-area {
+    height: 100%;
+}
+
+.adm-panel-menu-aside ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+}
+
+.menu-area-one {
+    height: 80%;
+    margin-top: 25px;
+}
+
+.menu-area-two {
+    height: 20%;
+}
+
+.menu-area-item {
+    margin-bottom: 30px;
+}
+
+.menu-area-item a i {
+    margin-bottom: 5px;
+}
+
+.adm-panel-menu-aside ul li a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 10px;
+}
+
+.adm-panel-menu-aside ul li a i {
+    font-size: 35px;
+    color: #fff;
 }
 
 
@@ -216,8 +368,7 @@
 
 .header-adm-panel-logo {
     height: 100%;
-    background-color: #000;
-    padding: 0 20px 0 20px;
+    padding: 0 0 15px 0;
 }
 
 .text-logo {
@@ -235,7 +386,7 @@
 
 .section-header-adm-panel {
     height: 80px;
-    padding: 0;
+    padding: 0 20px;
 }
 
 .header-menu-list {
@@ -267,7 +418,7 @@
     display: flex;
 }
 
-.header-search-form form input {
+.header-search-form form input, .adm-panel-header-search-form form input {
     width: 321px;
     height: 23px;
     background: #FAFAFB;
@@ -278,11 +429,25 @@
     font-size: 12px;
 }
 
-.header-menu-lupa {
+.header-search-form form input, .adm-panel-header-search-form form input {
+    width: 450px;
+    height: 30px;
+    font-size: 14px;
+}
+
+.adm-panel-header-search-form form input {
+    width: 35vw;
+}
+
+.header-menu-lupa, .adm-panel-header-menu-lupa {
     margin-right: -22px;
     margin-top: 4px;
     z-index: 100;
     color: #828282;
+}
+
+.adm-panel-header-menu-lupa {
+    margin-top: 7px;
 }
 
 .budget-area a{

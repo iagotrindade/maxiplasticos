@@ -35,20 +35,26 @@
                                    <p><?php echo ($_SESSION['flashSuccess'])?></p>
                                 </div>
                             <?php endif; ?>
-                            <input type="text" name="email" placeholder="E-mail:">
+                            <label>
+                                <p>E-MAIL</p>
+                                <input type="text" name="email">
+                            </label>
                             <div class = "password-hold">
-                                <input class = "password" type="password" name="password" placeholder="Senha:">
+                                <label>
+                                    <p>SENHA</p>
+                                    <input type="password" name="password"> 
+                                </label>
                                 <i class='bx bx-show show-pass-icon'></i>
                                 <i class='hide-pass-icon bx bx-hide' style = "display: none;"></i>
                             </div>
                             
         
                             <div class="login-form-buttons">
-                                <button class="login-button-submit" style="margin:10px;" type="submit">Login</button>
+                                <button class="login-button-submit" type="submit">Login</button>
                             </div>
 
                             <div class="recover-password-link">
-                                <p>Esqueceu sua senha? <a href="recover">Clique aqui!</a></p>
+                                <p>Esqueceu sua senha? <a href="<?=$base;?>/recover">Clique aqui!</a></p>
                             </div>
                         </form>
                     </div>

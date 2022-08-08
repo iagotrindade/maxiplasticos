@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="login-form-area">
-                        <form class="login-form" method="POST" action="<?=$base;?>/send_mail">
+                        <form class="login-form" method="POST" action="<?=$base;?>/recover">
                             <?php if(!empty($_SESSION['flash'])): ?>
                                <div class="warning">
                                    <p><?php echo ($_SESSION['flash'])?></p>
@@ -43,10 +43,15 @@
                                 </div>
                             <?php endif; ?>
                             
-                            <label>
-                                <p>E-MAIL</p>
-                                <input type="text" name="email">
-                            </label>
+                            <div class = "password-hold">
+                                <label>
+                                    <p>SENHA</p>
+                                    <input type="hidden" name="token" value = '<?=implode("", $_SESSION['token']);?>'>
+                                    <input type="password" name="password" style = "width: 286px;"> 
+                                </label>
+                                <i class='bx bx-show show-pass-icon'></i>
+                                <i class='hide-pass-icon bx bx-hide' style = "display: none;"></i>
+                            </div>
         
                             <div class="login-form-buttons">
                                 <button class="login-button-submit">Enviar</button>

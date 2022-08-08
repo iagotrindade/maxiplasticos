@@ -7,14 +7,20 @@ $router->get('/', 'HomeController@index');
 
 $router->get('/adm-login', 'LoginController@signin');
 
-$router->get('/adm-panel', 'PanelController@index');
-
 $router->post('/login', 'LoginController@signinAction');
 
 $router->get('/recover', 'LoginController@recover');
 
-$router->get('/adm-painel', 'AdmController@index');
+$router->post('/send_mail', 'LoginController@recoverAction');
+
+$router->get('/{token}={token}/recover', 'LoginController@passwordChange');
+
+$router->post('/recover', 'LoginController@updatePassword');
+
+$router->get('/adm-panel', 'PanelController@index');
+
+$router->get('/profile', 'ProfileController@index');
+
+$router->post('/update_profile', 'ProfileController@updateAction');
 
 $router->get('/sobre/{nome}', 'HomeController@sobreP');
-
-$router->get('/sobre', 'HomeController@sobre');
