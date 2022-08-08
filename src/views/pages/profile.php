@@ -36,7 +36,7 @@
                             <input type="text" name="name" value = "<?=$loggedUser->name?>">
                         </label>
                             
-                        <div class = "form-profile-tel" style = "display:flex; justify-content:center; align-items: center;">
+                        <div class = "form-profile-tel" style = "display:flex; justify-content:space-between; align-items: center;">
                             <label class = "label-tel">
                                 <p>TELEFONE</p>
                                 <input type="tel" name="phone" style = "width: 155px" value = "<?=$loggedUser->phone?>">

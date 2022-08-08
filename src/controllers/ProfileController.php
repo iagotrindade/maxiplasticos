@@ -34,16 +34,21 @@ class ProfileController extends Controller {
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
 
-        if($name && $phone && $ramal && $email && $password) {
+        if($name && $email && $password) {
             
             if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['tmp_name'])) {
                 $newAvatar = $_FILES['avatar'];
+                unlink('assets/images/avatars/'.$this->loggedUser->img);
 
                 if(in_array($newAvatar['type'], ['image/jpeg', 'image/jpg', 'image/png'])) {
                     $avatarName = $this->cutImage($newAvatar, 110, 110, 'assets/images/avatars');
                 }
             }
                 
+            else {
+                $avatarName = $this->loggedUser->img;
+            }
+            
             $status = ProfileHandler::updateUser($this->loggedUser->id, $name, $avatarName, $phone, $ramal, $email, $password);
             
             if($status) {

@@ -36,7 +36,7 @@ class LoginController extends Controller {
         }
 
         else {
-            $_SESSION['flash'] = 'Digite os campos de Usuário e/ou senha!';
+            $_SESSION['flash'] = 'Digite os campos de E-mail e/ou senha!';
             $this->redirect('/adm-login');
         }
     }

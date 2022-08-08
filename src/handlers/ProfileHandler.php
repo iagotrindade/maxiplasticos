@@ -5,10 +5,11 @@ use \src\models\User;
 
 class ProfileHandler {
         
-    public static function updateUser ($id, $name, $avatarName, $phone, $ramal, $email, $password) {
+    public static function updateUser ($userImg, $id, $name, $avatarName, $phone, $ramal, $email, $password) {
         $user = User::select()->where('id', $id)->one();
 
         if (password_verify($password, $user['password'])) {
+
             User::update()
                 ->set('name', $name)
                 ->set('image', $avatarName)

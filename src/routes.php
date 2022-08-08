@@ -23,4 +23,6 @@ $router->get('/profile', 'ProfileController@index');
 
 $router->post('/update_profile', 'ProfileController@updateAction');
 
+$router->get('/users', 'UserController@index');
+
 $router->get('/sobre/{nome}', 'HomeController@sobreP');
