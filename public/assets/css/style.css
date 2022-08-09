@@ -965,6 +965,7 @@ td{
     border: none;
     border-radius: 3px;
     outline: none;
+    padding-left: 5px;
 }
 
 .form-user-submit {
@@ -991,6 +992,30 @@ td{
     color: #f30000;
 }
 
+.action-user-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-user-area a {
+    width: 60px;
+    height: 20px;
+    background-color: #fff;
+    box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    border-radius: 16px;
+    text-decoration: none;
+    color: #f30000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+}
+
+.edit-user-button {
+    margin-right: 30px;
+}
 @media (max-width: 725px) {
     
 }
