@@ -38,7 +38,7 @@
                         </li>
 
                         <li class="menu-area-item">
-                            <a href="users">
+                            <a href="<?=$base?>/users">
                                 <i class='bx bxs-user-detail'></i>
                                 <p>Usuários</p>
                             </a>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="menu-area-two">
                         <li class="menu-area-item">
-                            <a href="logout">
+                            <a href="logout" onclick='return confirmExit()'>
                                 <i class='bx bx-log-out bx-rotate-180' ></i>
                                 <p>Sair</p>
                             </a>

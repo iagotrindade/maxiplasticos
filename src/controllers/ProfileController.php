@@ -48,24 +48,24 @@ class ProfileController extends Controller {
             $status = ProfileHandler::updateUser($this->loggedUser->id, $name, $avatarName, $phone, $ramal, $email, $password);
             
             if($status) {
-                $_SESSION['flashSuccess'] = 'Perfil atualizado com sucesso!';
+                $_SESSION['flash'] = 'Perfil atualizado com sucesso!';
                 $this->redirect('/profile', [
-                    'flashSuccess' => $_SESSION['flashSuccess']
+                    'flash' => $_SESSION['flash']
                 ]);
             }
 
             else {
-                $_SESSION['flashError'] = 'A senha informada esta incorreta!';
+                $_SESSION['flash'] = 'A senha informada esta incorreta!';
                 $this->redirect('/profile', [
-                    'flashError' => $_SESSION['flashError']
+                    'flash' => $_SESSION['flash']
                 ]);
             }
         }
 
         else {
-            $_SESSION['flashError'] = 'Preencha todas informações!';
+            $_SESSION['flash'] = 'Preencha todas informações!';
             $this->redirect('/profile', [
-                'flashError' => $_SESSION['flashError']
+                'flash' => $_SESSION['flash']
             ]);
         }
     }

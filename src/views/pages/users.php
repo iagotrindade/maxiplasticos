@@ -86,9 +86,9 @@
                                 </td>
 
                                 <td class = "action-user-area">
-                                    <a href = "" class = "edit-user-button">EDITAR</a>
-                                    <a href = "<?=$user->id?>/del_user" class = "delete-user-button"> 
-                                        <img src = "<?=$base;?>/assets/images/icons/delete.png"/>
+                                    <a href = "edit_user/<?=$user->id?>" class = "edit-user-button">EDITAR</a>
+                                    <a href = "edit_user/<?=$user->id?>" class = "delete-user-button"> 
+                                        <img src = "<?=$base;?>/assets/images/icons/delete.png" onclick='return confirmDel()'/>
                                     </a>
                                 </td>
                             </tr>
@@ -100,6 +100,7 @@
     </div>
 </section>
 
+<script src = "<?=$base?>/assets/js/vanilla.js"></script>
 <script type="text/javascript">
     let feedPhoto = document.querySelector('.img-user');
     let feedFile = document.querySelector('.input-file');

@@ -83,6 +83,74 @@ class UserController extends Controller {
         
     }
 
+    public function edit($id) {
+        if($id) {
+            $user = UserHandler::getUser($id);
+        }
+        
+
+        $this->render('edit_user', [
+            'loggedUser' => $this->loggedUser,
+            'user' => $user
+        ]);
+    }
+
+    public function editAction ($id) {
+        $name = filter_input(INPUT_POST, 'name');
+        $phone = filter_input(INPUT_POST, 'phone');
+        $ramal = filter_input(INPUT_POST, 'ramal');
+        $email = filter_input(INPUT_POST, 'email');
+        $password = filter_input(INPUT_POST, 'password');
+
+        if($name && $email && $password) {
+            if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['tmp_name'])) {
+                $newAvatar = $_FILES['avatar'];
+
+                if(in_array($newAvatar['type'], ['image/jpeg', 'image/jpg', 'image/png'])) {
+                    $avatarName = $this->cutImage($newAvatar, 110, 110, 'assets/images/avatars');
+                }
+            }
+
+            else {
+                $avatarName = 'default_avatar.png';
+            }
+
+            if(LoginHandler::emailExists($email) === true) {
+                $status = UserHandler::updateUser($id, $name, $avatarName, $phone, $ramal, $email, $password);
+    
+                if($status) {
+                    $_SESSION['flash'] = 'Usuário adicionado com sucesso!';
+                    $this->redirect('/edit_user/{'.$id.'}', [
+                        'flash' => $_SESSION['flash']
+                    ]);
+                }
+    
+                else {
+                    $_SESSION['flash'] = 'Ops, ocorreu algum problema no cadastro, tente novamente!';
+                    $this->redirect('/edit_user/{'.$id.'}', [
+                        'flash' => $_SESSION['flash']
+                    ]);
+                }
+            }
+    
+            else {
+                $_SESSION['flash'] = 'Usuário já cadastrado!';
+    
+                $this->redirect('/edit_user/{'.$id.'}', [
+                    "flash" => $_SESSION['flash']
+                ]);
+            }
+        }
+
+        else {
+            $_SESSION['flash'] = 'Informe ao menos os campos de NOME, E-MAIL e SENHA!';
+    
+            $this->redirect('/edit_user/{'.$id.'}', [
+                "flash" => $_SESSION['flash']
+            ]);
+        }
+    }
+
     public function delete($id) {
         UserHandler::delUser($id); {
         //Fazer a verificação se o ID veio pelo $GET e melhorar a função!

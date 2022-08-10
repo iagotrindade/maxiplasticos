@@ -1,12 +1,12 @@
 <?php 
-    $render('adm-header', ['loggedUser'=>$loggedUser]);
+    $render('adm-header', ['loggedUser'=>$loggedUser, 'user' => $user]);
     $render('adm-asside-menu');
 ?> 
         <section class="profile-section">
             <div class="login-modal">
                 <p class="profile-form-header">MEU PERFIL</p >
                 <div class="login-form-area">
-                    <form class="login-form" method="POST" action="<?=$base;?>/update_profile" enctype="multipart/form-data">
+                    <form class="login-form" method="POST" action="<?=$base;?>/edit_user/<?=$user->id;?>" enctype="multipart/form-data">
                         <?php if(!empty($_SESSION['flash'])): ?>
                             <div class="warning">
                                <p><?php echo ($_SESSION['flash']); $_SESSION['flash'] = ''; $_SESSION['flash'] = '';?></p>
@@ -21,30 +21,30 @@
                         </div>
 
                         <div class = "profile-name">
-                            <h4><?=$loggedUser->name?></h4>
+                            <h4><?=$user->name?></h4>
                             <p>ALTERAR FOTO</p>
                         </div>
 
                         <label>
                             <p>NOME</p>
-                            <input type="text" name="name" value = "<?=$loggedUser->name?>">
+                            <input type="text" name="name" value = "<?=$user->name?>">
                         </label>
                             
                         <div class = "form-profile-tel" style = "display:flex; justify-content:space-between; align-items: center;">
                             <label class = "label-tel">
                                 <p>TELEFONE</p>
-                                <input type="tel" name="phone" style = "width: 155px" value = "<?=$loggedUser->phone?>">
+                                <input type="tel" name="phone" style = "width: 155px" value = "<?=$user->phone?>">
                             </label>
 
                             <label>
                                 <p>RAMAL</p>
-                                <input type="tel" name="ramal" style = "width: 155px" value = "<?=$loggedUser->ramal?>">
+                                <input type="tel" name="ramal" style = "width: 155px" value = "<?=$user->ramal?>">
                             </label>
                         </div>
 
                         <label>
                             <p>E-MAIL</p>
-                            <input type="text" name="email" value = "<?=$loggedUser->email?>">
+                            <input type="text" name="email" value = "<?=$user->email?>">
                         </label>
 
                         <label>

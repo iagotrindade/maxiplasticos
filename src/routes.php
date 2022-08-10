@@ -29,6 +29,10 @@ $router->get('/users', 'UserController@index');
 
 $router->post('/add_user', 'UserController@add');
 
+$router->get('/edit_user/{id}', 'UserController@edit');
+
+$router->post('/edit_user/{id}', 'UserController@editAction');
+
 $router->get('/{id}/del_user', 'UserController@delete');
 
 $router->get('/sobre/{nome}', 'HomeController@sobreP');

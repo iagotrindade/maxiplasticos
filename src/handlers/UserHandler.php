@@ -24,6 +24,26 @@ class UserHandler {
         return $users;
     }
 
+    public static function getUser($id) {
+        if($id) {
+            $data = User::select()->where('id', $id)->one();
+
+            $user = new User();
+            $user->id = ($data['id']);
+            $user->img = ($data['image']);
+            $user->name =($data['name']);
+            $user->phone =($data['phone']);
+            $user->email = ($data['email']);
+            $user->ramal = ($data['ramal']);
+                    
+            return $user;
+        }
+        
+        else {
+            return false;
+        }
+    }
+
     public static function addUser ($name, $avatarName, $phone, $ramal, $email, $password) {
 
         if ($name) {
@@ -39,6 +59,28 @@ class UserHandler {
                 'password' => $hash,
                 'token' => ''
             ])->execute();
+
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public static function updateUser ($id, $name, $avatarName, $phone, $ramal, $email, $password) {
+        $user = User::select()->where('id', $id)->one();
+
+        if (password_verify($password, $user['password'])) {
+
+            User::update()
+                ->set('name', $name)
+                ->set('image', $avatarName)
+                ->set('phone', $phone)
+                ->set('ramal', $ramal)
+                ->set('email', $email)
+                ->where('id', $id)
+            ->execute();
 
             return true;
         }
