@@ -19,7 +19,6 @@ class LoginHandler {
                 $loggedUser->phone =($data['phone']);
                 $loggedUser->email = ($data['email']);
                 $loggedUser->ramal = ($data['ramal']);
-                $loggedUser->privilege = ($data['privilege']);
                 
                 return $loggedUser;
             }

@@ -22,9 +22,6 @@ class ProfileController extends Controller {
         $this->render('profile', [
             'loggedUser' => $this->loggedUser
         ]);
-
-        $_SESSION['flashSuccess'] = '';
-        $_SESSION['flashError'] = '';
     }
     
     public function updateAction() {
@@ -38,7 +35,6 @@ class ProfileController extends Controller {
             
             if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['tmp_name'])) {
                 $newAvatar = $_FILES['avatar'];
-                unlink('assets/images/avatars/'.$this->loggedUser->img);
 
                 if(in_array($newAvatar['type'], ['image/jpeg', 'image/jpg', 'image/png'])) {
                     $avatarName = $this->cutImage($newAvatar, 110, 110, 'assets/images/avatars');

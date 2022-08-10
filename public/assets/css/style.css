@@ -911,23 +911,23 @@ tr {
     flex-wrap: nowrap;
     margin: 0 20px;
 }
-
-th{
-    padding: 10px 7px;
-    text-align: left;
-    font-size: 12px;
-    color: #000;
-
-}
   
 td{
-    padding: 10px;
-    text-align: left;
+    padding: 10px 7px;
+    text-align: center;
     vertical-align:middle;
     font-weight: 300;
-    font-size: 10px;
-    color: #fff;
+    font-size: 14px;
+    color: #777777;
     border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+.add-user-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 28px;
+    padding: 10px 0 ;
 }
 
 .table-form-image-circle {
@@ -983,7 +983,7 @@ td{
     font-size: 14px;
     line-height: 17px;
     cursor: pointer;
-    margin-top: 25px;
+    margin-top: 23px;
 }
 
 .form-user-submit:hover {
@@ -998,9 +998,9 @@ td{
     align-items: center;
 }
 
-.action-user-area a {
-    width: 60px;
-    height: 20px;
+.edit-user-button {
+    width: 65px;
+    height: 25px;
     background-color: #fff;
     box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.25);
     border: none;
@@ -1011,11 +1011,28 @@ td{
     justify-content: center;
     align-items: center;
     font-size: 10px;
+    font-weight: 700;
+}
+
+.edit-user-button:hover {
+    color: #fff;
+    background-color: #f30000;
 }
 
 .edit-user-button {
-    margin-right: 30px;
+    margin-right: 20px;
 }
+
+.delete-user-button img {
+    width: 30px;
+}
+
+.img-user-area {
+    width: 34px;
+    height: 34px;
+    border-radius: 90px;
+}
+
 @media (max-width: 725px) {
     
 }

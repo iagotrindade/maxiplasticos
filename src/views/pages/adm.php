@@ -37,7 +37,7 @@
                                 <div class = "password-hold">
                                     <label>
                                         <p>SENHA</p>
-                                        <input type="password" name="password"> 
+                                        <input class = "password" type="password" name="password"> 
                                     </label>
                                     <i class='bx bx-show show-pass-icon'></i>
                                     <i class='hide-pass-icon bx bx-hide' style = "display: none;"></i>

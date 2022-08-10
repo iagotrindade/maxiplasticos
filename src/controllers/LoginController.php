@@ -118,8 +118,10 @@ class LoginController extends Controller {
         }   
     }
     
-    public function signup() {
-        $this->render('signup');
+    public function logout () {
+        $_SESSION['token'] = '';
+
+        $this->redirect('/adm-login');
     }
 
 }

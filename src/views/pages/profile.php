@@ -9,11 +9,11 @@
                     <form class="login-form" method="POST" action="<?=$base;?>/update_profile" enctype="multipart/form-data">
                         <?php if(!empty($_SESSION['flashSuccess'])): ?>
                             <div class="warning">
-                               <p><?php echo ($_SESSION['flashSuccess'])?></p>
+                               <p><?php echo ($_SESSION['flashSuccess']); $_SESSION['flashSuccess'] = ''; $_SESSION['flashError'] = '';?></p>
                             </div>
                         <?php endif; ?>
                             
-                        <?php if(!empty($_SESSION['flashError'])): ?>
+                        <?php if(!empty($_SESSION['flashError'])): $_SESSION['flashSuccess'] = ''; $_SESSION['flashError'] = '';?>
                             <div class="warning">
                                <p><?php echo ($_SESSION['flashError'])?></p>
                             </div>

@@ -39,7 +39,7 @@
                         <i class='bx bx-user'></i>
                     </div>
     
-                    <h3>Bem Vindo (a) <?=$loggedUser->name?></h3>
+                    <h4>Bem Vindo (a) <?=$loggedUser->name?></h4>
                 </div>
 
                 <div class="header-adm-panel-site">

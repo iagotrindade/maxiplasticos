@@ -1,112 +1,98 @@
 <?php 
-    $render('adm-header', ['loggedUser'=>$loggedUser]);
+    $render('adm-header', ['loggedUser'=>$loggedUser, 'users' => $users]);
     $render('adm-asside-menu');
 ?>
-    
     <section class = "section-users-table">
         <h3> USUÁRIOS</h3>
+        <?php if(!empty($_SESSION['flash'])): ?>
+            <div class="warning">
+                <p style = "text-align: left;"><?php echo ($_SESSION['flash']);  $_SESSION['flash'] = '';?></p>
+            </div>
+        <?php endif; ?>
         <div class = "section-area-users-table">
-        <div class="tbl-header">
-                <table cellpadding="0" cellspacing="0" border="0">
-                    
-                        <thead>
-                            <tr>     
-                                <form class="login-form" method="POST" action="<?=$base;?>/add_user" enctype="multipart/form-data"> 
-                                    <th>
-                                        <div class = "table-form-image">
-                                            <div class = "table-form-image-circle">
-                                                <label>Foto</label>
-                                                <input type="file" name="avatar" class = "input-file">
-                                                <img class = "img-user" src = "<?=$base;?>/assets/images/avatars/<?=$loggedUser->img?>"/>
-                                            </div>     
-                                        </div>
-                                    </th>
+            
+            <div class="tbl-header">
+                <form class="add-user-form" method="POST" action="<?=$base;?>/add_user"> 
+                    <div class = "table-form-image">
+                        <div class = "table-form-image-circle">
+                            <label>Foto</label>
+                            <input type="file" name="avatar" class = "input-file">
+                            <img class = "img-user" src = "<?=$base;?>/assets/images/avatars/default_avatar.png"/>
+                        </div>     
+                    </div>
 
-                                    <th>
-                                        <label class = "add-user-form-label">
-                                            <p>Nome</p>
-                                            <input type="text" name="name">
-                                        </label>
-                                    </th>
+                    <label class = "add-user-form-label">
+                        <p>Nome</p>
+                        <input type="text" name="name">
+                    </label>
 
-                                    <th>
-                                        <label class = "add-user-form-label">
-                                            <p>Telefone</p>
-                                            <input type="tel" name="phone"/>
-                                        </label>
-                                    </th>
+                    <label class = "add-user-form-label">
+                        <p>Telefone</p>
+                        <input type="tel" name="phone"/>
+                    </label>
 
-                                    <th>
-                                        <label class = "add-user-form-label">
-                                            <p>Ramal</p>
-                                            <input type="tel" name="ramal" style = "width: 75px"/>
-                                        </label>
-                                    </th>
+                    <label class = "add-user-form-label">
+                        <p>Ramal</p>
+                        <input type="tel" name="ramal" style = "width: 75px"/>
+                    </label>
 
-                                    <th>
-                                        <label class = "add-user-form-label">
-                                            <p>E-mail</p>
-                                            <input type="email" name="email"/>
-                                        </label>
-                                    </th>
+                    <label class = "add-user-form-label">
+                        <p>E-mail</p>
+                        <input type="email" name="email"/>
+                    </label>
 
-                                    <th>
-                                        <label class = "add-user-form-label">
-                                            <p>Senha</p>
-                                            <input type="password" name="password" style = "width:75px"/>
-                                        </label></th>
-                                    </th>
 
-                                    <th>
-                                        <button class = "form-user-submit">ADICIONAR</button>
-                                    </th>
-                                </form>
-                            </tr>
-                        </thead>
-                    
-                </table>
+                    <label class = "add-user-form-label">
+                        <p>Senha</p>
+                        <input type="password" name="password" style = "width:75px"/>
+                    </label>
+
+                    <button class = "form-user-submit">ADICIONAR</button>
+                </form>
             </div>
 
             <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0">
                     <thead>
-                        <tr>      
-                            <th>
-                                <div class = "table-form-image">
-                                    <div class = "table-form-image-circle">
-                                        <input type="file" name="avatar" class = "input-file">
-                                        <img class = "img-user" src = "<?=$base;?>/assets/images/avatars/<?=$loggedUser->img?>"/>
-                                    </div>     
-                                </div>
-                            </th>
+                        <?php foreach($users as $user): ?>
+                            <tr>      
+                                <td style = "width: 48px">
+                                    <div class = "table-form-image">
+                                        <div class = "table-form-image-circle">
+                                            <input type="file" name="avatar" class = "input-file">
+                                            <img class = "img-user-area" src = "<?=$base;?>/assets/images/avatars/<?=$user->img?>"/>
+                                        </div>     
+                                    </div>
+                                </td>
 
-                            <th>
-                                <p>Iago Silva</p>
-                            </th>
+                                <td style = "width: 178px">
+                                    <p><?=$user->name?></p>
+                                </td>
 
-                            <th>
-                                <p>(51) 51991657516</p>
-                            </th>
+                                <td style = "width: 178px">
+                                    <p><?=$user->phone?></p>
+                                </td>
 
-                            <th>
-                                <p>Ramal</p>
-                            </th>
+                                <td style = "width: 89px">
+                                    <p><?=$user->ramal?></p>
+                                </td>
 
-                            <th>
-                                <p>email@teste.com</p
-                            </th>
+                                <td style = "width: 178px">
+                                    <p><?=$user->email?></p>
+                                </td>
 
-                            <th>
-                                <p>******</p>
-                            </th>
+                                <td style = "width: 89px">
+                                    <p>********</p>
+                                </td>
 
-                            <th class = "action-user-area">
-                                <a href = "" class = "edit-user-button">EDITAR</a>
-                                <a href = "del_user" class = "delete-user-button"> 
-                                    ...
-                                </a>
-                            </th>
-                        </tr>
+                                <td class = "action-user-area">
+                                    <a href = "" class = "edit-user-button">EDITAR</a>
+                                    <a href = "<?=$user->id?>/del_user" class = "delete-user-button"> 
+                                        <img src = "<?=$base;?>/assets/images/icons/delete.png"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
                     </thead>
                 </tbody>
             </table>
