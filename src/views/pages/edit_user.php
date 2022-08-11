@@ -6,7 +6,7 @@
             <div class="login-modal">
                 <p class="profile-form-header">MEU PERFIL</p >
                 <div class="login-form-area">
-                    <form class="login-form" method="POST" action="<?=$base;?>/edit_user/<?=$user->id;?>" enctype="multipart/form-data">
+                    <form class="login-form" method="POST" action="<?=$base;?>/edit_action" enctype="multipart/form-data">
                         <?php if(!empty($_SESSION['flash'])): ?>
                             <div class="warning">
                                <p><?php echo ($_SESSION['flash']); $_SESSION['flash'] = ''; $_SESSION['flash'] = '';?></p>
@@ -15,8 +15,9 @@
                             
                         <div class = "profile-form-image">
                             <div class = "profile-form-image-circle">
+                                <input type = "hidden" name = "id" value = "<?=$user->id?>"/>
                                 <input type="file" name="avatar" class = "input-file">
-                                <img src = "<?=$base;?>/assets/images/avatars/<?=$loggedUser->img?>"/>
+                                <img src = "<?=$base;?>/assets/images/avatars/<?=$user->img?>"/>
                             </div>     
                         </div>
 

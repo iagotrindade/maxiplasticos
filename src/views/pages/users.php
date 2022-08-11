@@ -10,9 +10,8 @@
             </div>
         <?php endif; ?>
         <div class = "section-area-users-table">
-            
             <div class="tbl-header">
-                <form class="add-user-form" method="POST" action="<?=$base;?>/add_user"> 
+                <form class="add-user-form" method="POST" action="<?=$base;?>/add_user" enctype="multipart/form-data"> 
                     <div class = "table-form-image">
                         <div class = "table-form-image-circle">
                             <label>Foto</label>
@@ -56,7 +55,7 @@
                     <thead>
                         <?php foreach($users as $user): ?>
                             <tr>      
-                                <td style = "width: 48px">
+                                <td class = "td-users">
                                     <div class = "table-form-image">
                                         <div class = "table-form-image-circle">
                                             <input type="file" name="avatar" class = "input-file">
@@ -65,29 +64,29 @@
                                     </div>
                                 </td>
 
-                                <td style = "width: 178px">
+                                <td class = "td-users" >
                                     <p><?=$user->name?></p>
                                 </td>
 
-                                <td style = "width: 178px">
+                                <td class = "td-users">
                                     <p><?=$user->phone?></p>
                                 </td>
 
-                                <td style = "width: 89px">
+                                <td class = "td-users">
                                     <p><?=$user->ramal?></p>
                                 </td>
 
-                                <td style = "width: 178px">
+                                <td class = "td-users" >
                                     <p><?=$user->email?></p>
                                 </td>
 
-                                <td style = "width: 89px">
+                                <td class = "td-users">
                                     <p>********</p>
                                 </td>
 
-                                <td class = "action-user-area">
+                                <td class = "td-users action-user-area">
                                     <a href = "edit_user/<?=$user->id?>" class = "edit-user-button">EDITAR</a>
-                                    <a href = "edit_user/<?=$user->id?>" class = "delete-user-button"> 
+                                    <a href = "<?=$user->id;?>/del_user" class = "delete-user-button"> 
                                         <img src = "<?=$base;?>/assets/images/icons/delete.png" onclick='return confirmDel()'/>
                                     </a>
                                 </td>

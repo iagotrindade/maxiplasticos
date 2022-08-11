@@ -39,6 +39,13 @@ class UserController extends Controller {
                 if(in_array($newAvatar['type'], ['image/jpeg', 'image/jpg', 'image/png'])) {
                     $avatarName = $this->cutImage($newAvatar, 110, 110, 'assets/images/avatars');
                 }
+
+                else {
+                    $_SESSION['flash'] = 'O tipo de imagem não é compatível com os formatos .jpeg .jpg ou .png!';
+                    $this->redirect("/edit_user/$id", [
+                        'flash' => $_SESSION['flash']
+                    ]);
+                }
             }
 
             else {
@@ -73,7 +80,7 @@ class UserController extends Controller {
         }
 
         else {
-            $_SESSION['flash'] = 'Informe ao menos os campos de NOME, E-MAIL e SENHA!';
+            $_SESSION['flash'] = 'Informe os campos de NOME, E-MAIL e SENHA!';
     
             $this->redirect('/users', [
                 "flash" => $_SESSION['flash']
@@ -95,7 +102,8 @@ class UserController extends Controller {
         ]);
     }
 
-    public function editAction ($id) {
+    public function editAction () {
+        $id = filter_input(INPUT_POST, 'id');
         $name = filter_input(INPUT_POST, 'name');
         $phone = filter_input(INPUT_POST, 'phone');
         $ramal = filter_input(INPUT_POST, 'ramal');
@@ -109,6 +117,13 @@ class UserController extends Controller {
                 if(in_array($newAvatar['type'], ['image/jpeg', 'image/jpg', 'image/png'])) {
                     $avatarName = $this->cutImage($newAvatar, 110, 110, 'assets/images/avatars');
                 }
+
+                else {
+                    $_SESSION['flash'] = 'O tipo de imagem não é compatível com os formatos .jpeg .jpg ou .png!';
+                    $this->redirect("/edit_user/$id", [
+                        'flash' => $_SESSION['flash']
+                    ]);
+                }
             }
 
             else {
@@ -117,35 +132,26 @@ class UserController extends Controller {
 
             if(LoginHandler::emailExists($email) === true) {
                 $status = UserHandler::updateUser($id, $name, $avatarName, $phone, $ramal, $email, $password);
-    
+                
                 if($status) {
-                    $_SESSION['flash'] = 'Usuário adicionado com sucesso!';
-                    $this->redirect('/edit_user/{'.$id.'}', [
+                    $_SESSION['flash'] = 'Usuário atualizado com sucesso!';
+                    $this->redirect("/edit_user/$id", [
                         'flash' => $_SESSION['flash']
                     ]);
                 }
     
                 else {
-                    $_SESSION['flash'] = 'Ops, ocorreu algum problema no cadastro, tente novamente!';
-                    $this->redirect('/edit_user/{'.$id.'}', [
+                    $_SESSION['flash'] = 'A senha informada esta incorreta!';
+                    $this->redirect("/edit_user/$id", [
                         'flash' => $_SESSION['flash']
                     ]);
                 }
             }
-    
-            else {
-                $_SESSION['flash'] = 'Usuário já cadastrado!';
-    
-                $this->redirect('/edit_user/{'.$id.'}', [
-                    "flash" => $_SESSION['flash']
-                ]);
-            }
         }
-
         else {
-            $_SESSION['flash'] = 'Informe ao menos os campos de NOME, E-MAIL e SENHA!';
+            $_SESSION['flash'] = 'Informe os campos de NOME, E-MAIL e SENHA!';
     
-            $this->redirect('/edit_user/{'.$id.'}', [
+            $this->redirect("/edit_user/$id", [
                 "flash" => $_SESSION['flash']
             ]);
         }
