@@ -62,18 +62,20 @@
             <table cellpadding="0" cellspacing="0" border="0">
                 <tbody>
                     <tr>
-                        <td class = "product-list-image">
+                        <td class = "product-list-image" style = "width: 216px;">
                             <img src="<?=$base?>/assets/images/products/calc.jpeg"/>
                         </td>
 
-                        <td>
+                        <td style = "width: 216px;">
                             <p>Lorem ipsum dolor sit amet. At enim incidunt</br>qui aliquid odit in dolor nihil.</p>
 
                         </td>
                         
-                        <td>8874</td>
+                        <td style = "width: 216px;">
+                            <p>8874</p>
+                        </td>
 
-                        <td>
+                        <td style = "width: 216px;">
                             <ul class = "fabrication-info">
                                 <li>
                                     <p>Fabricação</p>
@@ -89,7 +91,7 @@
                             </ul>
                         </td>
 
-                        <td style = "display: flex; align-items: center;">
+                        <td style = "display: flex; align-items: center; width: 216px;">
                             <ul class = "date-info">
                                 <li>
                                     <p>PUBLICADO</p>
@@ -111,5 +113,12 @@
                 <div class = "under-line-product-box"></div>
             </div>
         </div>
+
+        
+    </div>
+
+    <div class = "add-product-area-button">
+        <a class = "add-product-button" href = "add_product">ADICIONAR PRODUTO</a>
+        <a class = "trash-button" href = "#">Ver lixeira</a>
     </div>
 </section>

@@ -28,9 +28,8 @@
 
                 <div class="adm-panel-header-search-form">
                     <form class="form-search-index" name = 'search' method = 'GET' action = '<?=$base;?>/search'>
-                        
-                        <input type="text" placeholder="Buscar..." name = "searching">
                         <i class='adm-panel-header-menu-lupa bx bx-search' ></i>
+                        <input type="text" placeholder="Buscar..." name = "searching">
                     </form>
                 </div>
 

@@ -37,4 +37,6 @@ $router->get('/{id}/del_user', 'UserController@delete');
 
 $router->get('/products', 'ProductController@index');
 
+$router->get('/add_product', 'ProductController@add');
+
 $router->get('/sobre/{nome}', 'HomeController@sobreP');

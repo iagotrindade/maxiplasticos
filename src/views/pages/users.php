@@ -55,7 +55,7 @@
                     <thead>
                         <?php foreach($users as $user): ?>
                             <tr>      
-                                <td class = "td-users">
+                                <td class = "td-users" style = "width: 39px">
                                     <div class = "table-form-image">
                                         <div class = "table-form-image-circle">
                                             <input type="file" name="avatar" class = "input-file">
@@ -64,27 +64,27 @@
                                     </div>
                                 </td>
 
-                                <td class = "td-users" >
+                                <td class = "td-users" style = "width: 164px">
                                     <p><?=$user->name?></p>
                                 </td>
 
-                                <td class = "td-users">
+                                <td class = "td-users" style = "width: 164px">
                                     <p><?=$user->phone?></p>
                                 </td>
 
-                                <td class = "td-users">
+                                <td class = "td-users" style = "width: 75px">
                                     <p><?=$user->ramal?></p>
                                 </td>
 
-                                <td class = "td-users" >
+                                <td class = "td-users" style = "width: 164px">
                                     <p><?=$user->email?></p>
                                 </td>
 
-                                <td class = "td-users">
+                                <td class = "td-users" style = "width: 75px">
                                     <p>********</p>
                                 </td>
 
-                                <td class = "td-users action-user-area">
+                                <td class = "td-users action-user-area" style = "width: 120px">
                                     <a href = "edit_user/<?=$user->id?>" class = "edit-user-button">EDITAR</a>
                                     <a href = "<?=$user->id;?>/del_user" class = "delete-user-button"> 
                                         <img src = "<?=$base;?>/assets/images/icons/delete.png" onclick='return confirmDel()'/>

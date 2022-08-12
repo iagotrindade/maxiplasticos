@@ -21,4 +21,10 @@ class ProductController extends Controller {
         ]);
     }
 
+    public function add () {
+        $this->render('add_product', [
+            'loggedUser' => $this->loggedUser
+        ]);
+    }
+
 }
