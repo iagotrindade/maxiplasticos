@@ -49,19 +49,24 @@ class ProductController extends Controller {
 
         if($name && $desc && $category && $code && $color && $format && $amount && $composition && $details) {
 
-            $folderCode = md5(time().rand(1, 99));
-
-            $path = "assets/images/products/".$folderCode."";
-            if (!file_exists($path)) {
-                mkdir($path, 0777, true);
-            };
-
-
             if(isset($_FILES['main-image']) && !empty($_FILES['main-image']['tmp_name'])) {
                 $newImageP = $_FILES['main-image'];
 
                 if(in_array($newImageP['type'], ['image/jpeg', 'image/jpg', 'image/png'])) {
+                    $folderCode = md5(time().rand(1, 99));
+
+                    $path = "assets/images/products/".$folderCode."";
+                    if (!file_exists($path)) {
+                        mkdir($path, 0777, true);
+                    };
                     $imageName = $this->cutImage($newImageP, 400, 400, $path);
+                }
+
+                else {
+                    $_SESSION['flash'] = 'Imagem não compatível com os formatos .JPEG, .JPG, .PNG!';
+                    $this->redirect('/add_product', [
+                        'flash' => $_SESSION['flash']
+                    ]);
                 }
             }
 
@@ -69,36 +74,55 @@ class ProductController extends Controller {
                 $imageName = $path."/default_product_image.jpeg";
             }
 
-            $status = ProductHandler::addProduct($name, $desc, $category, $code, $color, $format, $amount, $composition, $details, $imageName, $path, $date);
+            $status = ProductHandler::addProduct(
+                $name, $desc,
+                $category, $code,
+                $color, $format,
+                $amount, $composition,
+                $details, $imageName,
+                $path, $date
+            );
     
             if(isset($_FILES['images']) && !empty($_FILES['images']['tmp_name'])) {
                 $newImageS = $_FILES['images'];
 
-                for ($i = 0; $i < count($newImageS['name']); $i++){        
-                    $destino = $path."/".$newImageS['name'][$i];
+                for ($i = 0; $i < count($newImageS['name']); $i++) {
+                    if(in_array($newImageS['type'], ['image/jpeg', 'image/jpg', 'image/png']))  {
 
-                    if(move_uploaded_file($newImageS['tmp_name'][$i], $destino)) {
+                        $destino = $path."/".$newImageS['name'][$i];
 
-                        $newName = $path."/".md5(time().rand(1,999)).'.jpeg';
-                        rename($destino, $newName);
+                        if(move_uploaded_file($newImageS['tmp_name'][$i], $destino)) {
 
-                        ProductHandler::uploadImages($path, $newName);
+                            $newName = $path."/".md5(time().rand(1,999)).'.jpeg';
+                            rename($destino, $newName);
 
-                        echo($path);
-                    }  
+                            ProductHandler::uploadImages($path, $newName);  
+                        }    
+                    }
                 }
+
+                $_SESSION['flash'] = 'Produto adicionado com sucesso!';
+                $this->redirect('/add_product', [
+                    'flash' => $_SESSION['flash']
+                ]);
             }
 
             else {
                 $defaultImage = "assets/images/products/default_product_image.jpeg";
 
                 ProductHandler::uploadImages($path, $defaultImage);
+
+                $_SESSION['flash'] = 'Produto adicionado com sucesso!';
+
+                $this->render('add_product', [
+                    'flash' => $_SESSION['flash']
+                ]);
             }
         }
 
         else {
             $_SESSION['flash'] = 'Preencha todas informações!';
-            $this->redirect('/add_product', [
+            $this->render('add_product', [
                 'flash' => $_SESSION['flash']
             ]);
         }
