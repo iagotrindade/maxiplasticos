@@ -21,7 +21,6 @@ class ProductHandler {
                 'inclusion_date' => $date
             ])->execute();
         }
-        
     }
 
     public static function uploadImages($path, $image) {
@@ -35,5 +34,25 @@ class ProductHandler {
                 ->where('folder_path', $path)
             ->execute();
         }
+    }
+
+    public static function getProducts () {
+        $productList = Product::select()->get();
+            
+        $products = [];
+    
+        foreach($productList as $product) {
+            $newProduct = new Product();
+            $newProduct->id = $product['id']; 
+            $newProduct->main_image  = $product['main_image'];
+            $newProduct->name = $product['name']; 
+            $newProduct->code = $product['code'];
+            $newProduct->category = $product['category']; 
+            $newProduct->date = $product['inclusion_date']; 
+    
+            $products [] = $newProduct;
+        }
+
+        return $products;
     }
 }

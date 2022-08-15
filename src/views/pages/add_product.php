@@ -4,14 +4,13 @@
 ?> 
 
 <section class = "section-products-form">
-        <h3>Adicionar novo Produto</h3>
-        <?php if(!empty($_SESSION['flash'])): ?>
-            <div class="warning">
-                <p style = "width: 1250px; padding-left: 5px; text-align: left;"><?php echo ($_SESSION['flash']);  $_SESSION['flash'] = '';?></p>
-            </div>
-        <?php endif; ?>
-
         <div class = "section-area-products-form">
+            <h3>Adicionar novo Produto</h3>
+            <?php if(!empty($_SESSION['flash'])): ?>
+                <div class="warning">
+                    <p style = "padding-left: 5px; text-align: left;"><?php echo ($_SESSION['flash']);  $_SESSION['flash'] = '';?></p>
+                </div>
+            <?php endif; ?>
             <form class="product-form" method="POST" action="<?=$base;?>/add_product" enctype="multipart/form-data">
                 <label class = "label-name">
                     <p>Nome do Produto</p>

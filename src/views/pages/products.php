@@ -1,5 +1,5 @@
 <?php 
-    $render('adm-header', ['loggedUser'=>$loggedUser]);
+    $render('adm-header', ['loggedUser'=>$loggedUser, 'products' => $products]);
     $render('adm-asside-menu');
 ?> 
 
@@ -61,52 +61,46 @@
         <div class="tbl-content">
             <table cellpadding="0" cellspacing="0" border="0">
                 <tbody>
-                    <tr>
-                        <td class = "product-list-image" style = "width: 216px;">
-                            <img src="<?=$base?>/assets/images/products/calc.jpeg"/>
-                        </td>
+                    <?php foreach($products as $product): ?>
+                        <tr>
+                            <td class = "product-list-image" style = "width: 216px;">
+                                <img src="<?=$base?>/<?=$product->main_image?>"/>
+                            </td>
 
-                        <td style = "width: 216px;">
-                            <p>Lorem ipsum dolor sit amet. At enim incidunt</br>qui aliquid odit in dolor nihil.</p>
+                            <td style = "width: 216px;">
+                                <p><?=$product->name?></p>
 
-                        </td>
-                        
-                        <td style = "width: 216px;">
-                            <p>8874</p>
-                        </td>
+                            </td>
+                            
+                            <td style = "width: 216px;">
+                                <p><?=$product->code?></p>
+                            </td>
 
-                        <td style = "width: 216px;">
-                            <ul class = "fabrication-info">
-                                <li>
-                                    <p>Fabricação</p>
-                                </li>
+                            <td style = "width: 216px;">
+                                <ul class = "fabrication-info">
+                                    <li>
+                                        <p><?=$product->category?></p>
+                                    </li>
+                                </ul>
+                            </td>
 
-                                <li>
-                                    <p>Sub Categoria</p>
-                                </li>
+                            <td style = "display: flex; align-items: center; width: 216px;">
+                                <ul class = "date-info">
+                                    <li>
+                                        <p>PUBLICADO</p>
+                                    </li>
 
-                                <li>
-                                    <p>Envelopes</p>
-                                </li>
-                            </ul>
-                        </td>
+                                    <li>
+                                        <p><?=$product->date?></p>
+                                    </li>
+                                </ul>
 
-                        <td style = "display: flex; align-items: center; width: 216px;">
-                            <ul class = "date-info">
-                                <li>
-                                    <p>PUBLICADO</p>
-                                </li>
-
-                                <li>
-                                    <p>10/08/2022 ás 22:41</p>
-                                </li>
-                            </ul>
-
-                            <a href = "/del_user" class = "delete-product-button"> 
-                                <img src = "<?=$base;?>/assets/images/icons/delete.png" onclick='return confirmDel()'/>
-                            </a>
-                        </td>
-                    </tr>
+                                <a href = "/del_user" class = "delete-product-button"> 
+                                    <img src = "<?=$base;?>/assets/images/icons/delete.png" onclick='return confirmDel()'/>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach?>
                 </tbody>
             </table>
             <div class = "under-line-area">

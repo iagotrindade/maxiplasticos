@@ -17,8 +17,12 @@ class ProductController extends Controller {
     }
 
     public function index() {
+
+        $products = ProductHandler::getProducts();
+
         $this->render('products', [
-            'loggedUser' => $this->loggedUser
+            'loggedUser' => $this->loggedUser,
+            'products' => $products
         ]);
     }
 
@@ -48,17 +52,18 @@ class ProductController extends Controller {
         }
 
         if($name && $desc && $category && $code && $color && $format && $amount && $composition && $details) {
+            $folderCode = md5(time().rand(1, 99));
+
+            $path = "assets/images/products/".$folderCode."";
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+            };
 
             if(isset($_FILES['main-image']) && !empty($_FILES['main-image']['tmp_name'])) {
                 $newImageP = $_FILES['main-image'];
 
                 if(in_array($newImageP['type'], ['image/jpeg', 'image/jpg', 'image/png'])) {
-                    $folderCode = md5(time().rand(1, 99));
-
-                    $path = "assets/images/products/".$folderCode."";
-                    if (!file_exists($path)) {
-                        mkdir($path, 0777, true);
-                    };
+                    
                     $imageName = $this->cutImage($newImageP, 400, 400, $path);
                 }
 
@@ -71,7 +76,7 @@ class ProductController extends Controller {
             }
 
             else {
-                $imageName = $path."/default_product_image.jpeg";
+                $imageName = "assets/images/products/default_product_image.jpeg";
             }
 
             $status = ProductHandler::addProduct(
@@ -87,8 +92,7 @@ class ProductController extends Controller {
                 $newImageS = $_FILES['images'];
 
                 for ($i = 0; $i < count($newImageS['name']); $i++) {
-                    if(in_array($newImageS['type'], ['image/jpeg', 'image/jpg', 'image/png']))  {
-
+                    if(in_array($newImageS['type'][$i], ['image/jpeg', 'image/jpg', 'image/png'])) {
                         $destino = $path."/".$newImageS['name'][$i];
 
                         if(move_uploaded_file($newImageS['tmp_name'][$i], $destino)) {
@@ -97,8 +101,9 @@ class ProductController extends Controller {
                             rename($destino, $newName);
 
                             ProductHandler::uploadImages($path, $newName);  
-                        }    
+                        }         
                     }
+                              
                 }
 
                 $_SESSION['flash'] = 'Produto adicionado com sucesso!';
@@ -122,7 +127,7 @@ class ProductController extends Controller {
 
         else {
             $_SESSION['flash'] = 'Preencha todas informações!';
-            $this->render('add_product', [
+            $this->redirect('/add_product', [
                 'flash' => $_SESSION['flash']
             ]);
         }
