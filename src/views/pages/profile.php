@@ -61,13 +61,13 @@
         </section>
 
         <script type="text/javascript">
-            let feedPhoto = document.querySelector('.profile-name p');
-            let feedFile = document.querySelector('.input-file');
+            let photo = document.querySelector('.profile-name p');
+            let photoFile = document.querySelector('.input-file');
 
-            feedPhoto.addEventListener('click', function(){
-                feedFile.click();
+            photoPhoto.addEventListener('click', function(){
+                photoFile.click();
             });
-            feedFile.addEventListener('change', function(){
+            photoFile.addEventListener('change', function(){
                 
             });
         </script>                 

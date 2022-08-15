@@ -65,7 +65,7 @@
     width: 80px;
 }
 
-.profile-form-image-circle input, .table-form-image-circle input {
+.profile-form-image-circle input, .table-form-image-circle input, .input-main-photo, .input-sec-photo {
     position: fixed;
     top: -10000px;
 }
@@ -480,9 +480,16 @@ label p {
     width: 35vw;
 }
 
-.header-menu-lupa, .adm-panel-header-menu-lupa {
+.adm-panel-header-menu-lupa {
     margin-right: -22px;
     margin-top: 4px;
+    z-index: 100;
+    color: #828282;
+}
+
+.header-menu-lupa {
+    margin-right: -22px;
+    margin-top: 7px;
     z-index: 100;
     color: #828282;
 }
@@ -1205,6 +1212,10 @@ td {
     margin: 20px 20px;
 }
 
+.add-product-form-button button {
+    cursor: pointer;
+}
+
 .add-product-area-button {
     width: 100%;
     display: flex;
@@ -1249,34 +1260,32 @@ td {
 /*ADD PRODUCT FORM*/
 
 .section-products-form {
-    position: fixed;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    left: 120px;
-    right: 40px;
     margin-top: 20px;
 }
 
 .product-form {
     display: grid;
     grid-template-areas: 
-        "area1 area1 area1 area1 area1 area1"
-        "area2 area2 area2 area2 area2 area2"
-        "area3 area3 area3 area3 area3 area4"
-        "area5 area5 area5 area5 area5 area5"
-        "area6 area6 area6 area6 area6 area6"
-        ". . . . . area7";
+        "area1 area1 area1"
+        "area2 area2 area2"
+        "area3 area3 area4"
+        "area5 area5 area6"
+        ". . area7";
 }
 
 .section-products-form h3 {
     grid-area: area1;
-    width: 100%;
+    width: 1250px;
     text-align: left;
     margin: 0 0 15px 10px;
 }
 
 .section-area-products-form {
-    width: 100%;
+    width: 1250px;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.15);
     border-radius: 13px;
     padding: 10px;
@@ -1303,6 +1312,7 @@ td {
 
 .label-desc {
     grid-area: area3;
+    width: 950px;
 }
 
 .label-desc textarea {
@@ -1320,17 +1330,17 @@ td {
 
 .category-area {
     grid-area: area4;
+    width: 250px;
     height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     border-radius: 5px;
     border: 0.5px solid #636363;
     box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
     background: #FFFFFF;
-    margin-left: 20px;
-    margin-top: 38px;
+    margin-top: 39px;
 }
 
 .category-area h4 {
@@ -1376,6 +1386,7 @@ td {
 
 .label-details {
     grid-area: area5;
+    width: 950px;
 }
 
 .label-details p, .label-name p, .label-desc p {
@@ -1395,7 +1406,9 @@ td {
 .photos-area {
     grid-area: area6;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 28px;
 }
 
 .section-photos-area {
@@ -1408,12 +1421,14 @@ td {
     width: 250px;
 }
 
-.section-photos-area h4 {
+.section-photos-area p {
     width: 100%;
     text-align: center;
     border-bottom: 0.5px solid #636363;
     padding-bottom: 5px;
+    font-size: 14px;
     font-weight: 600;
+    margin-bottom: 17px;
 }
 
 .section-photos-area a {
@@ -1422,7 +1437,10 @@ td {
     text-decoration: none;
     align-items: center;
     color: #f30000;
+    font-weight: 500;
+    font-size: 12px;
     margin-bottom: 3px;
+    cursor: pointer;
 }
 
 @media (max-width: 725px) {

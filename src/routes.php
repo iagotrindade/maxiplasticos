@@ -39,4 +39,6 @@ $router->get('/products', 'ProductController@index');
 
 $router->get('/add_product', 'ProductController@add');
 
+$router->post('/add_product', 'ProductController@addAction');
+
 $router->get('/sobre/{nome}', 'HomeController@sobreP');
