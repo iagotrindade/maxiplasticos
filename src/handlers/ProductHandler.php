@@ -40,14 +40,18 @@ class ProductHandler {
         $productList = Product::select()->get();
             
         $products = [];
-    
+        
+        
+
         foreach($productList as $product) {
+            $categories = explode(',', $product['category']);
+            
             $newProduct = new Product();
             $newProduct->id = $product['id']; 
             $newProduct->main_image  = $product['main_image'];
             $newProduct->name = $product['name']; 
             $newProduct->code = $product['code'];
-            $newProduct->category = $product['category']; 
+            $newProduct->category = $categories; 
             $newProduct->date = $product['inclusion_date']; 
     
             $products [] = $newProduct;
