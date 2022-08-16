@@ -5,6 +5,7 @@ $router = new Router();
 
 $router->get('/', 'HomeController@index');
 
+
 $router->get('/adm-login', 'LoginController@signin');
 
 $router->post('/login', 'LoginController@signinAction');
@@ -19,11 +20,14 @@ $router->post('/recover', 'LoginController@updatePassword');
 
 $router->get('/logout', 'LoginController@logout');
 
+
 $router->get('/adm-panel', 'PanelController@index');
+
 
 $router->get('/profile', 'ProfileController@index');
 
 $router->post('/update_profile', 'ProfileController@updateAction');
+
 
 $router->get('/users', 'UserController@index');
 
@@ -35,10 +39,16 @@ $router->post('/edit_action', 'UserController@editAction');
 
 $router->get('/{id}/del_user', 'UserController@delete');
 
+
 $router->get('/products', 'ProductController@index');
 
 $router->get('/add_product', 'ProductController@add');
 
 $router->post('/add_product', 'ProductController@addAction');
+
+$router->get('/{id}/del_product', 'ProductController@delAction');
+
+
+$router->get('/categories', 'CategoryController@index');
 
 $router->get('/sobre/{nome}', 'HomeController@sobreP');

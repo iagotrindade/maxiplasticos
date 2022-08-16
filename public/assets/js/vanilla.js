@@ -1,5 +1,5 @@
-function confirmDel() {
-    return confirm('Tem certeza que deseja excluir este usuário?');
+function confirmDel(t) {
+    return confirm(t);
 }
 
 function confirmExit() {

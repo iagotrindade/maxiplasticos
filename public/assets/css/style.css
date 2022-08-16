@@ -902,7 +902,6 @@ table{
 }
   
 .tbl-content{
-    height: 55vh;
     overflow-x:auto;
     margin-top: 0px;
     border: 1px solid rgba(255,255,255,0.3);
@@ -1161,6 +1160,11 @@ td {
 
 .fabrication-info li p, .date-info p {
     text-align: left;
+}
+
+.date-info p {
+    width: 110px;
+    font-size: 12px;
 }
 
 .edit-button-area {

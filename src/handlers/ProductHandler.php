@@ -42,17 +42,54 @@ class ProductHandler {
         $products = [];
     
         foreach($productList as $product) {
+
+            $category = explode(',' ,$product['category']);
+
+            if(count($category) > 2) {
+                $category = explode(',' ,$product['category'], -1);
+            }
+
             $newProduct = new Product();
             $newProduct->id = $product['id']; 
             $newProduct->main_image  = $product['main_image'];
             $newProduct->name = $product['name']; 
             $newProduct->code = $product['code'];
-            $newProduct->category = $product['category']; 
+            $newProduct->category = $category; 
             $newProduct->date = $product['inclusion_date']; 
     
             $products [] = $newProduct;
         }
 
         return $products;
+    }
+
+    public static function delProduct ($id) {
+
+        $data = Product::select()->where('id', $id)->one();
+
+        $folderPath = $data['folder_path'];
+
+        if (is_dir($folderPath)) {
+
+            $files = scandir($folderPath);
+
+            foreach ($files as $file) {
+                if ($file!= "." && $file!="..") {
+                    unlink($folderPath. DIRECTORY_SEPARATOR . $file);
+                }
+            }
+
+            reset($files);
+            rmdir($folderPath);
+        }
+
+        if($id) {
+            Product::delete()->where('id', $id)->execute();
+            return true;
+        }
+
+        else {
+            return false;
+        }
     }
 }

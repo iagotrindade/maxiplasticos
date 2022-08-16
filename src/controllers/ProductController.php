@@ -43,7 +43,9 @@ class ProductController extends Controller {
         $composition = filter_input(INPUT_POST, 'composition');
         $details = filter_input(INPUT_POST, 'details');
 
-        $date = date("d-m-Y H:i:s");
+        date_default_timezone_set("America/Sao_Paulo");
+
+        $date = date("Y-m-d H:i:s");
 
         if (isset($_POST['category'])) {
             $category = $_POST['category'];
@@ -132,6 +134,34 @@ class ProductController extends Controller {
             ]);
         }
     }
+
+    public function delAction ($id) {
+        $status = ProductHandler::delProduct($id);
+
+        if($status) {
+            $_SESSION['flash'] = 'Produto excluído com sucesso!';
+            $this->redirect('/products', [
+                'flash' => $_SESSION['flash']
+            ]);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private function cutImage($file, $w, $h, $folder) {
         list($widthOrig, $heightOrig) = getimagesize($file['tmp_name']);
