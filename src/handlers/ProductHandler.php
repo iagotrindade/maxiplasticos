@@ -44,19 +44,63 @@ class ProductHandler {
         
 
         foreach($productList as $product) {
+<<<<<<< HEAD
             $categories = explode(',', $product['category']);
             
+=======
+
+            $category = explode(',' ,$product['category']);
+
+            if(count($category) > 2) {
+                $category = explode(',' ,$product['category'], -1);
+            }
+
+>>>>>>> 330bfbbfa90cedbd68627e319321c36f5c5c1c27
             $newProduct = new Product();
             $newProduct->id = $product['id']; 
             $newProduct->main_image  = $product['main_image'];
             $newProduct->name = $product['name']; 
             $newProduct->code = $product['code'];
+<<<<<<< HEAD
             $newProduct->category = $categories; 
+=======
+            $newProduct->category = $category; 
+>>>>>>> 330bfbbfa90cedbd68627e319321c36f5c5c1c27
             $newProduct->date = $product['inclusion_date']; 
     
             $products [] = $newProduct;
         }
 
         return $products;
+    }
+
+    public static function delProduct ($id) {
+
+        $data = Product::select()->where('id', $id)->one();
+
+        $folderPath = $data['folder_path'];
+
+        if (is_dir($folderPath)) {
+
+            $files = scandir($folderPath);
+
+            foreach ($files as $file) {
+                if ($file!= "." && $file!="..") {
+                    unlink($folderPath. DIRECTORY_SEPARATOR . $file);
+                }
+            }
+
+            reset($files);
+            rmdir($folderPath);
+        }
+
+        if($id) {
+            Product::delete()->where('id', $id)->execute();
+            return true;
+        }
+
+        else {
+            return false;
+        }
     }
 }

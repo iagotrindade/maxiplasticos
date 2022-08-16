@@ -87,7 +87,7 @@
                                 <td class = "td-users action-user-area" style = "width: 120px">
                                     <a href = "edit_user/<?=$user->id?>" class = "edit-user-button">EDITAR</a>
                                     <a href = "<?=$user->id;?>/del_user" class = "delete-user-button"> 
-                                        <img src = "<?=$base;?>/assets/images/icons/delete.png" onclick='return confirmDel()'/>
+                                        <img src = "<?=$base;?>/assets/images/icons/delete.png" onclick='return confirmDel("Tem certeza que deseja excluir esse usuário?")'/>
                                     </a>
                                 </td>
                             </tr>

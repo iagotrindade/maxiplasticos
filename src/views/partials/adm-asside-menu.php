@@ -24,13 +24,6 @@
                         </li>
 
                         <li class="menu-area-item">
-                            <a href="subcategories">
-                                <i class='bx bxs-category bx-rotate-180' ></i>
-                                <p>Subcategorias</p>
-                            </a>
-                        </li>
-
-                        <li class="menu-area-item">
                             <a href="products">
                                 <i class='bx bxs-package'></i>
                                 <p>Produtos</p>
