@@ -44,10 +44,7 @@ class ProductHandler {
         
 
         foreach($productList as $product) {
-<<<<<<< HEAD
             $categories = explode(',', $product['category']);
-            
-=======
 
             $category = explode(',' ,$product['category']);
 
@@ -55,17 +52,16 @@ class ProductHandler {
                 $category = explode(',' ,$product['category'], -1);
             }
 
->>>>>>> 330bfbbfa90cedbd68627e319321c36f5c5c1c27
             $newProduct = new Product();
             $newProduct->id = $product['id']; 
             $newProduct->main_image  = $product['main_image'];
             $newProduct->name = $product['name']; 
             $newProduct->code = $product['code'];
-<<<<<<< HEAD
+
             $newProduct->category = $categories; 
-=======
+
             $newProduct->category = $category; 
->>>>>>> 330bfbbfa90cedbd68627e319321c36f5c5c1c27
+
             $newProduct->date = $product['inclusion_date']; 
     
             $products [] = $newProduct;
