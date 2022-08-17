@@ -41,7 +41,7 @@
                             </td>
 
                             <td class = "td-category" style = "width: 106px">
-                                <p>0</p>
+                                <p><?=$categorie->products?></p>
                             </td>
 
                             <td class = "td-category" style = "width: 500px">

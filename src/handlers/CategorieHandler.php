@@ -2,17 +2,26 @@
 namespace src\handlers;
 
 use \src\models\Categorie;
+use \src\models\Product;
+use \src\handlers\ProductHandler;
 
 class CategorieHandler {  
     public static function getCategories() {
+
         $categorieList = Categorie::select()->get();
             
         $categories = [];
     
         foreach($categorieList as $categorie) {
             $newCategorie = new Categorie();
+
+            $countCategorie = Product::select()->where('category', 'like', '%'.$categorie['name'].'%')->get();
+
+            $countCategorie = count($countCategorie);
+
             $newCategorie->id = $categorie['id'];
             $newCategorie->name = $categorie['name'];
+            $newCategorie->products = $countCategorie ;
             $newCategorie->desc = $categorie['description'];
     
             $categories[] = $newCategorie;

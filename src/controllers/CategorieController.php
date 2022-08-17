@@ -36,7 +36,7 @@ class CategorieController extends Controller {
             $status = CategorieHandler::addCategorie($name, $desc);
     
             if($status) {
-                $_SESSION['flash'] = 'Categoria adicionado com sucesso!';
+                $_SESSION['flash'] = 'Categoria adicionada com sucesso!';
                 $this->redirect('/categories', [
                     'flash' => $_SESSION['flash']
                 ]);
