@@ -4,6 +4,7 @@ namespace src\controllers;
 use \core\Controller;
 use src\handlers\LoginHandler;
 use src\handlers\ProductHandler;
+use src\handlers\CategorieHandler;
 
 class ProductController extends Controller {
     private $loggedUser;
@@ -27,8 +28,11 @@ class ProductController extends Controller {
     }
 
     public function add () {
+        $categories = CategorieHandler::getCategories();
+        
         $this->render('add_product', [
-            'loggedUser' => $this->loggedUser
+            'loggedUser' => $this->loggedUser,
+            'categories' => $categories
         ]);
     }
 

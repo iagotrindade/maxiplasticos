@@ -2,14 +2,14 @@
     $render('adm-header', ['loggedUser'=>$loggedUser, 'categories' => $categories]);
     $render('adm-asside-menu');
 ?> 
-<section class = "section-users-table">
+<section class = "section-category-table">
     <h3>CATEGORIAS</h3>
     <?php if(!empty($_SESSION['flash'])): ?>
         <div class="warning">
-            <p style = "text-align: left;"><?php echo ($_SESSION['flash']);  $_SESSION['flash'] = '';?></p>
+            <p style = "width: 60vw; padding-left: 20px; text-align: left;"><?php echo ($_SESSION['flash']);  $_SESSION['flash'] = '';?></p>
         </div>
     <?php endif; ?>
-    <div class = "section-area-users-table">
+    <div class = "section-area-categories-table">
         <div class="tbl-header">
             <form class="add-category-form" method="POST" action="<?=$base;?>/add_categorie" enctype="multipart/form-data"> 
                 <label class = "add-category-form-label">
@@ -36,7 +36,7 @@
             <?php foreach($categories as $categorie):?>
                 <thead>
                         <tr class = "td-category">      
-                            <td class = "td-category" style = "width: 250px">
+                            <td class = "td-category" style = "width: 285px">
                                 <p><?=$categorie->name?></p>
                             </td>
 

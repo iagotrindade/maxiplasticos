@@ -51,5 +51,8 @@ $router->get('/{id}/del_product', 'ProductController@delAction');
 
 $router->get('/categories', 'CategorieController@index');
 $router->post('/add_categorie', 'CategorieController@addAction');
+$router->get('/{id}/del_categorie', 'CategorieController@delAction');
+$router->get('/edit_categorie/{id}', 'CategorieController@editCategorie');
+$router->post('/update_categorie', 'CategorieController@updateCategorie');
 
 $router->get('/sobre/{nome}', 'HomeController@sobreP');

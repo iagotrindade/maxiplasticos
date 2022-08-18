@@ -1,5 +1,5 @@
 <?php 
-    $render('adm-header', ['loggedUser'=>$loggedUser]);
+    $render('adm-header', ['loggedUser'=>$loggedUser, 'categories' => $categories]);
     $render('adm-asside-menu');
 ?> 
 
@@ -26,44 +26,16 @@
                     <h4>Categorias de Produto</h4>
                     <div class = "category-list">
                         <fieldset>
-                            <div>
-                                <input type="checkbox" name="category[]" checked value = "Fabricação">
-                                <label for="category">Fabricação</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="category[]" value = "Escolar">
-                                <label for="category">Escolar</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="category[]" value = "Escritório">
-                                <label for="category">Escritório</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="category[]" value = "Covid-19">
-                                <label for="category">Covid-19</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="category[]" value = "Calculadoras">
-                                <label for="category">Calculadoras</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="category[]" value = "Encadernação">
-                                <label for="category">Encadernação</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="category[]"  value = "Envelopes">
-                                <label for="category">Envelopes</label>
-                            </div>
+                            <?php foreach($categories as $categorie):?>
+                                <div>
+                                    <input type="checkbox" name="category[]" value = "<?=$categorie->name?>">
+                                    <label for="category"><?=$categorie->name?></label>
+                                </div>
+                            <?php endforeach ?>
                         </fieldset>
 
                         <div class = "button-add-category-area">
-                            <a href="#">Adicionar nova categoria +</a>
+                            <a href="<?=$base;?>/categories">Adicionar nova categoria +</a>
                         </div>
                     </div>
                 </div>

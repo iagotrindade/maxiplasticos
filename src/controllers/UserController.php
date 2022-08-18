@@ -158,10 +158,8 @@ class UserController extends Controller {
     }
 
     public function delete($id) {
-        UserHandler::delUser($id); {
-        //Fazer a verificação se o ID veio pelo $GET e melhorar a função!
-        }
-
+        UserHandler::delUser($id);
+        
         $_SESSION['flash'] = 'Usuário excluído com sucesso!';
     
         $this->redirect('/users', [

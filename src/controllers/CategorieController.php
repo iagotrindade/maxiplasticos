@@ -58,4 +58,75 @@ class CategorieController extends Controller {
             ]);
         }
     }
+
+    public function editCategorie ($id) {
+        $categorie = CategorieHandler::getCategorieById($id);
+
+        if ($categorie) {
+            $this->render('edit_categorie', [
+                'loggedUser' => $this->loggedUser,
+                'categorie' => $categorie
+            ]);
+        }
+
+        else {
+            $_SESSION['flash'] = 'Categoria não encontrada!';
+    
+            $this->redirect('/edit_categories', [
+                "flash" => $_SESSION['flash']
+            ]);
+        }
+    }
+
+    public function updateCategorie() {
+        $id = filter_input(INPUT_POST, 'id');
+        $name = filter_input(INPUT_POST, 'name');
+        $desc = filter_input(INPUT_POST, 'desc');
+
+        if ($id && $name && $desc) {
+            $status = CategorieHandler::updateAction($id, $name, $desc);
+
+            if ($status) {
+                $_SESSION['flash'] = 'Categoria atualizada com sucesso!';
+    
+                $this->redirect("/edit_categorie/$id", [
+                    "flash" => $_SESSION['flash']
+                ]);
+            }
+
+            else {
+                $_SESSION['flash'] = 'Ops, ocorreu algum problema no cadastro, tente novamente!';
+    
+                $this->redirect("/edit_categorie/$id", [
+                    "flash" => $_SESSION['flash']
+                ]);
+            }
+        }
+
+        else {
+            $_SESSION['flash'] = 'Preencha todos os campos!';
+    
+            $this->redirect("/edit_categorie/$id", [
+                "flash" => $_SESSION['flash']
+            ]);
+        }
+    }
+
+    public function delAction ($id) {
+        $status = CategorieHandler::delUser($id); 
+
+        if($status) {
+            $_SESSION['flash'] = 'Categoria excluída com sucesso!';
+    
+            $this->redirect('/categories', [
+                "flash" => $_SESSION['flash']
+            ]);
+        }
+
+        $_SESSION['flash'] = 'Tivemos um problema ao excluír a categoria!';
+    
+        $this->redirect('/categories', [
+            "flash" => $_SESSION['flash']
+        ]);
+    }
 }

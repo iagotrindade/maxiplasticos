@@ -10,21 +10,21 @@
                         </li>
 
                         <li class="menu-area-item">
-                            <a href="profile">
+                            <a href="<?=$base;?>/profile">
                                 <i class='bx bxs-user'></i>
                                 <p>Perfil</p>
                             </a>
                         </li>
 
                         <li class="menu-area-item">
-                            <a href="categories">
+                            <a href="<?=$base;?>/categories">
                                 <i class='bx bxs-category' ></i>
                                 <p>Categorias</p>
                             </a>
                         </li>
 
                         <li class="menu-area-item">
-                            <a href="products">
+                            <a href="<?=$base;?>/products">
                                 <i class='bx bxs-package'></i>
                                 <p>Produtos</p>
                             </a>

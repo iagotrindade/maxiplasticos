@@ -4,7 +4,7 @@
 ?> 
         <section class="profile-section">
             <div class="login-modal">
-                <p class="profile-form-header">MEU PERFIL</p >
+                <p class="profile-form-header">PERFIL DE <?=strtoupper($user->name)?></p >
                 <div class="login-form-area">
                     <form class="login-form" method="POST" action="<?=$base;?>/edit_action" enctype="multipart/form-data">
                         <?php if(!empty($_SESSION['flash'])): ?>
