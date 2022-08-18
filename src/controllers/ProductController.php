@@ -139,6 +139,22 @@ class ProductController extends Controller {
         }
     }
 
+    public function edit ($id) {
+        if ($id) {
+
+            $categories = CategorieHandler::getCategories();
+            $product = ProductHandler::getProductById($id);
+            
+            if($product) {
+                $this->render("edit_product", [
+                    'loggedUser' => $this->loggedUser,
+                    'categories' => $categories,
+                    "product" => $product
+                ]);
+            }
+        } 
+    }
+
     public function delAction ($id) {
         $status = ProductHandler::delProduct($id);
 

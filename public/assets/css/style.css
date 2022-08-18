@@ -1330,6 +1330,13 @@ td {
 
 /*ADD PRODUCT FORM*/
 
+.section-area-products-form-hold {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 80px;
+}
+
 .section-products-form {
     display: flex;
     flex-direction: column;
@@ -1345,6 +1352,7 @@ td {
         "area2 area2 area2"
         "area3 area3 area4"
         "area5 area5 area6"
+        "area8 area8 area8"
         ". . area7";
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.15);
     border-radius: 13px;
@@ -1359,11 +1367,7 @@ td {
 }
 
 .section-area-products-form {
-    position: fixed;
-    top: 0;
-    top: 110px;
-    left: 320px;
-    right: 320px;
+    
 }
 
 .product-form label p {
@@ -1511,6 +1515,29 @@ td {
     font-size: 12px;
     margin-bottom: 3px;
     cursor: pointer;
+}
+
+/*Edit Product CSS*/
+
+.section-edit-products-photos {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.section-edit-products-photos{
+    margin-top: 20px;
+    grid-area: area8
+}
+
+.edit-photo-img img {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+
+.edit-photo-img p {
+    padding-left: 2px;
 }
 
 /*Categories CSS*/
@@ -1665,13 +1692,34 @@ td {
     }
 
     .label-details, .label-desc {
-        width: 650px;
         margin-right: 20px;
     }
 }
 
-@media (max-width: 725px) {
-    
+@media (max-width: 1300px) {
+    .label-details, .label-desc {
+        width: 650px;
+        margin-right: 20px;
+    }
+
+    .input-category-name {
+        width: 125px;
+    }
+
+    .input-category-desc {
+        width: 250px;
+    }
+
+    .product-form {
+        width: auto
+    }
+}
+
+@media (max-width: 1000px) {
+    .label-details, .label-desc {
+        width: 350px;
+        margin-right: 20px;
+    }
 }
 
 @media (max-width: 545px) {

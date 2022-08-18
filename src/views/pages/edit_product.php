@@ -16,12 +16,12 @@
             <form class="product-form" method="POST" action="<?=$base;?>/add_product" enctype="multipart/form-data">
                 <label class = "label-name">
                     <p>Nome do Produto</p>
-                    <input type="text" name="name">
+                    <input type="text" name="name" value = "<?=$product->name?>">
                 </label>  
 
                 <label class = "label-desc">
                     <p>Descrição do Produto</p>
-                    <textarea type="text" name="desc"></textarea>
+                    <textarea type="text" name="desc"><?=$product->desc?></textarea>
                 </label> 
 
                 <div class = "category-area">
@@ -30,7 +30,7 @@
                         <fieldset>
                             <?php foreach($categories as $categorie):?>
                                 <div>
-                                    <input type="checkbox" name="category[]" value = "<?=$categorie->name?>">
+                                    <input type="checkbox" name="category[]" value = "<?=$categorie->name?>" <?php if($product->category === $categorie->name) {echo("checked");}?>>
                                     <label for="category"><?=$categorie->name?></label>
                                 </div>
                             <?php endforeach ?>
@@ -45,27 +45,27 @@
                 <label class = "label-details">
                     <p>Detalhes do Produto</p>
                     <div class = "input-detail-area">
-                        <input type="text" name="code" placeholder = "Código">
+                        <input type="text" name="code" placeholder = "Código" value = "<?=$product->code?>">
                     </div>
                     
                     <div class = "input-detail-area">
-                        <input type="text" name="color"  placeholder = "Cor">
+                        <input type="text" name="color"  placeholder = "Cor" value = "<?=$product->color?>">
                     </div>
 
                     <div class = "input-detail-area">
-                        <input type="text" name="format"  placeholder = "Formato">
+                        <input type="text" name="format"  placeholder = "Formato" value = "<?=$product->format?>">
+                    </div>
+
+                    <div class = "input-detail-area"> 
+                        <input type="text" name="amount"  placeholder = "Quantidade"value = "<?=$product->amount?>">
                     </div>
 
                     <div class = "input-detail-area">
-                        <input type="text" name="amount"  placeholder = "Quantidade">
+                        <input type="text" name="composition"  placeholder = "Composição" value = "<?=$product->comp?>">
                     </div>
 
                     <div class = "input-detail-area">
-                        <input type="text" name="composition"  placeholder = "Composição">
-                    </div>
-
-                    <div class = "input-detail-area">
-                        <input type="text" name="details"  placeholder = "Detalhes">
+                        <input type="text" name="details"  placeholder = "Detalhes" value = "<?=$product->details?>">
                     </div>
                 </label> 
                 
@@ -81,6 +81,19 @@
                         <a class = "sec-define">Definir imagens secundárias +</a>
                         <input type="file" name="images[]" multiple="multiple" class = "input-sec-photo">
                     </div>
+                </div>
+
+                <div class = "section-edit-products-photos">
+                    <div class = "edit-photo-img">
+                        <img src = "<?=$base."/".$product->mainI?>"/></br>
+                        <p>Foto Principal</p>
+                    </div>
+                    
+
+                    <?php for($i = 0; $i < count($product->secI); $i++){
+                        
+                    }?>
+                    
                 </div>
 
                 <div class = "add-product-form-button">

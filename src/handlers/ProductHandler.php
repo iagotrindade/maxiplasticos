@@ -40,12 +40,8 @@ class ProductHandler {
         $productList = Product::select()->get();
             
         $products = [];
-        
-        
 
         foreach($productList as $product) {
-            $categories = explode(',', $product['category']);
-
             $category = explode(',' ,$product['category']);
 
             if(count($category) > 2) {
@@ -58,7 +54,7 @@ class ProductHandler {
             $newProduct->name = $product['name']; 
             $newProduct->code = $product['code'];
 
-            $newProduct->category = $categories; 
+            $newProduct->category = $category; 
 
             $newProduct->category = $category; 
 
@@ -68,6 +64,35 @@ class ProductHandler {
         }
 
         return $products;
+    }
+
+    public static function getProductById ($id) {
+        if($id) {
+            $data = Product::select()->where('id', $id)->one();
+
+            $secondaryImages = explode(',' ,$data['secondary_images']);
+
+            $product = new Product();
+            $product->id = ($data['id']);
+            $product->code = ($data['code']);
+            $product->name =($data['name']);
+            $product->category =($data['category']);
+            $product->desc = ($data['description']);
+            $product->comp = ($data['composition']);
+            $product->color = ($data['color']);
+            $product->format = ($data['format']);
+            $product->amount = ($data['amount']);
+            $product->details = ($data['details']);
+            $product->mainI = ($data['main_image']);
+            $product->secI = $secondaryImages;
+            $product->folder = ($data['folder_path']);
+                    
+            return $product;
+        }
+        
+        else {
+            return false;
+        }
     }
 
     public static function delProduct ($id) {

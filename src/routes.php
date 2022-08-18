@@ -46,6 +46,8 @@ $router->get('/add_product', 'ProductController@add');
 
 $router->post('/add_product', 'ProductController@addAction');
 
+$router->get('/edit_product/{id}', 'ProductController@edit');
+
 $router->get('/{id}/del_product', 'ProductController@delAction');
 
 

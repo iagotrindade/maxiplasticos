@@ -39,7 +39,7 @@
         <?php foreach($products as $product): ?>
             <div class="tbl-header" style = "background-color: #fff;">
                 <div class = "edit-button-area">
-                    <a class="edit-product-button" href = "">EDITAR</a>
+                    <a class="edit-product-button" href = "<?=$base;?>/edit_product/<?=$product->id?>">EDITAR</a>
                 </div>
 
                 <table cellpadding="0" cellspacing="0" border="0">
