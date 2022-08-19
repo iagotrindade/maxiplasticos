@@ -1540,6 +1540,10 @@ td {
     padding-left: 2px;
 }
 
+.section-edit-products-sec-photos img{
+    width: 100px;
+}
+
 /*Categories CSS*/
 
 .section-category-table {
