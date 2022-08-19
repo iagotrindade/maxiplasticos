@@ -69,18 +69,6 @@
                     </div>
                 </label> 
                 
-                <div class = "photos-area">
-                    <div class = "section-photos-area">
-                        <p>Imagem principal</p>
-                        <a class = "main-define">Definir imagem principal +</a>
-                        <input type="file" name="main-image" class = "input-main-photo">
-                    </div>
-
-                    <div class = "section-photos-area">
-                        <p>Imagens secundarias</p>
-                        <a class = "sec-define">Definir imagens secundárias +</a>
-                        <input type="file" name="images[]" multiple="multiple" class = "input-sec-photo">
-                    </div>
                 </div>
 
                 <div class = "section-edit-products-photos">
@@ -90,11 +78,12 @@
                         <a href ="" class = "main-delete">EXCLUIR</a>
                     </div>
                     
-
-                    <?php for($i = 0; $i < count($product->secI); $i++){
-                        
-                    }?>
-                    
+                    <div class = "section-edit-products-sec-photos">
+                        <?php for($i = 0; $i < count($product->secI); $i++) {
+                            echo("<img src = '".$base."/".$product->secI[$i]."'/>");
+                        }   
+                        ?>
+                    </div>
                 </div>
 
                 <div class = "add-product-form-button">
