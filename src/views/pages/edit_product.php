@@ -87,6 +87,7 @@
                     <div class = "edit-photo-img">
                         <img src = "<?=$base."/".$product->mainI?>"/></br>
                         <p>Foto Principal</p>
+                        <a href ="" class = "main-delete">EXCLUIR</a>
                     </div>
                     
 

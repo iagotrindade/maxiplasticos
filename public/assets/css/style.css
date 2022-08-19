@@ -1238,7 +1238,7 @@ td {
     margin: 15px 0 0 30px;
 }
 
-.edit-product-button {
+.edit-product-button, .main-delete {
     width: 65px;
     height: 25px;
     background-color: transparent;
@@ -1254,7 +1254,7 @@ td {
     font-weight: 700;
 }
 
-.edit-product-button:hover {
+.edit-product-button:hover, .main-delete:hover {
     background-color: #f30000;
     color: #fff;
 }
