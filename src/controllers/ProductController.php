@@ -155,6 +155,12 @@ class ProductController extends Controller {
         } 
     }
 
+    public function editAction () {
+        echo("<pre>");
+        echo(print_r($_POST['c_images']));
+        echo(print_r($_FILES['new_photos']));
+    }
+
     public function delAction ($id) {
         $status = ProductHandler::delProduct($id);
 

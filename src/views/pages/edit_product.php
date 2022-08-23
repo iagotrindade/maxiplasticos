@@ -13,7 +13,7 @@
                 </div>
             <?php endif; ?>
 
-            <form class="product-form" method="POST" action="<?=$base;?>/add_product" enctype="multipart/form-data">
+            <form class="product-form" method="POST" action="<?=$base;?>/edit_product" enctype="multipart/form-data">
                 <label class = "label-name">
                     <p>Nome do Produto</p>
                     <input type="text" name="name" value = "<?=$product->name?>">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
 
-                <label class = "label-details">
+                <label class = "label-details label-details-edit">
                     <p>Detalhes do Produto</p>
                     <div class = "input-detail-area">
                         <input type="text" name="code" placeholder = "Código" value = "<?=$product->code?>">
@@ -69,25 +69,37 @@
                     </div>
                 </label> 
                 
-                </div>
-
                 <div class = "section-edit-products-photos">
                     <div class = "edit-photo-img">
                         <img src = "<?=$base."/".$product->mainI?>"/></br>
+                        <input type = 'hidden' name ='main_image' value = "<?=$product->mainI[$i];?>">
                         <p>Foto Principal</p>
                         <a href ="" class = "main-delete">EXCLUIR</a>
                     </div>
                     
-                    <div class = "section-edit-products-sec-photos">
-                        <?php for($i = 0; $i < count($product->secI); $i++) {
-                            echo("<img src = '".$base."/".$product->secI[$i]."'/>");
-                        }   
-                        ?>
+                    
+                    <?php for($i = 0; $i <= count($product->secI) - 1; $i++) {
+                        $e = intval($i) + 1;
+                        echo(
+                            "<div class = 'section-sec-photos'>
+                                <img src = '".$base.'/'.$product->secI[$i]."'>
+                                <input type = 'hidden' name ='c_images[]' value = ".$product->secI[$i].">
+                                <p>Foto Secundária (".($e).")</p>
+                                <a href ='' class = 'main-delete'>EXCLUIR</a>
+                            </div>"
+                        );
+                    }   
+                    ?>
+
+                    <div class = "section-add-more-photos">
+                        <input type="file" name="new_photos[]" multiple="multiple"/>
                     </div>
                 </div>
 
+                
+
                 <div class = "add-product-form-button">
-                    <button type="submit" for = ""class = "add-product-button">ADICIONAR</button>
+                    <button type="submit" for = ""class = "add-product-button">ATUALIZAR</button>
                 </div>
             </form>
         </div>

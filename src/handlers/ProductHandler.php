@@ -70,7 +70,7 @@ class ProductHandler {
         if($id) {
             $data = Product::select()->where('id', $id)->one();
 
-            $secondaryImages = explode(',' ,$data['secondary_images']);
+            $secondaryImages = explode(',' ,$data['secondary_images'], -1);
 
             $product = new Product();
             $product->id = ($data['id']);
