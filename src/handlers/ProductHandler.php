@@ -21,19 +21,12 @@ class ProductHandler {
                 'inclusion_date' => $date
             ])->execute();
         }
-    }
 
-    public static function uploadImages($path, $image) {
-        if($image) {
-            $product = Product::select()->where('folder_path', $path)->one();
+        $id = Product::select()->last();
 
-            $image = $product['secondary_images'].$image;
+        $id = $id['id'];
 
-            Product::update()
-                ->set('secondary_images', $image.',')                      
-                ->where('folder_path', $path)
-            ->execute();
-        }
+        return $id;
     }
 
     public static function getProducts () {
@@ -70,8 +63,6 @@ class ProductHandler {
         if($id) {
             $data = Product::select()->where('id', $id)->one();
 
-            $secondaryImages = explode(',' ,$data['secondary_images'], -1);
-
             $product = new Product();
             $product->id = ($data['id']);
             $product->code = ($data['code']);
@@ -84,7 +75,6 @@ class ProductHandler {
             $product->amount = ($data['amount']);
             $product->details = ($data['details']);
             $product->mainI = ($data['main_image']);
-            $product->secI = $secondaryImages;
             $product->folder = ($data['folder_path']);
                     
             return $product;

@@ -5,6 +5,7 @@ use \core\Controller;
 use src\handlers\LoginHandler;
 use src\handlers\ProductHandler;
 use src\handlers\CategorieHandler;
+use src\handlers\ImageHandler;
 
 class ProductController extends Controller {
     private $loggedUser;
@@ -93,42 +94,29 @@ class ProductController extends Controller {
                 $details, $imageName,
                 $path, $date
             );
-    
-            if(isset($_FILES['images']) && !empty($_FILES['images']['tmp_name'])) {
-                $newImageS = $_FILES['images'];
 
-                for ($i = 0; $i < count($newImageS['name']); $i++) {
-                    if(in_array($newImageS['type'][$i], ['image/jpeg', 'image/jpg', 'image/png'])) {
-                        $destino = $path."/".$newImageS['name'][$i];
+            $images = (!empty($_FILES['images'])) ? $_FILES['images']:array();
 
-                        if(move_uploaded_file($newImageS['tmp_name'][$i], $destino)) {
+            $allowedImages = array('image/jpg', 'image/jpeg', 'image/png');
 
-                            $newName = $path."/".md5(time().rand(1,999)).'.jpeg';
-                            rename($destino, $newName);
+            for($i=0; $i<count($images['name']);$i++) {
 
-                            ProductHandler::uploadImages($path, $newName);  
-                        }         
-                    }
-                              
-                }
+                $tmp_name = $images['tmp_name'][$i];
+                $type = $images['type'][$i];
+                
+                if(in_array($type, $allowedImages)) {
+                    
+                    $secImgName = $this->cutSecImages($tmp_name, $type, $path);
 
-                $_SESSION['flash'] = 'Produto adicionado com sucesso!';
-                $this->redirect('/add_product', [
-                    'flash' => $_SESSION['flash']
-                ]);
+                    ImageHandler::addImages($status, $secImgName, $path);
+                }   
             }
 
-            else {
-                $defaultImage = "assets/images/products/default_product_image.jpeg";
+            $_SESSION['flash'] = 'Produto adicionado com sucesso!';
 
-                ProductHandler::uploadImages($path, $defaultImage);
-
-                $_SESSION['flash'] = 'Produto adicionado com sucesso!';
-
-                $this->render('add_product', [
-                    'flash' => $_SESSION['flash']
-                ]);
-            }
+            $this->redirect('/add_product', [
+                'flash' => $_SESSION['flash']
+            ]);
         }
 
         else {
@@ -144,12 +132,14 @@ class ProductController extends Controller {
 
             $categories = CategorieHandler::getCategories();
             $product = ProductHandler::getProductById($id);
+            $images = ImageHandler::getImages($id);
             
             if($product) {
                 $this->render("edit_product", [
                     'loggedUser' => $this->loggedUser,
                     'categories' => $categories,
-                    "product" => $product
+                    "product" => $product,
+                    "images" => $images
                 ]);
             }
         } 
@@ -171,16 +161,6 @@ class ProductController extends Controller {
             ]);
         }
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -228,5 +208,69 @@ class ProductController extends Controller {
         imagejpeg($finalImage, $folder.'/'.$fileName);
 
         return $folder.'/'.$fileName;
+    }
+
+    private function cutSecImages($tmp_name, $type, $folder) {
+        if($type == 'image/jpg' || $type == 'image/jpeg') {
+            $o_img = imagecreatefromjpeg($tmp_name);
+        }
+
+        else {
+            if($type == 'image/png') {
+                $o_img = imagecreatefrompng($tmp_name);
+            }
+        }
+
+        if(!empty($o_img)) {
+            $width = 400;
+            $height = 400;
+            $ratio = $width / $height;
+
+            list($o_width, $o_height) = getimagesize($tmp_name);
+
+            $o_ratio = $o_width / $o_height;
+
+            if($ratio > $o_ratio) {
+                $img_w = $height * $o_ratio;
+                $img_h = $height;
+            }
+
+            else {
+                $img_h = $width / $o_ratio;
+                $img_w = $width;
+            }
+
+            if($img_w < $width) {
+                $img_w = $width;
+                $img_h = $img_w / $o_ratio;
+            }
+
+            if($img_h < $height) {
+                $img_h = $height;
+                $img_w = $img_h * $o_ratio;
+            } 
+
+            $px = 0;
+            $py = 0;
+
+            if ($img_w > $width) {
+                $px = ($img_w - $width) / 2;  
+            }
+
+            if($img_h > $height) {
+                $py = ($img_h - $height) / 2;
+            }
+
+            $img = imagecreatetruecolor($width, $height);
+            imagecopyresampled(
+                $img, $o_img, -$px,-$py,0,0,
+                $img_w, $img_h, $o_width, $o_height
+            );
+
+            $fileName = md5(time().rand(0, 999)).'.jpg';
+            imagejpeg($img, $folder.'/'.$fileName,);
+
+            return $fileName;
+        }
     }
 }

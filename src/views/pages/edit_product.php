@@ -1,5 +1,5 @@
 <?php 
-    $render('adm-header', ['loggedUser'=>$loggedUser, 'categories' => $categories]);
+    $render('adm-header', ['loggedUser'=>$loggedUser, 'categories' => $categories, 'images' => $images]);
     $render('adm-asside-menu');
 ?> 
 
@@ -78,18 +78,18 @@
                     </div>
                     
                     
-                    <?php for($i = 0; $i <= count($product->secI) - 1; $i++) {
-                        $e = intval($i) + 1;
-                        echo(
-                            "<div class = 'section-sec-photos'>
-                                <img src = '".$base.'/'.$product->secI[$i]."'>
-                                <input type = 'hidden' name ='c_images[]' value = ".$product->secI[$i].">
-                                <p>Foto Secundária (".($e).")</p>
-                                <a href ='' class = 'main-delete'>EXCLUIR</a>
-                            </div>"
-                        );
-                    }   
-                    ?>
+                    <?php foreach($images as $img):?>
+                        <?php
+                            echo(
+                                "<div class = 'section-sec-photos'>
+                                    <img src = '".$base.'/'.$img->path.'/'.$img->img."'>
+                                    <input type = 'hidden' name ='c_images[]' value = ".$img->img.">
+                                    <p>Foto Secundária</p>
+                                    <a href ='' class = 'main-delete'>EXCLUIR</a>
+                                </div>"
+                            );
+                        ?>
+                    <?php endforeach ?>
 
                     <div class = "section-add-more-photos">
                         <input type="file" name="new_photos[]" multiple="multiple"/>
