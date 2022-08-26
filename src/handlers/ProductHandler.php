@@ -29,8 +29,35 @@ class ProductHandler {
         return $id;
     }
 
+    public static function editProduct($id, $name, $desc, $category, $code, $color, $format, $amount, $composition, $details, $mainImage, $path, $date) {
+        if($name && $desc && $category && $code && $color && $format && $amount && $composition && $details && $mainImage && $path && $date) {
+            Product::update()
+                ->set('name', $name)
+                ->set('code', $code)
+                ->set('description', $desc)
+                ->set('category', $category)
+                ->set('color', $color)
+                ->set('format', $format)
+                ->set('composition', $composition)
+                ->set('details', $details)
+                ->set('main_image', $mainImage)
+                ->set('folder_path', $path)
+                ->set('inclusion_date', $date)
+                ->where('id', $id)
+            ->execute();
+
+        }
+
+        $id = Product::select()->last();
+
+        $id = $id['id'];
+
+        return $id;
+    }
+
+
     public static function getProducts () {
-        $productList = Product::select()->get();
+        $productList = Product::select()->orderBy('inclusion_date', 'desc')->get();
             
         $products = [];
 
@@ -46,10 +73,13 @@ class ProductHandler {
             $newProduct->main_image  = $product['main_image'];
             $newProduct->name = $product['name']; 
             $newProduct->code = $product['code'];
+            $newProduct->desc = $product['description'];
 
             $newProduct->category = $category; 
 
-            $newProduct->category = $category; 
+            $newProduct->category = $category;
+            
+            $newProduct->path = $product['folder_path']; ;
 
             $newProduct->date = $product['inclusion_date']; 
     
@@ -75,7 +105,7 @@ class ProductHandler {
             $product->amount = ($data['amount']);
             $product->details = ($data['details']);
             $product->mainI = ($data['main_image']);
-            $product->folder = ($data['folder_path']);
+            $product->path = ($data['folder_path']);
                     
             return $product;
         }
@@ -85,28 +115,35 @@ class ProductHandler {
         }
     }
 
+    public static function getLastDate() {
+        $data = Product::select()->last('inclusion_date');
+        
+        return $data['inclusion_date'];
+    }
+
     public static function delProduct ($id) {
 
-        $data = Product::select()->where('id', $id)->one();
+        if($id) {
+            $data = Product::select()->where('id', $id)->one();
 
-        $folderPath = $data['folder_path'];
+            $folderPath = $data['folder_path'];
 
-        if (is_dir($folderPath)) {
+            if (is_dir($folderPath)) {
 
-            $files = scandir($folderPath);
+                $files = scandir($folderPath);
 
-            foreach ($files as $file) {
-                if ($file!= "." && $file!="..") {
-                    unlink($folderPath. DIRECTORY_SEPARATOR . $file);
+                foreach ($files as $file) {
+                    if ($file!= "." && $file!="..") {
+                        unlink($folderPath. DIRECTORY_SEPARATOR . $file);
+                    }
                 }
+
+                reset($files);
+                rmdir($folderPath);
             }
 
-            reset($files);
-            rmdir($folderPath);
-        }
-
-        if($id) {
             Product::delete()->where('id', $id)->execute();
+
             return true;
         }
 

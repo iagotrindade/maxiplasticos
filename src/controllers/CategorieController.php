@@ -32,8 +32,10 @@ class CategorieController extends Controller {
         $name = filter_input(INPUT_POST, 'name');
         $desc = filter_input(INPUT_POST, 'desc');
 
+        $date = date("Y-m-d H:i:s");
+
         if($name && $desc) {
-            $status = CategorieHandler::addCategorie($name, $desc);
+            $status = CategorieHandler::addCategorie($name, $desc, $date);
     
             if($status) {
                 $_SESSION['flash'] = 'Categoria adicionada com sucesso!';
@@ -83,8 +85,10 @@ class CategorieController extends Controller {
         $name = filter_input(INPUT_POST, 'name');
         $desc = filter_input(INPUT_POST, 'desc');
 
+        $date = date("Y-m-d H:i:s");
+
         if ($id && $name && $desc) {
-            $status = CategorieHandler::updateAction($id, $name, $desc);
+            $status = CategorieHandler::updateAction($id, $name, $desc, $date);
 
             if ($status) {
                 $_SESSION['flash'] = 'Categoria atualizada com sucesso!';

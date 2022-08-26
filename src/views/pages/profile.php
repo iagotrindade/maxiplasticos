@@ -64,7 +64,7 @@
             let photo = document.querySelector('.profile-name p');
             let photoFile = document.querySelector('.input-file');
 
-            photoPhoto.addEventListener('click', function(){
+            photo.addEventListener('click', function(){
                 photoFile.click();
             });
             photoFile.addEventListener('change', function(){

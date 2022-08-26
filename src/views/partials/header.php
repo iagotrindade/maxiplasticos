@@ -57,7 +57,7 @@
             <div class = "section-header-menu-area">
                 <div class="section-header-menu">
                     <div class="header-menu-logo">
-                        <a href="">
+                        <a href="<?=$base;?>">
                             <img src="<?=$base?>/assets/images/icons/logo-maxi.png"> 
                             <p class="text-logo"><strong>MAXI</strong>Pásticos</p>
                         </a>
@@ -67,7 +67,7 @@
                         <nav>
                             <ul class="header-menu-list">
                                 <li class="menu-item">
-                                    <a  href="">
+                                    <a  href="<?=$base;?>">
                                         <p class = "active-menu">Home</p>
                                     </a>
                                 </li>

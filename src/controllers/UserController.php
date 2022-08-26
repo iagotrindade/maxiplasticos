@@ -32,6 +32,8 @@ class UserController extends Controller {
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
 
+        $date = date("Y-m-d H:i:s");
+
         if($name && $email && $password) {
             if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['tmp_name'])) {
                 $newAvatar = $_FILES['avatar'];
@@ -42,7 +44,7 @@ class UserController extends Controller {
 
                 else {
                     $_SESSION['flash'] = 'O tipo de imagem não é compatível com os formatos .jpeg .jpg ou .png!';
-                    $this->redirect("/edit_user/$id", [
+                    $this->redirect("/users", [
                         'flash' => $_SESSION['flash']
                     ]);
                 }
@@ -53,7 +55,7 @@ class UserController extends Controller {
             }
 
             if(LoginHandler::emailExists($email) === false) {
-                $status = UserHandler::addUser($name, $avatarName, $phone, $ramal, $email, $password);
+                $status = UserHandler::addUser($name, $avatarName, $phone, $ramal, $email, $password, $date);
     
                 if($status) {
                     $_SESSION['flash'] = 'Usuário adicionado com sucesso!';
@@ -110,6 +112,8 @@ class UserController extends Controller {
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
 
+        $date = date("Y-m-d H:i:s");
+
         if($name && $email && $password) {
             if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['tmp_name'])) {
                 $newAvatar = $_FILES['avatar'];
@@ -131,7 +135,7 @@ class UserController extends Controller {
             }
 
             if(LoginHandler::emailExists($email) === true) {
-                $status = UserHandler::updateUser($id, $name, $avatarName, $phone, $ramal, $email, $password);
+                $status = UserHandler::updateUser($id, $name, $avatarName, $phone, $ramal, $email, $password, $date);
                 
                 if($status) {
                     $_SESSION['flash'] = 'Usuário atualizado com sucesso!';

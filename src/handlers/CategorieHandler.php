@@ -49,12 +49,19 @@ class CategorieHandler {
 
     }
 
-    public static function addCategorie ($name, $desc) {
+    public static function getLastDate() {
+        $data = Categorie::select()->last('inclusion_date');
+        
+        return $data['inclusion_date'];
+    }
+
+    public static function addCategorie ($name, $desc, $date) {
         if ($name && $desc) {
             
             Categorie::insert([
                 'name' => $name,
-                'description' => $desc
+                'description' => $desc,
+                'inclusion_date' => $date
             ])->execute();
 
             return true;
@@ -65,9 +72,9 @@ class CategorieHandler {
         }
     }
 
-    public static function updateAction ($id, $name, $desc) {
+    public static function updateAction ($id, $name, $desc, $date) {
         if ($id && $name && $desc) {
-            Categorie::update()->set('name', $name)->set('description', $desc)->where('id', $id)->execute();
+            Categorie::update()->set('name', $name)->set('description', $desc)->set('inclusion_date', $date)->where('id', $id)->execute();
             return true;
         }
 

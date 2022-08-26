@@ -65,7 +65,7 @@
     width: 80px;
 }
 
-.profile-form-image-circle input, .table-form-image-circle input, .input-main-photo, .input-sec-photo {
+.profile-form-image-circle input, .table-form-image-circle input, .input-main-photo, .input-sec-photo, .new-main-photo {
     position: fixed;
     top: -10000px;
 }
@@ -323,6 +323,17 @@ label p {
     font-size: 10px;
     line-height: 11px;
     color: #949494;
+}
+
+.count-box-icon {
+    padding: 15px;
+    background-color: #f30000;
+    border-radius: 100px;
+}
+
+.count-box-icon i {
+    font-size: 30px;
+    color: #fff;
 }
 
 .box1 {
@@ -769,6 +780,13 @@ label p {
     height: 350px;
 }
 
+.product-box a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .product-box-img img {
     width: 180px;
     height: 180px;
@@ -936,6 +954,130 @@ label p {
     color: #F30000;
 }
 
+/*Prpduct Page*/
+
+.section-product-area {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    
+}
+
+.product-photos-area-grid {
+    display: grid;
+    grid-template-areas:
+        "area1 area5"
+        "area2 area5"
+        "area3 area5"
+        "area4 area5";
+    grid-gap: 20px;
+}
+
+.photo-box-1 img, .photo-box-2 img, .photo-box-3 img, .photo-box-4 img {
+    width: 100px;
+    height: 100%;
+    border-radius: 5px;
+}   
+
+.photo-box-5 img {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.photo-box-1 {
+    grid-area: area1;
+}
+
+.photo-box-2 {
+    grid-area: area2;
+}
+
+.photo-box-3 {
+    grid-area: area3;
+}
+
+.photo-box-4 {
+    grid-area: area4;
+}
+
+.photo-box-5 {  
+    grid-area: area5;
+}
+
+.products-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 40px;
+    max-width: 600px;
+}
+
+.product-tittle h2 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.product-desc p {
+    font-size: 15px;
+    line-height: 18px;
+    color: #636363;
+}
+
+.product-buttons {
+    width: 100%;
+    margin: 30px 0;
+    border-bottom: 1px solid #D9D9D9;
+    padding-bottom: 40px;
+}
+
+.product-buttons a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    color: #F30000;
+    border: 1px solid #F30000;
+    filter: drop-shadow(-1px 2px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 5px;
+    padding: 7px 20px;
+}
+
+.product-buttons a:hover {
+    color: #fff;
+    background-color: #F30000;
+}
+
+.product-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-info p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #636363;
+}
+
+.product-info a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    text-transform: capitalize;
+    color: #F30000;
+}
+
+.product-info a:hover {
+    border-bottom: 1px solid #f30000;
+}
+
 /*Users CSS*/
 
 .section-users-table {
@@ -991,7 +1133,7 @@ tr {
     margin: 0 20px;
 }
 
-th { /*NÃO TINHA*/
+th {
     width: 100%; 
     padding: 10px 7px;
     text-align: left;
@@ -1002,9 +1144,9 @@ th { /*NÃO TINHA*/
 }
   
 td {
-    width: 100%; /*NÃO TINHA* WIDTH*/ 
+    width: 100%;
     padding: 10px 7px;
-    text-align: left; /*NÃO TINHA*/
+    text-align: left;
     vertical-align:middle;
     font-weight: 300;
     font-size: 14px;
@@ -1238,7 +1380,7 @@ td {
     margin: 15px 0 0 30px;
 }
 
-.edit-product-button, .main-delete {
+.edit-product-button, .main-delete, .main-edit {
     width: 65px;
     height: 25px;
     background-color: transparent;
@@ -1254,7 +1396,7 @@ td {
     font-weight: 700;
 }
 
-.edit-product-button:hover, .main-delete:hover {
+.edit-product-button:hover, .main-delete:hover, .main-edit:hover {
     background-color: #f30000;
     color: #fff;
 }
@@ -1535,6 +1677,10 @@ td {
 }
 
 .edit-photo-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-right: 20px; 
 }
 
@@ -1546,6 +1692,10 @@ td {
     max-width: 100px;
     max-height: 100px;
     border-radius: 5px;
+}
+
+.main-img-buttons {
+    display: flex;
 }
 
 .edit-photo-img p, .section-sec-photos p {

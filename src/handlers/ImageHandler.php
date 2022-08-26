@@ -14,6 +14,18 @@ class ImageHandler {
         }
     }
 
+    public static function editImages($c_images, $id) {
+        Image::delete()->where('product_id', $id)->execute();
+    }
+
+    public static function updateSecImg($productId, $img, $path) {
+        Image::insert([
+            'product_id' => $productId,
+            'image' => $img,
+            'folder_path' => $path,
+        ])->execute();
+    }
+
     public static function getImages($id) {
         if($id) {
             $imgList = Image::select()->where('product_id', $id)->get();
@@ -30,6 +42,18 @@ class ImageHandler {
             }
 
             return $images;
+        }
+    }
+
+    public static function delProductImg($id) {
+        if($id) {
+            Image::delete()->where('product_id', $id)->execute();
+
+            return true;
+        }
+
+        else {
+            return false;
         }
     }
 }

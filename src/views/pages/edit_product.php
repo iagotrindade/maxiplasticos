@@ -16,6 +16,8 @@
             <form class="product-form" method="POST" action="<?=$base;?>/edit_product" enctype="multipart/form-data">
                 <label class = "label-name">
                     <p>Nome do Produto</p>
+                    <input type="hidden" name="id" value="<?=$product->id?>">
+                    <input type="hidden" name="path" value="<?=$product->path?>">
                     <input type="text" name="name" value = "<?=$product->name?>">
                 </label>  
 
@@ -71,10 +73,24 @@
                 
                 <div class = "section-edit-products-photos">
                     <div class = "edit-photo-img">
-                        <img src = "<?=$base."/".$product->mainI?>"/></br>
-                        <input type = 'hidden' name ='main_image' value = "<?=$product->mainI[$i];?>">
+                        <?php 
+                            if($product->mainI == 'default_product_image.jpeg') {
+                                echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg>");
+                            }
+
+                            else {
+                                echo("<img src = ".$base."/".$product->mainI."></br>");
+                            }
+                        ?>
+                        
+                        <input type = 'hidden' name ='main_image' value = "<?=$product->mainI;?>">
                         <p>Foto Principal</p>
-                        <a href ="" class = "main-delete">EXCLUIR</a>
+                        <div class = "main-img-buttons">
+                            
+                            <a style = "margin-right: 5px; cursor: pointer;"class = 'main-edit'>EDITAR</a>
+                            <input type="file" name="new-main" class = "new-main-photo">
+                            <a href ='javascript:;' class = 'main-delete'>EXCLUIR</a>
+                        </div>
                     </div>
                     
                     
@@ -85,7 +101,7 @@
                                     <img src = '".$base.'/'.$img->path.'/'.$img->img."'>
                                     <input type = 'hidden' name ='c_images[]' value = ".$img->img.">
                                     <p>Foto Secundária</p>
-                                    <a href ='' class = 'main-delete'>EXCLUIR</a>
+                                    <a href ='javascript:;' class = 'main-delete'>EXCLUIR</a>
                                 </div>"
                             );
                         ?>
@@ -107,24 +123,36 @@
 </section>
 
 <script type="text/javascript">
-    let mainPhoto = document.querySelector('.main-define');
-    let photoMainFile = document.querySelector('.input-main-photo');
+
+    let mainPhoto = document.querySelector('.main-edit');
+    let photoMainFile = document.querySelector('.new-main-photo');
 
     mainPhoto.addEventListener('click', function(){
         photoMainFile.click();
     });
 
-    photoMainFile.addEventListener('change', function(){         
+    photoMainFile.addEventListener('change', function() {   
+
+        console.log("Fotos", photoMainFile.files);
+
+    });
+    
+
+    document.querySelectorAll('.section-sec-photos a').forEach(item => {
+        item.addEventListener("click", function() {
+            var parent = this.parentNode;
+            
+            parent.innerHTML = '';
+        });
     });
 
+    document.querySelectorAll('.main-img-buttons .main-delete').forEach(item => {
+        item.addEventListener("click", function() {
+            var parentMain = this.parentNode;
 
-    let secPhoto = document.querySelector('.sec-define');
-    let secPhotoFile = document.querySelector('.input-sec-photo');
-
-    secPhoto.addEventListener('click', function(){
-        secPhotoFile.click();
-    });
-
-    secPhotoFile.addEventListener('change', function(){         
+            parentMain = parentMain.parentNode;
+            
+            parentMain.innerHTML = '';
+        });
     });
 </script>   

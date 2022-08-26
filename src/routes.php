@@ -5,6 +5,12 @@ $router = new Router();
 
 $router->get('/', 'HomeController@index');
 
+$router->get('/product/{id}', 'ProductPageController@productPage');
+
+
+
+
+
 
 $router->get('/adm-login', 'LoginController@signin');
 

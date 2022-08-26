@@ -5,7 +5,7 @@ use \src\models\User;
 
 class UserHandler {
     public static function getUsers() {
-        $userList = User::select()->get();
+        $userList = User::select()->orderBy('inclusion_date', 'desc')->get();
             
         $users = [];
     
@@ -44,7 +44,13 @@ class UserHandler {
         }
     }
 
-    public static function addUser ($name, $avatarName, $phone, $ramal, $email, $password) {
+    public static function getLastDate() {
+        $data = User::select()->last('inclusion_date');
+        
+        return $data['inclusion_date'];
+    }
+
+    public static function addUser ($name, $avatarName, $phone, $ramal, $email, $password, $date) {
 
         if ($name) {
             
@@ -57,7 +63,8 @@ class UserHandler {
                 'ramal' => $ramal,
                 'email' => $email,
                 'password' => $hash,
-                'token' => ''
+                'token' => '',
+                'inclusion_date' => $date
             ])->execute();
 
             return true;
@@ -68,7 +75,7 @@ class UserHandler {
         }
     }
 
-    public static function updateUser ($id, $name, $avatarName, $phone, $ramal, $email, $password) {
+    public static function updateUser ($id, $name, $avatarName, $phone, $ramal, $email, $password, $date) {
         $user = User::select()->where('id', $id)->one();
 
         if (password_verify($password, $user['password'])) {
@@ -79,6 +86,7 @@ class UserHandler {
                 ->set('phone', $phone)
                 ->set('ramal', $ramal)
                 ->set('email', $email)
+                ->set('inclusion_date', $date)
                 ->where('id', $id)
             ->execute();
 

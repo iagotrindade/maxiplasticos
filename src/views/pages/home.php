@@ -1,4 +1,4 @@
-<?php $render ('header');?>
+<?php $render ('header', ['products' => $products]);?>  
         <section>
             <div class="banner-section-area">
                 <img src="<?=$base?>/assets/images/banners/banner-teste.png">
@@ -102,22 +102,33 @@
             <!-- Swiper -->
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class = "product-box">
-                            <div class = "product-box-img">
-                                <img src = "<?=$base;?>/assets/images/products/pasta-catalogo.png"/>
-                            </div>
-                            <div class = "product-box-description">
-                                Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut labore nostrum aut reprehenderit soluta. Ad culpa pariatur et ipsa sun...
-                            </div>
+                    <?php foreach($products as $product): ?>
+                        <div class="swiper-slide">
+                            <div class = "product-box">
+                                <a href = "<?=$base?>/product/<?=$product->id;?>">
+                                    <div class = "product-box-img">
+                                        <?php 
+                                            if($product->main_image == 'default_product_image.jpeg') {
+                                                echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg>");
+                                            }
 
-                            <div class="budget-button">
-                                <a href="<?=$base;?>/cart">
-                                    ORÇAMENTO 
+                                            else {
+                                                echo("<img src = ".$base."/".$product->main_image.">");
+                                            }
+                                        ?>
+                                    </div>
+                                    <div class = "product-box-description">
+                                        <?=$product->desc?>
+                                    </div>
                                 </a>
+                                <div class="budget-button">
+                                    <a href="<?=$base;?>/cart">
+                                        ORÇAMENTO 
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach;?>
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
