@@ -115,6 +115,39 @@ class ProductHandler {
         }
     }
 
+    public static function getRelatedProducts($productCategorie) {
+        $productList = Product::select()->where('category', 'like', '%'.$productCategorie.'%')->get();
+
+        $products = [];
+
+        foreach($productList as $product) {
+            $category = explode(',' ,$product['category']);
+
+            if(count($category) > 2) {
+                $category = explode(',' ,$product['category'], -1);
+            }
+
+            $newProduct = new Product();
+            $newProduct->id = $product['id']; 
+            $newProduct->main_image  = $product['main_image'];
+            $newProduct->name = $product['name']; 
+            $newProduct->code = $product['code'];
+            $newProduct->desc = $product['description'];
+
+            $newProduct->category = $category; 
+
+            $newProduct->category = $category;
+            
+            $newProduct->path = $product['folder_path']; ;
+
+            $newProduct->date = $product['inclusion_date']; 
+    
+            $products [] = $newProduct;
+        }
+
+        return $products;
+    }
+
     public static function getLastDate() {
         $data = Product::select()->last('inclusion_date');
         

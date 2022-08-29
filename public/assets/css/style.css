@@ -750,13 +750,8 @@ label p {
 }
 
 .swiper-button-next::after, .swiper-button-prev:after {
-    font-size: 14px !important;
+    font-size: 15px !important;
     color: #ababab;
-    border: 1px solid #ccc;
-    border-radius: 360px;
-    background: #FFFFFF;
-    box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 5px;
 }
 
 .swiper-button-prev {
@@ -785,12 +780,14 @@ label p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
 }
 
 .product-box-img img {
     width: 180px;
     height: 180px;
     margin-bottom: 20px;
+    border-radius: 5px;
 }
 
 .product-box-description {
@@ -1078,6 +1075,75 @@ label p {
     border-bottom: 1px solid #f30000;
 }
 
+.details-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.details-area-tittle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tittle-left {
+    width: 50%; 
+    border-bottom: 1px solid #ccc;
+}
+
+.tittle-center {
+    text-align: center;
+    width: 100px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 5px 0;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    color: #F30000;
+}
+
+.tittle-right {
+    width: 50%; 
+    border-bottom: 1px solid #ccc;
+}
+
+.details-area-text {
+    margin-bottom: 20px;
+}
+
+.details-area-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.details-table-tittle {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    color: #F30000;
+    margin-bottom: 10px;
+}
+
+.details-table-content table td {
+    border: 1px solid #ccc;
+    padding: 5px 7px;
+}
+
+.details-table-content table th {
+    width: 20%;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    padding: 4.5px 7px;
+}
 /*Users CSS*/
 
 .section-users-table {

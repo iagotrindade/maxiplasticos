@@ -21,5 +21,4 @@ class HomeController extends Controller {
     public function sobreP($args) {
         print_r($args);
     }
-
 }
