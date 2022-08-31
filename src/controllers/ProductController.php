@@ -241,7 +241,7 @@ class ProductController extends Controller {
             }
 
             $_SESSION['flash'] = 'Produto atualizado com sucesso!';
-            echo(print_r($c_images));
+
             $this->redirect("/edit_product/$id", [
                 'flash' => $_SESSION['flash']
             ]);

@@ -1,26 +1,25 @@
-<?php $render ('header', ['product' => $product, 'products' =>$products]);?>  
+<?php $render ('header', ['product' => $product, 'products' =>$products, 'images' => $images]);?>  
     <section>
         <div class="section-product-area">
             <div class="product-photos-area">
                 <div class="product-photos-area-grid">
-                    <div class="photo-box-1">
-                        <img src= "<?=$base;?>/assets/images/products/default_product_image.jpeg">
-                    </div>
+                    <?php foreach($images as $img):?>
+                        <?php for($i = 0; $i < count($images) && $i <= 3; $i++) {
+                            $boxValue = intval($i);
+                            echo(
+                                "<div class='photo-box-".$boxValue."'>
+                                    <img src= '$base.'/'.$img->path.'/'.$img->img'>
+                                </div>"
+                            );
+                        }
+                    ?>
+                    <?php endforeach;?>
 
-                    <div class="photo-box-2">
-                        <img src= "<?=$base;?>/assets/images/products/default_product_image.jpeg">
-                    </div>
+                    
 
-                    <div class="photo-box-3">
-                        <img src= "<?=$base;?>/assets/images/products/default_product_image.jpeg">
-                    </div>
-
-                    <div class="photo-box-4">
-                        <img src= "<?=$base;?>/assets/images/products/default_product_image.jpeg">
-                    </div>
-
+                    
                     <div class="photo-box-5">
-                        <img src= "<?=$base;?>/assets/images/products/default_product_image.jpeg">
+                        <img src= "<?=$base.'/'.$product->mainI?>">
                     </div>
                 </div>
             </div>
