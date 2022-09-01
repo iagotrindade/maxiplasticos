@@ -170,7 +170,7 @@ class ProductController extends Controller {
         }
 
         if($id && $name && $desc && $category && $code && $color && $format && $amount && $composition && $details) {
-            //Tratamento da imagem principal
+            //Tratamento da imagem principal ****PROBLEMA DO RESET DA FOTO PRINCIPAL
 
             if(isset($_FILES['new-main']) && !empty($_FILES['new-main']['tmp_name'])) {
                 $newImageP = $_FILES['new-main'];
@@ -189,7 +189,16 @@ class ProductController extends Controller {
             }
 
             else {
-                $imageName = "default_product_image.jpeg";
+                $product = ProductHandler::getProductById($id);
+
+                if($product->mainI == "default_product_image.jpeg") {
+                    $imageName =  "default_product_image.jpeg";
+                }
+
+                else {
+                    $imageName = $product->mainI;
+                }
+
             }
 
             //Cadastro das informações estáticas

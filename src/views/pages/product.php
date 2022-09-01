@@ -3,23 +3,41 @@
         <div class="section-product-area">
             <div class="product-photos-area">
                 <div class="product-photos-area-grid">
-                    <?php foreach($images as $img):?>
-                        <?php for($i = 0; $i < count($images) && $i <= 3; $i++) {
-                            $boxValue = intval($i);
-                            echo(
-                                "<div class='photo-box-".$boxValue."'>
-                                    <img src= '$base.'/'.$img->path.'/'.$img->img'>
-                                </div>"
-                            );
+                    <div class ="photos-area-one"
+                    <?php if(count($images) <= 3) {
+                            echo('style = "justify-content: flex-start;"');
+                        
                         }
-                    ?>
-                    <?php endforeach;?>
 
-                    
+                        else {
+                            echo('style = "justify-content: space-between;"');
+                        }
+                    ?>>
+                        <?php foreach($images as $img) :?>
+                            <div class='photo-box'
+                                <?php if(count($images) <= 3) {
+                                    echo('style = "margin-bottom: 25px;"');
+                                
+                                    }
+                                ?>>
+                                
+                                <img src='<?=$base."/".$img->path."/".$img->img?>'>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
 
-                    
-                    <div class="photo-box-5">
-                        <img src= "<?=$base.'/'.$product->mainI?>">
+                    <div class ="photos-area-two">
+                        <div class="photo-box-5">
+                            <?php 
+                                if($product->mainI == 'default_product_image.jpeg') {
+                                    echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg>");
+                                }
+
+                                else {
+                                    echo("<img src = ".$base."/".$product->mainI.">");
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>

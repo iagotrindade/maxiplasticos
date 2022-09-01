@@ -964,14 +964,29 @@ label p {
 .product-photos-area-grid {
     display: grid;
     grid-template-areas:
-        "area1 area5"
-        "area2 area5"
-        "area3 area5"
-        "area4 area5";
-    grid-gap: 20px;
+        "area1 area2"
+        "area1 area2"
+        "area1 area2"
+        "area1 area2";
+    grid-gap: 25px;
 }
 
-.photo-box-1 img, .photo-box-2 img, .photo-box-3 img, .photo-box-4 img {
+.photos-area-one {
+    display: flex;
+    flex-direction: column;
+    grid-area: area1;
+}
+
+.photos-area-two {
+    grid-area: area2;
+}
+
+.photo-box {
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.photo-box img {
     width: 100px;
     height: 100%;
     border-radius: 5px;
@@ -980,26 +995,8 @@ label p {
 .photo-box-5 img {
     height: 100%;
     border-radius: 5px;
-}
-
-.photo-box-1 {
-    grid-area: area1;
-}
-
-.photo-box-2 {
-    grid-area: area2;
-}
-
-.photo-box-3 {
-    grid-area: area3;
-}
-
-.photo-box-4 {
-    grid-area: area4;
-}
-
-.photo-box-5 {  
-    grid-area: area5;
+    cursor: pointer;
+    min-height: 480px;
 }
 
 .products-info {

@@ -79,7 +79,7 @@
                             }
 
                             else {
-                                echo("<img src = ".$base."/".$product->mainI."></br>");
+                                echo("<img src = ".$base."/".$product->path."/".$product->mainI."></br>");
                             }
                         ?>
                         
