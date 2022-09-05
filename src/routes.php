@@ -65,4 +65,9 @@ $router->get('/{id}/del_categorie', 'CategorieController@delAction');
 $router->get('/edit_categorie/{id}', 'CategorieController@editCategorie');
 $router->post('/update_categorie', 'CategorieController@updateCategorie');
 
+
+$router->get('/search', 'SearchController@index');
+
+$router->get('/filter/{id}', 'FilterController@index');
+
 $router->get('/sobre/{nome}', 'HomeController@sobreP');

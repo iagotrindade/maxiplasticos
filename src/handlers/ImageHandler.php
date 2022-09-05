@@ -5,20 +5,16 @@ use \src\models\Image;
 
 class ImageHandler {
     public static function addImages($id, $secImgName, $path) {
-        if($id && $secImgName && $path) {
             Image::insert([
                 'product_id' => $id,
                 'image' => $secImgName,
                 'folder_path' => $path,
             ])->execute();
-        }
+        
     }
 
-    public static function editImages($c_images, $id) {
-        Image::delete()->where('product_id', $id)->execute();
-    }
+    public static function updateImages($productId, $img, $path) {
 
-    public static function updateSecImg($productId, $img, $path) {
         Image::insert([
             'product_id' => $productId,
             'image' => $img,
@@ -40,9 +36,10 @@ class ImageHandler {
         
                 $images[] = $newImg;
             }
-
+            
             return $images;
         }
+        
     }
 
     public static function delProductImg($id) {

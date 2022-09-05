@@ -2,7 +2,7 @@
 namespace src\controllers;
 
 use \core\Controller;
-use src\handlers\ProducPagetHandler;
+use src\handlers\ProductPageHandler;
 use src\handlers\ProductHandler;
 use src\handlers\ImageHandler;
 
@@ -15,10 +15,12 @@ class ProductPageController extends Controller {
 
         $products = ProductHandler::getRelatedProducts($product->category);
 
-        $this->render('product', [
-            'product' => $product,
-            'products' =>$products,
-            'images' => $images
-        ]);
+        if(!empty($product)) {
+            $this->render('product', [
+                'product' => $product,
+                'products' =>$products,
+                'images' => $images
+            ]);
+        }
     }
 }

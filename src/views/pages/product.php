@@ -4,15 +4,16 @@
             <div class="product-photos-area">
                 <div class="product-photos-area-grid">
                     <div class ="photos-area-one"
-                    <?php if(count($images) <= 3) {
-                            echo('style = "justify-content: flex-start;"');
-                        
-                        }
+                        <?php if(count($images) <= 3) {
+                                echo('style = "justify-content: flex-start;"');
+                            
+                            }
 
-                        else {
-                            echo('style = "justify-content: space-between;"');
-                        }
-                    ?>>
+                            else {
+                                echo('style = "justify-content: space-between;"');
+                            }
+                        ?>>
+
                         <?php foreach($images as $img) :?>
                             <div class='photo-box'
                                 <?php if(count($images) <= 3) {
@@ -27,14 +28,14 @@
                     </div>
 
                     <div class ="photos-area-two">
-                        <div class="photo-box-5">
+                        <div class="photo-box-main">
                             <?php 
-                                if($product->mainI == 'default_product_image.jpeg') {
+                                if(empty($images)) {
                                     echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg>");
                                 }
 
                                 else {
-                                    echo("<img src = ".$base."/".$product->mainI.">");
+                                    echo("<img src = ".$base."/".$images[0]->path."/".$images[0]->img.">");
                                 }
                             ?>
                         </div>
@@ -155,7 +156,7 @@
                                         }
 
                                         else {
-                                            echo("<img src = ".$base."/".$product->main_image.">");
+                                            echo("<img src = ".$base."/".$product->path."/".$product->main_image.">");
                                         }
                                     ?>
                                 </div>
@@ -209,5 +210,14 @@
         };
 
         
+        document.querySelectorAll('.photo-box img').forEach(item => {
+            item.addEventListener("click", function() {
+                var img = item.getAttribute('src');
+                
+                var mainImg = document.querySelector('.photo-box-main img');
+
+                mainImg.setAttribute('src', img);
+            });
+        });
     </script>
 <?php $render('footer')?>

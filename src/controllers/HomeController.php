@@ -9,8 +9,11 @@ class HomeController extends Controller {
     public function index() {
         $products = ProductHandler::getProducts();
 
+        $recentProducts = ProductHandler::getRecentProducts();
+
         $this->render('home', [
-            'products' => $products
+            'products' => $products,
+            'recentProducts' => $recentProducts
         ]);
     }
 

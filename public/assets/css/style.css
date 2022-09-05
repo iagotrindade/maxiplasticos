@@ -990,9 +990,15 @@ label p {
     width: 100px;
     height: 100%;
     border-radius: 5px;
+    transition: 0.3s all ease;
 }   
 
-.photo-box-5 img {
+.photo-box img:hover {
+    transform: scale(1.1);
+}
+
+
+.photo-box-main img {
     height: 100%;
     border-radius: 5px;
     cursor: pointer;
@@ -1419,7 +1425,7 @@ td {
 .product-list-image img {
     height: 85px;
     width: 85px;
-
+    border-radius: 5px;
 }
 
 .fabrication-info, .date-info {
@@ -1731,12 +1737,16 @@ td {
 .section-edit-products-photos {
     grid-area: area8;
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
+    margin-top: 20px;
 }
 
-.section-edit-products-photos {
-    margin-top: 20px;
+.section-area-photos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .edit-photo-img {
@@ -1744,7 +1754,6 @@ td {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 20px; 
 }
 
 .edit-photo-img img {
@@ -1761,17 +1770,19 @@ td {
     display: flex;
 }
 
-.edit-photo-img p, .section-sec-photos p {
-    padding: 0 0 5px 2px
+.edit-photo-img p {
+    padding: 0 0 5px 2px;
+    margin-bottom: 20px;
 }
 
 .section-sec-photos {
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-right: 20px;
-    
+    padding: 5px;
 }
 
 .section-sec-photos img {
@@ -1785,6 +1796,12 @@ td {
     margin-bottom: 20px;
     min-width: 100px;
     min-height: 100px;
+}
+
+.section-add-more-photos {
+    display: flex;
+    align-items: flex-end;
+    height: 50px;
 }
 
 /*Categories CSS*/
@@ -1887,12 +1904,13 @@ td {
     width: 100%;
     height: 40px;
     background: #FFFFFF;
-    border: 0.5px solid #636363;
+    border: 0.5px solid #ccc;
     box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     padding-left: 5px;
     margin-top: 10px;
     font-size: 14px;
+    outline: 0;
 }
 
 .input-edit-category-desc {
