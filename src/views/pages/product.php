@@ -138,7 +138,7 @@
                 PRODUTOS RELACIONADOS
             </h3>
 
-            <a href="<?=$base;?>/assets/files/catalogo.pdf" download="catalogo.pdf">
+            <a href="<?=$base?>/produtos/categoria/<?=$product->categorie;?>">
                 <p>VER TODOS -></p>
             </a>
         </div>

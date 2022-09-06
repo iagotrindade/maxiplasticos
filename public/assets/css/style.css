@@ -951,7 +951,7 @@ label p {
     color: #F30000;
 }
 
-/*Prpduct Page*/
+/*Product Page*/
 
 .section-product-area {
     display: flex;
@@ -1146,6 +1146,41 @@ label p {
     border-bottom: 1px solid #ccc;
     border-left: 1px solid #ccc;
     padding: 4.5px 7px;
+}
+
+/*Products Page CSS*/
+
+.products-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 60px;
+}
+
+.products-area-tittle {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.products-action-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-menu {
+    display: flex;
+    align-items: center;
+}
+
+.products-boxes-area {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 /*Users CSS*/
 

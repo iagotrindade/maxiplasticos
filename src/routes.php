@@ -7,6 +7,8 @@ $router->get('/', 'HomeController@index');
 
 $router->get('/product/{id}', 'ProductPageController@productPage');
 
+$router->get('/produtos/categoria/{id}', 'ProductsPageController@index');
+
 
 
 

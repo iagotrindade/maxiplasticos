@@ -21,7 +21,7 @@
                             Lorem ipsum dolor sit amet. At enim incidunt qui aliquid odit in dolor nihil. Ut amet blanditiis qui voluptatem laudantium ab aliquid adipisci. Eum rerum doloremque ex nihil officia est suscipit odit et consequuntur fugit ea internos voluptate nostrum enim et ipsam autem.
                         </div>
                         <div class="category-box-button">
-                            <a href="">
+                            <a href="<?=$base?>/produtos/categoria/1">
                                 VER MAIS
                             </a>
                         </div>
@@ -38,7 +38,7 @@
                             Lorem ipsum dolor sit amet. At enim incidunt qui aliquid odit in dolor nihil. Ut amet blanditiis qui voluptatem laudantium ab aliquid adipisci. Eum rerum doloremque ex nihil officia est suscipit odit et consequuntur fugit ea internos voluptate nostrum enim et ipsam autem.
                         </div>
                         <div class="category-box-button">
-                            <a href="">
+                            <a href="<?=$base?>/produtos/categoria/2">
                                 VER MAIS
                             </a>
                         </div>
@@ -55,7 +55,7 @@
                             Lorem ipsum dolor sit amet. At enim incidunt qui aliquid odit in dolor nihil. Ut amet blanditiis qui voluptatem laudantium ab aliquid adipisci. Eum rerum doloremque ex nihil officia est suscipit odit et consequuntur fugit ea internos voluptate nostrum enim et ipsam autem.
                         </div>
                         <div class="category-box-button">
-                            <a href="">
+                            <a href="<?=$base?>/produtos/categoria/3">
                                 VER MAIS
                             </a>
                         </div>

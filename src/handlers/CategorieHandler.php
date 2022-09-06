@@ -83,10 +83,37 @@ class CategorieHandler {
         }
     }
 
-    public static function delUser($id) {
+    public static function delCategorie($id) {
         if($id) {
-            Categorie::delete()->where('id', $id)->execute();
-            return true;
+
+            $categorie = Categorie::select('name')->where('id',$id)->one();
+
+            switch ($categorie['name']) {
+                case 'Fabricação':
+
+                    return false;
+                    break;
+
+                case 'Escolar':
+
+                    return false;
+                    break;
+
+                case 'Escritório':
+
+                    return false;
+                    break;
+            }
+
+            if($categorie['name'] == 'Escolar') {
+                return false;
+            }
+
+            else {
+                Categorie::delete()->where('id', $id)->execute();
+                return true;
+            }
+            
         }
             
         else {

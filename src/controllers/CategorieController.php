@@ -117,7 +117,7 @@ class CategorieController extends Controller {
     }
 
     public function delAction ($id) {
-        $status = CategorieHandler::delUser($id); 
+        $status = CategorieHandler::delCategorie($id); 
 
         if($status) {
             $_SESSION['flash'] = 'Categoria excluída com sucesso!';

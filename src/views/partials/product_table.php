@@ -1,4 +1,4 @@
-<div class = "filter-search-area">
+    <div class = "filter-search-area">
         <div class = "filter-area">
             <form class = "filter-form" method = "POST" name = 'filter-category-form' action = "<?=$base;?>/filter">
                 <select class="add-button" name ="categorie-select" name="isso" onchange="location = this.value;">
