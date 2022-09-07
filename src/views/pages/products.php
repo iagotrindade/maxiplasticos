@@ -33,9 +33,6 @@
                     <tbody>            
                         <tr>
                             <td class = "product-list-image" style = "width: 216px;">
-<<<<<<< HEAD
-                                <img src="<?=$base."/".$product->main_image?>"/>
-=======
                                 <?php 
                                     if($product->main_image == 'default_product_image.jpeg') {
                                         echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg>");
@@ -45,7 +42,6 @@
                                         echo("<img src = ".$base."/".$product->path."/".$product->main_image.">");
                                     }
                                 ?>
->>>>>>> a2c773ff29cf7adc682185b211c2762a9b98a339
                             </td>
 
                             <td style = "width: 216px;">

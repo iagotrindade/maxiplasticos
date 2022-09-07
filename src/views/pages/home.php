@@ -161,17 +161,7 @@
             </div>
             <!-- Swiper -->
             <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-<<<<<<< HEAD
-                    <div class="swiper-slide" style="width:250px !important">
-                        <div class = "product-box">
-                            <div class = "product-box-img">
-                                <img src = "<?=$base;?>/assets/images/products/pasta-catalogo.png"/>
-                            </div>
-                            <div class = "product-box-description">
-                                Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut labore nostrum aut reprehenderit soluta. Ad culpa pariatur et ipsa sun...
-                            </div>
-=======
+                <div class="swiper-wrapper">       
                     <?php foreach($recentProducts as $rProduct): ?>
                         <div class="swiper-slide">
                             <div class = "product-box">
@@ -181,8 +171,7 @@
                                             if($rProduct->main_image == 'default_product_image.jpeg') {
                                                 echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg>");
                                             }
->>>>>>> a2c773ff29cf7adc682185b211c2762a9b98a339
-
+                                            
                                             else {
                                                 echo("<img src = ".$base."/".$rProduct->path."/".$rProduct->main_image.">");
                                             }
