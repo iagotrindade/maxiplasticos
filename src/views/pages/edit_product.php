@@ -6,7 +6,8 @@
 <section class = "section-products-form">
     <div class = section-area-products-form-hold>
         <div class = "section-area-products-form">
-            <h3>Adicionar novo Produto</h3>
+            <h3>Editando o produto <?=$product->name?></h3>
+            
             <?php if(!empty($_SESSION['flash'])): ?>
                 <div class="warning">
                     <p style = "padding-left: 5px; text-align: left;"><?php echo ($_SESSION['flash']);  $_SESSION['flash'] = '';?></p>
@@ -74,41 +75,42 @@
                 <div class = "section-edit-products-photos">
                     <div class = "edit-photo-img">
                         <?php 
-                            if($product->mainI == 'default_product_image.jpeg') {
+                            if(empty($images)) {
                                 echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg>");
                             }
 
                             else {
-                                echo("<img src = ".$base."/".$product->mainI."></br>");
+                                echo("<img src = ".$base."/".$images[0]->path."/".$images[0]->img."></br>");
                             }
                         ?>
-                        
-                        <input type = 'hidden' name ='main_image' value = "<?=$product->mainI;?>">
+
                         <p>Foto Principal</p>
-                        <div class = "main-img-buttons">
-                            
-                            <a style = "margin-right: 5px; cursor: pointer;"class = 'main-edit'>EDITAR</a>
-                            <input type="file" name="new-main" class = "new-main-photo">
-                            <a href ='javascript:;' class = 'main-delete'>EXCLUIR</a>
-                        </div>
                     </div>
                     
-                    
-                    <?php foreach($images as $img):?>
-                        <?php
-                            echo(
-                                "<div class = 'section-sec-photos'>
-                                    <img src = '".$base.'/'.$img->path.'/'.$img->img."'>
-                                    <input type = 'hidden' name ='c_images[]' value = ".$img->img.">
-                                    <p>Foto Secundária</p>
-                                    <a href ='javascript:;' class = 'main-delete'>EXCLUIR</a>
-                                </div>"
-                            );
-                        ?>
-                    <?php endforeach ?>
+                    <div class ="section-area-photos">
+                        <?php foreach($images as $img):?>
+                            <?php
+                                if(empty($images)) {
+                                    echo (
+                                        "<div class = 'section-sec-photos'>
+                                            <img src = '".$base."/assets/images/products/default_product_image.jpeg>'>
+                                        </div>"
+                                    );
+                                }
+                                echo(
+                                    "<div class = 'section-sec-photos'>
+                                        <img src = '".$base.'/'.$img->path.'/'.$img->img."'>
+                                        <input type = 'hidden' name ='c_images[]' value = ".$img->img.">
 
-                    <div class = "section-add-more-photos">
-                        <input type="file" name="new_photos[]" multiple="multiple"/>
+                                        <a href ='javascript:;' class = 'main-delete'>EXCLUIR</a>
+                                    </div>"
+                                );
+                            ?>
+                        <?php endforeach ?>
+
+                        <div class = "section-add-more-photos">
+                            <input type="file" name="new_photos[]" multiple="multiple"/>
+                        </div>
                     </div>
                 </div>
 
@@ -123,20 +125,6 @@
 </section>
 
 <script type="text/javascript">
-
-    let mainPhoto = document.querySelector('.main-edit');
-    let photoMainFile = document.querySelector('.new-main-photo');
-
-    mainPhoto.addEventListener('click', function(){
-        photoMainFile.click();
-    });
-
-    photoMainFile.addEventListener('change', function() {   
-
-        console.log("Fotos", photoMainFile.files);
-
-    });
-    
 
     document.querySelectorAll('.section-sec-photos a').forEach(item => {
         item.addEventListener("click", function() {

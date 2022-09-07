@@ -18,13 +18,15 @@ class ProductController extends Controller {
         }
     }
 
-    public function index() {
+    public function index () {
 
         $products = ProductHandler::getProducts();
+        $categories = CategorieHandler::getCategories();
 
         $this->render('products', [
             'loggedUser' => $this->loggedUser,
-            'products' => $products
+            'products' => $products,
+            'categories' => $categories
         ]);
     }
 
@@ -66,51 +68,33 @@ class ProductController extends Controller {
                 mkdir($path, 0777, true);
             };
 
-            if(isset($_FILES['main-image']) && !empty($_FILES['main-image']['tmp_name'])) {
-                $newImageP = $_FILES['main-image'];
-
-                if(in_array($newImageP['type'], ['image/jpeg', 'image/jpg', 'image/png'])) {
-                    
-                    $imageName = $this->cutImage($newImageP, 400, 400, $path);
-                }
-
-                else {
-                    $_SESSION['flash'] = 'Imagem não compatível com os formatos .JPEG, .JPG, .PNG!';
-                    $this->redirect('/add_product', [
-                        'flash' => $_SESSION['flash']
-                    ]);
-                }
-            }
-
-            else {
-                $imageName = "assets/images/products/default_product_image.jpeg";
-            }
-
-            $status = ProductHandler::addProduct(
+            $id = ProductHandler::addProduct(
                 $name, $desc,
                 $category, $code,
                 $color, $format,
                 $amount, $composition,
-                $details, $imageName,
-                $path, $date
+                $details, $path, 
+                $date
             );
 
-            $images = (!empty($_FILES['images'])) ? $_FILES['images']:array();
+            $images = (!empty($_FILES['images']))?$_FILES['images']:array();
 
             $allowedImages = array('image/jpg', 'image/jpeg', 'image/png');
 
-            for($i=0; $i<count($images['name']);$i++) {
+            for($i=0; $i<count($images['name']); $i++) {
 
                 $tmp_name = $images['tmp_name'][$i];
                 $type = $images['type'][$i];
                 
                 if(in_array($type, $allowedImages)) {
                     
-                    $secImgName = $this->cutSecImages($tmp_name, $type, $path);
+                    $imgName = $this->cutImage($tmp_name, $type, $path);
 
-                    ImageHandler::addImages($status, $secImgName, $path);
+                    ImageHandler::addImages($id, $imgName, $path);
                 }   
             }
+
+            $productImages = ProductHandler::addMainImage($id);
 
             $_SESSION['flash'] = 'Produto adicionado com sucesso!';
 
@@ -170,58 +154,36 @@ class ProductController extends Controller {
         }
 
         if($id && $name && $desc && $category && $code && $color && $format && $amount && $composition && $details) {
-            //Tratamento da imagem principal
-
-            if(isset($_FILES['new-main']) && !empty($_FILES['new-main']['tmp_name'])) {
-                $newImageP = $_FILES['new-main'];
-
-                if(in_array($newImageP['type'], ['image/jpeg', 'image/jpg', 'image/png'])) {
-                    
-                    $imageName = $this->cutImage($newImageP, 400, 400, $path);
-                }
-
-                else {
-                    $_SESSION['flash'] = 'Imagem não compatível com os formatos .JPEG, .JPG, .PNG!';
-                    $this->redirect('/add_product', [
-                        'flash' => $_SESSION['flash']
-                    ]);
-                }
-            }
-
-            else {
-                $imageName = "default_product_image.jpeg";
-            }
-
-            //Cadastro das informações estáticas
+            //Update das informações estáticas
             
             $productId = ProductHandler::editProduct(
                 $id, $name, $desc,
                 $category, $code,
                 $color, $format,
                 $amount, $composition,
-                $details, $imageName,
-                $path, $date
+                $details, $path,
+                $date
             );
 
-            //Tratamento e cadastro das imagens secundarias
+            //Tratamento e update das imagens
 
             $c_images = (!empty($_POST['c_images'])) ? $_POST['c_images']:array();
+
+            ImageHandler::delProductImg($productId); 
 
             if(is_array($c_images)) {
                 foreach($c_images as $ckey => $cimg) {
                     $c_images[$ckey] = strval($cimg);
                 }
 
-                $allowedImages = array('image/jpg', 'image/jpeg', 'image/png');
-
-                ImageHandler::editImages($c_images, $productId);
-
-                for($i=0; $i<count($c_images);$i++) {
-                    ImageHandler::updateSecImg($productId, $c_images[$i], $path);
+                for($i=0; $i<count($c_images); $i++) {
+                    ImageHandler::updateImages($productId, $c_images[$i], $path);
                 }
             }
 
-            //Tratamento e cadastro das novas imagens secundarias
+            $productImages = ProductHandler::addMainImage($id);
+            
+            //Tratamento e update das novas imagens
                      
             $images = (!empty($_FILES['new_photos'])) ? $_FILES['new_photos']:array();
 
@@ -232,16 +194,17 @@ class ProductController extends Controller {
                 $tmp_name = $images['tmp_name'][$i];
                 $type = $images['type'][$i];
                 
+
                 if(in_array($type, $allowedImages)) {
                     
-                    $secImgName = $this->cutSecImages($tmp_name, $type, $path);
+                    $secImgName = $this->cutImage($tmp_name, $type, $path);
 
                     ImageHandler::addImages($productId, $secImgName, $path);
                 }   
             }
 
             $_SESSION['flash'] = 'Produto atualizado com sucesso!';
-            echo(print_r($c_images));
+
             $this->redirect("/edit_product/$id", [
                 'flash' => $_SESSION['flash']
             ]);
@@ -274,57 +237,7 @@ class ProductController extends Controller {
         }
     }
 
-
-
-
-
-
-
-
-    private function cutImage($file, $w, $h, $folder) {
-        list($widthOrig, $heightOrig) = getimagesize($file['tmp_name']);
-        $ratio = $widthOrig / $heightOrig;
-
-        $newWidth = $w;
-        $newHeight = $newWidth / $ratio;
-
-        if($newHeight < $h) {
-            $newHeight = $h;
-            $newWidth = $newHeight * $ratio;
-        }
-
-        $x = $w - $newWidth;
-        $y = $h - $newHeight;
-        $x = $x < 0 ? $x / 2 : $x;
-        $y = $y < 0 ? $y / 2 : $y;
-
-        $finalImage = imagecreatetruecolor($w, $h);
-        switch($file['type']) {
-            case 'image/jpeg':
-            case 'image/jpg':
-                $image = imagecreatefromjpeg($file['tmp_name']);
-            break;
-            case 'image/png':
-                $image = imagecreatefrompng($file['tmp_name']);
-            break;
-        }
-
-        imagecopyresampled(
-            $finalImage, $image,
-            $x, $y, 0, 0,
-            $newWidth, $newHeight, $widthOrig, $heightOrig
-        );
-
-        $fileName = md5(time().rand(0,9999)).'.jpg';
-
-        imagejpeg($finalImage, $folder.'/'.$fileName);
-
-        return $folder.'/'.$fileName;
-    }
-
-
-
-    private function cutSecImages($tmp_name, $type, $folder) {
+    private function cutImage($tmp_name, $type, $folder) {
         if($type == 'image/jpg' || $type == 'image/jpeg') {
             $o_img = imagecreatefromjpeg($tmp_name);
         }

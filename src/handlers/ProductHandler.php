@@ -2,10 +2,12 @@
 namespace src\handlers;
 
 use \src\models\Product;
+use src\handlers\ImageHandler;
 
 class ProductHandler {  
-    public static function addProduct($name, $desc, $category, $code, $color, $format, $amount, $composition, $details, $mainImage, $path, $date) {
-        if($name && $desc && $category && $code && $color && $format && $amount && $composition && $details && $mainImage && $path && $date) {
+
+    public static function addProduct($name, $desc, $category, $code, $color, $format, $amount, $composition, $details, $path, $date) {
+        if($name && $desc && $category && $code && $color && $format && $amount && $composition && $details && $path && $date) {
             Product::insert([
                 'name' => $name,
                 'code' => $code,
@@ -16,7 +18,6 @@ class ProductHandler {
                 'amount' => $amount,
                 'composition' => $composition,
                 'details' => $details,
-                'main_image' => $mainImage,
                 'folder_path' => $path,
                 'inclusion_date' => $date
             ])->execute();
@@ -29,8 +30,25 @@ class ProductHandler {
         return $id;
     }
 
-    public static function editProduct($id, $name, $desc, $category, $code, $color, $format, $amount, $composition, $details, $mainImage, $path, $date) {
-        if($name && $desc && $category && $code && $color && $format && $amount && $composition && $details && $mainImage && $path && $date) {
+    public static function addMainImage($id) {
+        $images = ImageHandler::getImages($id);
+
+        if(!empty($images)) {
+            $mainImage = $images[0]->img;
+        }
+
+        else {
+            $mainImage = 'default_product_image.jpeg';
+        }
+
+        Product::update()
+            ->set('main_image', $mainImage)
+            ->where('id', $id)
+        ->execute();
+    }
+
+    public static function editProduct($id, $name, $desc, $category, $code, $color, $format, $amount, $composition, $details, $path, $date) {
+        if($name && $desc && $category && $code && $color && $format && $amount && $composition && $details && $path && $date) {
             Product::update()
                 ->set('name', $name)
                 ->set('code', $code)
@@ -40,7 +58,6 @@ class ProductHandler {
                 ->set('format', $format)
                 ->set('composition', $composition)
                 ->set('details', $details)
-                ->set('main_image', $mainImage)
                 ->set('folder_path', $path)
                 ->set('inclusion_date', $date)
                 ->where('id', $id)
@@ -58,6 +75,39 @@ class ProductHandler {
 
     public static function getProducts () {
         $productList = Product::select()->orderBy('inclusion_date', 'desc')->get();
+            
+        $products = [];
+
+        foreach($productList as $product) {
+            $category = explode(',' ,$product['category']);
+
+            if(count($category) > 2) {
+                $category = explode(',' ,$product['category'], -1);
+            }
+
+            $newProduct = new Product();
+            $newProduct->id = $product['id']; 
+            $newProduct->main_image  = $product['main_image'];
+            $newProduct->name = $product['name']; 
+            $newProduct->code = $product['code'];
+            $newProduct->desc = $product['description'];
+
+            $newProduct->category = $category; 
+
+            $newProduct->category = $category;
+            
+            $newProduct->path = $product['folder_path']; ;
+
+            $newProduct->date = $product['inclusion_date']; 
+    
+            $products [] = $newProduct;
+        }
+
+        return $products;
+    }
+
+    public static function searchProducts($term) {
+        $productList = Product::select()->orderBy('inclusion_date', 'desc')->where('name', 'like', '%'.$term.'%')->get();
             
         $products = [];
 
@@ -113,6 +163,72 @@ class ProductHandler {
         else {
             return false;
         }
+    }
+
+    public static function getRelatedProducts($productCategorie) {
+        $productList = Product::select()->where('category', 'like', '%'.$productCategorie.'%')->get();
+
+        $products = [];
+
+        foreach($productList as $product) {
+            $category = explode(',' ,$product['category']);
+
+            if(count($category) > 2) {
+                $category = explode(',' ,$product['category'], -1);
+            }
+
+            $newProduct = new Product();
+            $newProduct->id = $product['id']; 
+            $newProduct->main_image  = $product['main_image'];
+            $newProduct->name = $product['name']; 
+            $newProduct->code = $product['code'];
+            $newProduct->desc = $product['description'];
+
+            $newProduct->category = $category; 
+
+            $newProduct->category = $category;
+            
+            $newProduct->path = $product['folder_path']; ;
+
+            $newProduct->date = $product['inclusion_date']; 
+    
+            $products [] = $newProduct;
+        }
+
+        return $products;
+    }
+
+    
+    public static function getRecentProducts() {
+        $productList = Product::select()->limit(20)->orderBy('inclusion_date', 'desc')->get();
+            
+        $products = [];
+
+        foreach($productList as $product) {
+            $category = explode(',' ,$product['category']);
+
+            if(count($category) > 2) {
+                $category = explode(',' ,$product['category'], -1);
+            }
+
+            $newProduct = new Product();
+            $newProduct->id = $product['id']; 
+            $newProduct->main_image  = $product['main_image'];
+            $newProduct->name = $product['name']; 
+            $newProduct->code = $product['code'];
+            $newProduct->desc = $product['description'];
+
+            $newProduct->category = $category; 
+
+            $newProduct->category = $category;
+                
+            $newProduct->path = $product['folder_path']; ;
+            $newProduct->date = $product['inclusion_date']; 
+        
+            $products [] = $newProduct;
+        }
+
+        return $products;
     }
 
     public static function getLastDate() {

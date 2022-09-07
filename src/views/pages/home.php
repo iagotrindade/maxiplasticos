@@ -1,4 +1,4 @@
-<?php $render ('header', ['products' => $products]);?>  
+<?php $render ('header', ['products' => $products, 'recentProducts' => $recentProducts]);?>  
         <section>
             <div class="banner-section-area">
                 <img src="<?=$base?>/assets/images/banners/banner-teste.png">
@@ -21,7 +21,7 @@
                             Lorem ipsum dolor sit amet. At enim incidunt qui aliquid odit in dolor nihil. Ut amet blanditiis qui voluptatem laudantium ab aliquid adipisci. Eum rerum doloremque ex nihil officia est suscipit odit et consequuntur fugit ea internos voluptate nostrum enim et ipsam autem.
                         </div>
                         <div class="category-box-button">
-                            <a href="">
+                            <a href="<?=$base?>/produtos/categoria/1">
                                 VER MAIS
                             </a>
                         </div>
@@ -38,7 +38,7 @@
                             Lorem ipsum dolor sit amet. At enim incidunt qui aliquid odit in dolor nihil. Ut amet blanditiis qui voluptatem laudantium ab aliquid adipisci. Eum rerum doloremque ex nihil officia est suscipit odit et consequuntur fugit ea internos voluptate nostrum enim et ipsam autem.
                         </div>
                         <div class="category-box-button">
-                            <a href="">
+                            <a href="<?=$base?>/produtos/categoria/2">
                                 VER MAIS
                             </a>
                         </div>
@@ -55,7 +55,7 @@
                             Lorem ipsum dolor sit amet. At enim incidunt qui aliquid odit in dolor nihil. Ut amet blanditiis qui voluptatem laudantium ab aliquid adipisci. Eum rerum doloremque ex nihil officia est suscipit odit et consequuntur fugit ea internos voluptate nostrum enim et ipsam autem.
                         </div>
                         <div class="category-box-button">
-                            <a href="">
+                            <a href="<?=$base?>/produtos/categoria/3">
                                 VER MAIS
                             </a>
                         </div>
@@ -113,7 +113,7 @@
                                             }
 
                                             else {
-                                                echo("<img src = ".$base."/".$product->main_image.">");
+                                                echo("<img src = ".$base."/".$product->path."/".$product->main_image.">");
                                             }
                                         ?>
                                     </div>
@@ -162,6 +162,7 @@
             <!-- Swiper -->
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
+<<<<<<< HEAD
                     <div class="swiper-slide" style="width:250px !important">
                         <div class = "product-box">
                             <div class = "product-box-img">
@@ -170,14 +171,35 @@
                             <div class = "product-box-description">
                                 Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut labore nostrum aut reprehenderit soluta. Ad culpa pariatur et ipsa sun...
                             </div>
+=======
+                    <?php foreach($recentProducts as $rProduct): ?>
+                        <div class="swiper-slide">
+                            <div class = "product-box">
+                                <a href = "<?=$base?>/product/<?=$rProduct->id;?>">
+                                    <div class = "product-box-img">
+                                        <?php 
+                                            if($rProduct->main_image == 'default_product_image.jpeg') {
+                                                echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg>");
+                                            }
+>>>>>>> a2c773ff29cf7adc682185b211c2762a9b98a339
 
-                            <div class="budget-button">
-                                <a href="<?=$base;?>/cart">
-                                    ORÇAMENTO 
+                                            else {
+                                                echo("<img src = ".$base."/".$rProduct->path."/".$rProduct->main_image.">");
+                                            }
+                                        ?>
+                                    </div>
+                                    <div class = "product-box-description">
+                                        <?=$rProduct->desc?>
+                                    </div>
                                 </a>
+                                <div class="budget-button">
+                                    <a href="<?=$base;?>/cart">
+                                        ORÇAMENTO 
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach;?>
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>

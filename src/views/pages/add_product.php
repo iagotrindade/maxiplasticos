@@ -73,7 +73,7 @@
                     <div class = "section-photos-area">
                         <p>Imagem principal</p>
                         <a class = "main-define">Definir imagem principal +</a>
-                        <input type="file" name="main-image" class = "input-main-photo">
+                        <input type="file" name="images[]" class = "input-main-photo">
                     </div>
 
                     <div class = "section-photos-area">
