@@ -60,7 +60,7 @@
                     <tbody>            
                         <tr>
                             <td class = "product-list-image" style = "width: 216px;">
-                                <img src="<?=$base?>/assets/images/products/<?=$product->main_image?>"/>
+                                <img src="<?=$base."/".$product->main_image?>"/>
                             </td>
 
                             <td style = "width: 216px;">

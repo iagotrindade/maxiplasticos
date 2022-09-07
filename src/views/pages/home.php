@@ -103,7 +103,7 @@
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <?php foreach($products as $product): ?>
-                        <div class="swiper-slide">
+                        <div class="swiper-slide" style="width:250px;">
                             <div class = "product-box">
                                 <a href = "<?=$base?>/product/<?=$product->id;?>">
                                     <div class = "product-box-img">
@@ -162,7 +162,7 @@
             <!-- Swiper -->
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" style="width:250px !important">
                         <div class = "product-box">
                             <div class = "product-box-img">
                                 <img src = "<?=$base;?>/assets/images/products/pasta-catalogo.png"/>
@@ -190,7 +190,7 @@
             <script>
                 var swiper = new Swiper(".mySwiper", {
                 slidesPerView: 5,
-                spaceBetween: 30,
+                spaceBetween: 20,
                 slidesPerGroup: 5,
                 loop: true,
                 loopFillGroupWithBlank: true,

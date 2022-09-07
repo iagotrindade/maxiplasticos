@@ -750,13 +750,8 @@ label p {
 }
 
 .swiper-button-next::after, .swiper-button-prev:after {
-    font-size: 14px !important;
+    font-size: 15px !important;
     color: #ababab;
-    border: 1px solid #ccc;
-    border-radius: 360px;
-    background: #FFFFFF;
-    box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 5px;
 }
 
 .swiper-button-prev {
@@ -785,6 +780,7 @@ label p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
 }
 
 .product-box-img img {
@@ -1354,6 +1350,7 @@ td {
 }
 
 .product-list-image img {
+    border-radius: 5px;
     height: 85px;
     width: 85px;
 
