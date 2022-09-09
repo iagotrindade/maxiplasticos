@@ -49,6 +49,25 @@ class CategorieHandler {
 
     }
 
+    public static function getCategorieByName($name) {
+        if($name) {
+
+            $data = Categorie::select()->where('name', $name)->one  ();
+
+            $categorie = new Categorie();
+            $categorie->id = ($data['id']);
+            $categorie->name =($data['name']);
+            $categorie->desc =($data['description']);
+  
+            return $categorie;
+        }
+        
+        else {
+            return false;
+        }
+
+    }
+
     public static function getLastDate() {
         $data = Categorie::select()->last('inclusion_date');
         

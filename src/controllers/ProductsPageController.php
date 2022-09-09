@@ -12,16 +12,41 @@ class ProductsPageController extends Controller {
     public function index($id) {
 
         if($id) {
-            $categorie = CategorieHandler::getCategorieById($id);
+
             $categories = CategorieHandler::getCategories();
 
-            $products = ProductHandler::getRelatedProducts($categorie->name);
+            $categorieFab = CategorieHandler::getCategorieByName('Fabricação');
+            $categorieEsc = CategorieHandler::getCategorieByName('Escritório');
+            $categorieEscol = CategorieHandler::getCategorieByName('Escolar');
 
-        }
+            if(in_array('recentes', $id)) {
+                
+                $products = ProductHandler::getRecentProducts();
 
-        $this->render('products_page', [
-            'products' => $products,
-            'categories' => $categories
-        ]);
+                
+
+                $this->render('products_page', [
+                    'products' => $products,
+                    'categories' => $categories,
+                    'categorieFab' => $categorieFab,
+                    'categorieEsc' => $categorieEsc,
+                    'categorieEscol' => $categorieEscol
+                ]);
+            }
+
+            else {
+                $categorie = CategorieHandler::getCategorieById($id);
+    
+                $products = ProductHandler::getRelatedProducts($categorie->name);
+
+                $this->render('products_page', [
+                    'products' => $products,
+                    'categories' => $categories,
+                    'categorieFab' => $categorieFab,
+                    'categorieEsc' => $categorieEsc,
+                    'categorieEscol' => $categorieEscol
+                ]);
+            }
+        }   
     }
 }

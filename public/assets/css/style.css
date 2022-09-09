@@ -867,8 +867,8 @@ label p {
 .section-footer-area {
     display: grid;
     grid-template-areas: 
-        "item1 item3 item5 item6"
-        "item2 item4 item5 item6";
+        "item1 item3 item6"
+        "item2 item4 item6";
     justify-content: space-around;
     background-color: #161616;
     margin-top: 150px;
@@ -879,12 +879,12 @@ label p {
     grid-area: item1;
 }
 
-.footer-area-contact h4, .footer-area-social h4, .footer-area-menu h4, .footer-area-subcategories h4, .footer-area-about-us h4, .footer-area-location h4 {
+.footer-area-contact h4, .footer-area-social h4, .footer-area-menu h4, .footer-area-about-us h4, .footer-area-location h4 {
     color: #fff;
     margin-bottom: 10px;
 }
 
-.footer-area-contact ul, .footer-area-menu ul, .footer-area-subcategories ul {
+.footer-area-contact ul, .footer-area-menu ul {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -895,11 +895,11 @@ label p {
     margin-bottom: 10px;
 }
 
-.footer-area-menu ul li, .footer-area-subcategories ul li {
+.footer-area-menu ul li {
     margin-bottom: 3px;
 }
 
-.footer-area-contact ul li a, .footer-area-social ul li a, .footer-area-menu ul li a, .footer-area-subcategories ul li a, .footer-area-about-us p, .footer-area-location p {
+.footer-area-contact ul li a, .footer-area-social ul li a, .footer-area-menu ul li a, .footer-area-about-us p, .footer-area-location p {
     text-decoration: none;
     font-size: 12px;
     line-height: 15px;
@@ -923,15 +923,11 @@ label p {
     grid-area: item3;
 }
 
-.footer-area-subcategories {
-    grid-area: item4;
-    margin-top: 25px;
-}
-
 .footer-area-about-us {
     width: 280px;
     height: 240px;
-    grid-area: item5;
+    grid-area: item4;
+    margin-top: 25px;
 }
 
 .footer-area-location {
@@ -1458,7 +1454,6 @@ td {
 }
 
 .product-list-image img {
-    border-radius: 5px;
     height: 85px;
     width: 85px;
     border-radius: 5px;

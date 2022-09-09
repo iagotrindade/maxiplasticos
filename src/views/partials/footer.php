@@ -26,15 +26,15 @@
                         <h4>MENU</h4>
                         <ul>
                             <li>
-                                <a href="">HOME</a>
+                                <a href="<?=$base?>/produtos/categoria/<?=$categorieFab->id?>">HOME</a>
                             </li>
 
                             <li>
-                                <a href="">ESCRITÓRIO</a>
+                                <a href="<?=$base?>/produtos/categoria/<?=$categorieEsc->id?>">ESCRITÓRIO</a>
                             </li>
 
                             <li>
-                                <a href="">ESCOLAR</a>
+                                <a href="<?=$base?>/produtos/categoria/<?=$categorieEscol->id?>">ESCOLAR</a>
                             </li>
 
                             <li>
@@ -56,31 +56,6 @@
                                 </svg>
                                     
                                 <a href="">@instagramaqui</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-area-subcategories">
-                        <h4>SUBCATEGORIAS</h4>
-                        <ul>
-                            <li>
-                                <a href="">HOME</a>
-                            </li>
-
-                            <li>
-                                <a href="">ESCRITÓRIO</a>
-                            </li>
-
-                            <li>
-                                <a href="">ESCOLAR</a>
-                            </li>
-
-                            <li>
-                                <a href="">FABRICAÇÃO</a>
-                            </li>
-
-                            <li>
-                                <a href="">ORÇAMENTO</a>
                             </li>
                         </ul>
                     </div>

@@ -1,4 +1,4 @@
-<?php $render ('header', ['product' => $product, 'products' =>$products, 'images' => $images]);?>  
+<?php $render ('header', ['product' => $product, 'products' =>$products, 'images' => $images, 'categorie' => $categorie]);?>  
     <section>
         <div class="section-product-area">
             <div class="product-photos-area">
@@ -138,7 +138,7 @@
                 PRODUTOS RELACIONADOS
             </h3>
 
-            <a href="<?=$base?>/produtos/categoria/<?=$product->categorie;?>">
+            <a href="<?=$base?>/produtos/categoria/<?=$categorie->id;?>">
                 <p>VER TODOS -></p>
             </a>
         </div>

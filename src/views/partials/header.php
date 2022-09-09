@@ -73,19 +73,19 @@
                                 </li>
 
                                 <li class="menu-item">
-                                    <a href="">
+                                    <a href="<?=$base?>/produtos/categoria/<?=$categorieFab->id?>">
                                         <p>Fabricação</p>
                                     </a>
                                 </li>
 
                                 <li class="menu-item">
-                                    <a href="">
+                                    <a href="<?=$base?>/produtos/categoria/<?=$categorieEsc->id?>">
                                         <p>Escritório</p>
                                     </a>
                                 </li>
 
                                 <li class="menu-item">
-                                    <a href="">
+                                    <a href="<?=$base?>/produtos/categoria/<?=$categorieEscol->id?>">
                                         <p>Escolar</p>
                                     </a>
                                 </li>

@@ -1,4 +1,4 @@
-<?php $render ('header', ['products' => $products]); ?>
+<?php $render ('header', ['products' => $products, 'categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol]); ?>
 
 <section>
     <div class="products-area">
@@ -58,7 +58,7 @@
     </div>
 </section>
 
-<?php $render('footer')?>
+<?php $render('footer', [ 'categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol])?>
 
 
 
