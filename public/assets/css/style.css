@@ -861,7 +861,7 @@ label p {
 .section-about-img img  {
     width: 400px;
     height: 380px;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .section-footer-area {
@@ -1030,8 +1030,7 @@ label p {
     padding-bottom: 40px;
 }
 
-.product-buttons a {
-    text-decoration: none;
+.submit-order {
     font-weight: 600;
     font-size: 13px;
     line-height: 16px;
@@ -1040,11 +1039,46 @@ label p {
     filter: drop-shadow(-1px 2px 4px rgba(0, 0, 0, 0.25));
     border-radius: 5px;
     padding: 7px 20px;
+    background: none;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
-.product-buttons a:hover {
+.submit-order:hover {
     color: #fff;
     background-color: #F30000;
+}
+
+.add-to-cart-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-to-cart-qt {
+    height: 33px;
+    width: 33px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    outline: 0;
+}
+
+.qt-less, .qt-more {
+    height: 33px;
+    width: 33px;
+    filter: drop-shadow(-1px 2px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.qt-less:hover, .qt-more:hover {
+    background: #f30000;
+    color: #fff;
 }
 
 .product-info {
@@ -1178,6 +1212,165 @@ label p {
     flex-wrap: wrap;
     gap: 20px;
 }
+
+/*About Page CSS*/
+
+.section-about-values {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 60px;
+}
+
+.section-about-value-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 380px;
+    height: 260px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 21px;
+    padding: 50px;
+}
+
+.section-about-value-box-underline {
+    height: 2px;
+    width: 90px;
+    background-color: #f30000;
+}
+
+.section-about-value-box p {
+    font-size: 13px;
+    text-align: center;
+}
+
+.section-about-partners {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-about-partners h3 {
+    margin-bottom: 20px;
+}
+
+.section-about-partners-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 0.5px solid #ccc;
+    border-top: 0.5px solid #ccc;
+}
+
+.partner-box {
+    margin: 20px 60px;
+}
+
+.partner-box img {
+    width: 200px;
+    height: 130px;
+    border-radius: 5px;
+}
+
+.section-about-form {
+    display: flex;
+    justify-content: flex-start;
+    margin: 60px;
+}
+
+.about-area-more-contact h3 {
+    margin-bottom: 20px;
+}
+
+.about-area-more-contact ul {
+    list-style: none;
+}
+
+.about-area-more-contact ul li {
+    margin-bottom: 10px;
+}
+
+.about-area-more-contact ul li a {
+    font-size: 16px;
+    line-height: 24px;
+    color: #929293;
+    margin-bottom: 10px;
+}
+
+.section-about-form-left form { 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 150px;
+}
+
+.section-about-form-left form label p {
+    margin-bottom: 10px;
+}
+
+.section-about-form-left form .input-name, .section-about-form-left form .input-cc {
+    width: 500px;
+    height: 35px;
+    border: 1px solid #f30000;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    outline: 0;
+    padding-left: 10px;
+}
+
+.section-about-form-left form .input-email, .section-about-form-left form .input-phone {
+    width: 230px;
+    height: 35px;
+    border: 1px solid #f30000;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    outline: 0;
+    padding-left: 10px;
+}
+
+.section-about-form-left form textarea {
+    width: 500px;
+    height: 200px;
+    border: 1px solid #f30000;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    resize: none;
+    outline: 0;
+    padding: 10px;
+}
+
+.form-double-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.section-about-form-left form button {
+    width: 100%;
+    background-color: #f30000;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 5px 0; 
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.section-about-form-left form button:hover {
+    color: #f30000;
+    background-color: #fff;
+    border: 1px solid #f30000;
+}
+
 /*Users CSS*/
 
 .section-users-table {

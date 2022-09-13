@@ -1,4 +1,4 @@
-<?php $render ('header', ['product' => $product, 'products' =>$products, 'images' => $images, 'categorie' => $categorie]);?>  
+<?php $render ('header', ['product' => $product, 'products' =>$products, 'images' => $images, 'categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol ]);?>  
     <section>
         <div class="section-product-area">
             <div class="product-photos-area">
@@ -54,7 +54,12 @@
                     </div>
 
                     <div class="product-buttons">
-                        <a href="">ADICIONAR AO ORÇAMENTO</a>
+                        <form class = "add-to-cart-form" method = "POST" action="addCart">
+                            <input type="submit" class="submit-order" value="ADICIONAR AO ORÇAMENTO"></input>
+                            <button class="qt-less" value='-'>-</button>
+                            <input class = "add-to-cart-qt" type = "text" name="qt" value ="1"></input>
+                            <button class="qt-more" value='+'>+</button>
+                        </form>
                     </div>
 
                     <div class="product-info">
@@ -219,5 +224,26 @@
                 mainImg.setAttribute('src', img);
             });
         });
+
+        document.querySelectorAll('.add-to-cart-form button').forEach(item => {
+            item.addEventListener("click", function(e) {
+                e.preventDefault();
+                
+                var qt = parseInt(document.querySelector('.add-to-cart-qt').value);
+
+                if(item.value == '-') {
+                    if(qt - 1 >= 1) {
+                        qt = qt -1;
+                    }
+                }
+
+                else if(item.value == '+') {
+                    qt = qt + 1;
+                }
+
+                document.querySelector('.add-to-cart-qt').value = qt
+                
+            });
+        });
     </script>
-<?php $render('footer')?>
+<?php $render('footer', ['categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol])?>

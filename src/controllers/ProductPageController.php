@@ -12,6 +12,10 @@ class ProductPageController extends Controller {
     public function productPage($id) {
         $product = ProductHandler::getProductById($id);
 
+        $categorieFab = CategorieHandler::getCategorieByName('Fabricação');
+        $categorieEsc = CategorieHandler::getCategorieByName('Escritório');
+        $categorieEscol = CategorieHandler::getCategorieByName('Escolar');
+
         $categorie = CategorieHandler::getCategorieByName($product->category);
 
         $images = ImageHandler::getImages($id);
@@ -23,7 +27,10 @@ class ProductPageController extends Controller {
                 'product' => $product,
                 'products' =>$products,
                 'images' => $images,
-                'categorie' => $categorie
+                'categorie' => $categorie,
+                'categorieFab' => $categorieFab,
+                'categorieEsc' => $categorieEsc,
+                'categorieEscol' => $categorieEscol
             ]);
         }
     }

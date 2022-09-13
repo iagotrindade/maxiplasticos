@@ -9,9 +9,9 @@ $router->get('/product/{id}', 'ProductPageController@productPage');
 
 $router->get('/produtos/categoria/{id}', 'ProductsPageController@index');
 
+$router->get('/about', 'AboutController@aboutP');
 
-
-
+$router->post('/contact_email', 'AboutController@contactEmail');
 
 
 $router->get('/adm-login', 'LoginController@signin');
@@ -71,5 +71,3 @@ $router->post('/update_categorie', 'CategorieController@updateCategorie');
 $router->get('/search', 'SearchController@index');
 
 $router->get('/filter/{id}', 'FilterController@index');
-
-$router->get('/sobre/{nome}', 'HomeController@sobreP');

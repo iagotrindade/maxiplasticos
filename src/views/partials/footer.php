@@ -26,7 +26,11 @@
                         <h4>MENU</h4>
                         <ul>
                             <li>
-                                <a href="<?=$base?>/produtos/categoria/<?=$categorieFab->id?>">HOME</a>
+                                <a href="<?=$base?>">HOME</a>
+                            </li>
+
+                            <li>
+                                <a href="<?=$base?>/produtos/categoria/<?=$categorieFab->id?>">FABRICAÇÃO</a>
                             </li>
 
                             <li>
@@ -36,11 +40,7 @@
                             <li>
                                 <a href="<?=$base?>/produtos/categoria/<?=$categorieEscol->id?>">ESCOLAR</a>
                             </li>
-
-                            <li>
-                                <a href="">FABRICAÇÃO</a>
-                            </li>
-
+                            
                             <li>
                                 <a href="">ORÇAMENTO</a>
                             </li>

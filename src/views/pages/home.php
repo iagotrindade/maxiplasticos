@@ -248,10 +248,10 @@
                     <h3>SOBRE NÓS</h3>
                 </div>
                 <div class="section-about-text">
-                    <P>Lorem ipsum dolor sit amet. Aut odit reiciendis et voluptatibus suscipit est omnis cupiditate sit dolorem culpa et unde possimus hic modi natus. Est pariatur consequatur et suscipit consequuntur qui ipsam distinctio et sunt iure eum iusto Quis. Et sunt eligendi est odio praesentium ex voluptatibus incidunt aut temporibus adipisci aut aliquam
+                    <p>Lorem ipsum dolor sit amet. Aut odit reiciendis et voluptatibus suscipit est omnis cupiditate sit dolorem culpa et unde possimus hic modi natus. Est pariatur consequatur et suscipit consequuntur qui ipsam distinctio et sunt iure eum iusto Quis. Et sunt eligendi est odio praesentium ex voluptatibus incidunt aut temporibus adipisci aut aliquam</p>
                 </div>
                 <div class="section-about-button">
-                    <a href="<?=$base;?>/about" download="catalogo.pdf">
+                    <a href="<?=$base;?>/about">
                         SAIBA MAIS
                     </a>
                 </div>

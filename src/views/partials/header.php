@@ -91,7 +91,7 @@
                                 </li>
 
                                 <li class="menu-item">
-                                    <a href="">
+                                    <a href="<?=$base?>/about">
                                         <p>Sobre nós</p>
                                     </a>
                                 </li>

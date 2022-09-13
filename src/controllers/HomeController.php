@@ -24,12 +24,4 @@ class HomeController extends Controller {
             'categorieEscol' => $categorieEscol
         ]);
     }
-
-    public function sobre() {
-        $this->render('sobre');
-    }
-
-    public function sobreP($args) {
-        print_r($args);
-    }
 }
