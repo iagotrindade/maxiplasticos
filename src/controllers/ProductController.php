@@ -218,7 +218,7 @@ class ProductController extends Controller {
         }
     }
 
-    public function delAction ($id) {
+    public function delAction($id) {
         $status = ProductHandler::delProduct($id);
         $statusImg = ImageHandler::delProductImg($id);
 

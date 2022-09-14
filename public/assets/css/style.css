@@ -1207,7 +1207,7 @@ label p {
 .products-boxes-area {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;

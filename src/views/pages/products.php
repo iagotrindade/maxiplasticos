@@ -75,7 +75,7 @@
                                     </li>
                                 </ul>
 
-                                <a href = "<?=$product->id;?>/del_product" class = "delete-product-button" onclick='return confirmDel("Tem certeza que deseja excluir esse produto?")'> 
+                                <a href = "<?=$base.'/'.$product->id;?>/del_product" class = "delete-product-button" onclick='return confirmDel("Tem certeza que deseja excluir esse produto?")'> 
                                     <img src = "<?=$base;?>/assets/images/icons/delete.png"/>
                                 </a>
                             </td>

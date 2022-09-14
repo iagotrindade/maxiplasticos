@@ -100,9 +100,9 @@
                     </div>
 
                     <div class="header-search-form">
-                        <form class="form-search-index" name = 'search' method = 'GET' action = '<?=$base;?>/search'>
+                        <form class="form-search-index" name = 'search' method = 'GET' action = '<?=$base;?>/procurar'>
                             <i class='header-menu-lupa bx bx-search' ></i>
-                            <input type="text" placeholder="Buscar produto..." name = "searching">
+                            <input type="text" placeholder="Buscar produto..." name = "procurando_por" required>
                         </form>
                     </div>
 

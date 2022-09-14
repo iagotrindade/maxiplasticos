@@ -5,6 +5,8 @@ $router = new Router();
 
 $router->get('/', 'HomeController@index');
 
+$router->get('/procurar', 'SearchController@site');
+
 $router->get('/product/{id}', 'ProductPageController@productPage');
 
 $router->get('/produtos/categoria/{id}', 'ProductsPageController@index');
@@ -68,6 +70,6 @@ $router->get('/edit_categorie/{id}', 'CategorieController@editCategorie');
 $router->post('/update_categorie', 'CategorieController@updateCategorie');
 
 
-$router->get('/search', 'SearchController@index');
+$router->get('/search', 'SearchController@panel');
 
 $router->get('/filter/{id}', 'FilterController@index');

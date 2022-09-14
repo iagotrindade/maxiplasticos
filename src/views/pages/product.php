@@ -170,7 +170,7 @@
                                 </div>
                             </a>
                             <div class="budget-button">
-                                <a href="<?=$base;?>/cart">
+                                <a href="<?=$base?>/product/<?=$product->id;?>">
                                     ORÇAMENTO 
                                 </a>
                             </div>

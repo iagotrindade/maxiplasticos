@@ -23,7 +23,7 @@ class ProductsPageController extends Controller {
                 
                 $products = ProductHandler::getRecentProducts();
 
-                
+                $_SESSION['flash'] = 'Exbindo os produtos mais recentes';
 
                 $this->render('products_page', [
                     'products' => $products,
@@ -38,6 +38,8 @@ class ProductsPageController extends Controller {
                 $categorie = CategorieHandler::getCategorieById($id);
     
                 $products = ProductHandler::getRelatedProducts($categorie->name);
+
+                $_SESSION['flash'] = 'Exbindo produtos da categoria "'.$categorie->name.'"';
 
                 $this->render('products_page', [
                     'products' => $products,

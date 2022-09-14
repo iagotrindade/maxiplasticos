@@ -19,7 +19,7 @@ class SearchController extends Controller {
         }
     }
 
-    public function index() {
+    public function panel () {
 
         $term = filter_input(INPUT_GET, 'searching');
 
@@ -53,6 +53,46 @@ class SearchController extends Controller {
                 'searchTerm' => $term,
                 'products' => $products,
                 'categories' => $categories
+            ]);
+        }
+    }
+
+    public function site() {
+        $term = filter_input(INPUT_GET, 'procurando_por');
+
+        $categories = CategorieHandler::getCategories();
+
+        $categorieFab = CategorieHandler::getCategorieByName('Fabricação');
+        $categorieEsc = CategorieHandler::getCategorieByName('Escritório');
+        $categorieEscol = CategorieHandler::getCategorieByName('Escolar');
+
+        if (!empty($products = ProductHandler::searchProducts($term))) {
+
+            $_SESSION['flash'] = 'Exibindo os produtos encontrados para '.$term.'';
+            
+            $this->render('/busca', [
+                'loggedUser' => $this->loggedUser,
+                'searchTerm' => $term,
+                'products' => $products,
+                'categories' => $categories,
+                'categorieFab' => $categorieFab,
+                'categorieEsc' => $categorieEsc,
+                'categorieEscol' => $categorieEscol
+            ]);
+
+        } 
+
+        else {
+            $_SESSION['flash'] = 'Nenhum produto encontrado para '.$term.'';
+
+            $this->render('/busca', [
+                'loggedUser' => $this->loggedUser,
+                'searchTerm' => $term,
+                'products' => $products,
+                'categories' => $categories,
+                'categorieFab' => $categorieFab,
+                'categorieEsc' => $categorieEsc,
+                'categorieEscol' => $categorieEscol
             ]);
         }
     }
