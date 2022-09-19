@@ -82,7 +82,7 @@
                     <div class="catalog-tittle-underline"></div>
                 </div>
                 <div class="section-catalog-text">
-                    <P>Lorem ipsum dolor sit amet. Aut odit reiciendis et voluptatibus suscipit est omnis cupiditate sit dolorem culpa et unde possimus hic modi natus. Est pariatur consequatur et suscipit consequuntur qui ipsam distinctio et sunt iure eum iusto Quis. Et sunt eligendi est odio praesentium ex voluptatibus incidunt aut temporibus adipisci aut aliquam <font color="#f30000">faça download clicando no botão abaixo.</font></P>
+                    <P>Com mais de 300 produtos, nosso catalogo irá ajuda-lo(a) a conhecer todos nossos produtos e decidir qual se encaixa melhor para sua necessidade <font color="#f30000">faça download clicando no botão abaixo.</font></P>
                 </div>
                 <div class="section-catalog-button">
                     <a href="<?=$base;?>/assets/files/catalogo.pdf" download="catalogo.pdf">
@@ -205,34 +205,80 @@
         
             <!-- Initialize Swiper and Mouseover -->
             <script>
-                var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 5,
-                spaceBetween: 30,
-                slidesPerGroup: 5,
-                loop: true,
-                loopFillGroupWithBlank: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                });
 
-                var button = document.querySelectorAll('.budget-button a');
-                var iconButton = document.querySelectorAll('.budged-button-img');
+                var width = window. screen. width;
 
-                for(var i=0;i<button.length; i++) {
-                    button[i].addEventListener('mouseover', () => {
-                        for(var i=0;i<iconButton.length; i++) {
-                            iconButton[i].style.backgroundImage = "../../assets/images/icons/icone-orçamento-branco.png";
-                        };
-                    })
-                };
+                if(width < 1350 && width > 800) {
+                    var swiper = new Swiper(".mySwiper", {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                    slidesPerGroup: 3,
+                    loop: true,
+                    loopFillGroupWithBlank: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    });
+                }
 
-                
+                else if(width < 800 && width > 600) {
+                    var swiper = new Swiper(".mySwiper", {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                    slidesPerGroup: 2,
+                    loop: true,
+                    loopFillGroupWithBlank: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    });
+                }
+
+                else if (width < 600) {
+                    var swiper = new Swiper(".mySwiper", {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    slidesPerGroup: 1,
+                    loop: true,
+                    loopFillGroupWithBlank: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    });
+                }
+
+                else {
+                    var swiper = new Swiper(".mySwiper", {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                    slidesPerGroup: 5,
+                    loop: true,
+                    loopFillGroupWithBlank: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    });
+                }
             </script>
         </section>
 
@@ -248,7 +294,10 @@
                     <h3>SOBRE NÓS</h3>
                 </div>
                 <div class="section-about-text">
-                    <p>Lorem ipsum dolor sit amet. Aut odit reiciendis et voluptatibus suscipit est omnis cupiditate sit dolorem culpa et unde possimus hic modi natus. Est pariatur consequatur et suscipit consequuntur qui ipsam distinctio et sunt iure eum iusto Quis. Et sunt eligendi est odio praesentium ex voluptatibus incidunt aut temporibus adipisci aut aliquam</p>
+                    <p>A MaxiPlásticos está no mercado de representação de produtos para papelarias há mais de 23 anos. Construímos uma história de confiança através dos anos, trabalhando para atender as 
+
+                    expectativas, oferecendo produtos que satisfaçam as reais necessidades dos nossos clientes.
+                </p>
                 </div>
                 <div class="section-about-button">
                     <a href="<?=$base;?>/about">

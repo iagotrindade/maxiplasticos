@@ -11,6 +11,8 @@ $router->get('/product/{id}', 'ProductPageController@productPage');
 
 $router->get('/produtos/categoria/{id}', 'ProductsPageController@index');
 
+$router->get('/cart', 'CartController@index');
+
 $router->get('/about', 'AboutController@aboutP');
 
 $router->post('/contact_email', 'AboutController@contactEmail');
