@@ -205,32 +205,79 @@
         
             <!-- Initialize Swiper and Mouseover -->
             <script>
-                var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 5,
-                spaceBetween: 30,
-                slidesPerGroup: 5,
-                loop: true,
-                loopFillGroupWithBlank: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                });
+                var width = window. screen. width;
 
-                var button = document.querySelectorAll('.budget-button a');
-                var iconButton = document.querySelectorAll('.budged-button-img');
+                if(width < 1350 && width > 800) {
+                    var swiper = new Swiper(".mySwiper", {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                    slidesPerGroup: 3,
+                    loop: true,
+                    loopFillGroupWithBlank: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    });
+                }
 
-                for(var i=0;i<button.length; i++) {
-                    button[i].addEventListener('mouseover', () => {
-                        for(var i=0;i<iconButton.length; i++) {
-                            iconButton[i].style.backgroundImage = "../../assets/images/icons/icone-orçamento-branco.png";
-                        };
-                    })
-                };
+                else if(width < 800 && width > 600) {
+                    var swiper = new Swiper(".mySwiper", {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                    slidesPerGroup: 2,
+                    loop: true,
+                    loopFillGroupWithBlank: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    });
+                }
+
+                else if (width < 600) {
+                    var swiper = new Swiper(".mySwiper", {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    slidesPerGroup: 1,
+                    loop: true,
+                    loopFillGroupWithBlank: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    });
+                }
+
+                else {
+                    var swiper = new Swiper(".mySwiper", {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                    slidesPerGroup: 5,
+                    loop: true,
+                    loopFillGroupWithBlank: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    });
+                }
 
                 
             </script>

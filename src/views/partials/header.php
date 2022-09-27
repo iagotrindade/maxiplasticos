@@ -12,6 +12,52 @@
     </head>
     <body>
         <header>
+            <div class="mobile-menu container ">
+                <div class="content">
+                    <nav class = 'mobile-nav' role="navigation" onclick="verifyMenu()">
+                        <div id="menuToggle">
+                            <input class="sandwiche-button" type="checkbox" />
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            <ul id="menu">
+                                <li>
+                                    <div class="mobile-search-form">
+                                        <form class="mobile-form-search-index" name = 'search' method = 'GET' action = '<?=$base;?>/procurar'>
+                                            <i class='mobile-header-menu-lupa bx bx-search' ></i>
+                                            <input type="text" placeholder="Buscar produto..." name = "procurando_por" required>
+                                        </form>
+                                    </div>
+                                </li>
+                                <li> 
+                                    <a href="<?=$base;?>">Home</li>
+                                <li>
+                                    <a href="<?=$base?>/produtos/categoria/<?=$categorieFab->id?>">
+                                        <p>Fabricação</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?=$base?>/produtos/categoria/<?=$categorieEsc->id?>">
+                                        <p>Escritório</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?=$base?>/produtos/categoria/<?=$categorieEscol->id?>">
+                                        <p>Escolar</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=$base?>/about">
+                                        <p>Sobre nós</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
             <div class="section-header-slogan">
                 <div class="section-header-social">
                     <ul class="header-social-list">
