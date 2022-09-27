@@ -24,7 +24,7 @@
                                 <li>
                                     <div class="mobile-search-form">
                                         <form class="mobile-form-search-index" name = 'search' method = 'GET' action = '<?=$base;?>/procurar'>
-                                            <i class='mobile-header-menu-lupa bx bx-search' ></i>
+                                            
                                             <input type="text" placeholder="Buscar produto..." name = "procurando_por" required>
                                         </form>
                                     </div>
