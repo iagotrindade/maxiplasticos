@@ -498,7 +498,8 @@ a:hover {
     background-color: #F5F6FA;
     overflow: hidden;
     position: fixed;
-    TOP: 0;
+    top: 0;
+    z-index: 10;
   }
 
 .mobile-nav {
@@ -2563,6 +2564,24 @@ td {
 
 @media (max-width: 1000px) {
 
+    .section-product-area {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-photos-area {
+        margin-bottom: 20px
+    }
+
+    .products-info {
+        width: 95vw;
+        padding: 0;
+    }
+
+    .details-table-content table th {
+        width: 50%;
+    }
+
     .section-header-menu-area {
         display: none;
     }
@@ -2606,6 +2625,32 @@ td {
 }
 
 @media (max-width: 800px) {
+
+    .section-header-slogan {
+        grid-template-areas: 
+            "area2"
+            "area1";
+            justify-content: center;
+    }
+
+    .section-header-slogan-text p {
+        font-size: 12px;
+    }
+
+    .header-social-list {
+        width: auto;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+
+    .section-header-slogan-text p {
+        text-align: center;
+    }
+
+    .section-catalog-img img {
+        width: 100vw;
+    }
+
     .section-two-banners {
         flex-direction: column;
     }
@@ -2619,6 +2664,57 @@ td {
 
     .footer-area-about-us {
         margin: 0;
+    }
+}
+
+@media (max-width: 650px) {
+    
+    .product-photos-area-grid {
+        grid-template-areas: 
+            "area2"
+            "area1";
+    }
+
+    .photos-area-two {
+        width: 95vw;
+    }
+    
+    .photo-box-main img {
+        width: 100%
+    }
+
+    .photos-area-one {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .product-buttons {
+        width: auto;
+    }
+    
+    .details-area-tittle, .details-area-table {
+        width: 95vw;
+    }
+
+    .products-area {
+        margin: 20px;
+    }
+
+    .products-action-bar {
+        flex-direction: column;
+    }
+
+    .filter-form select {
+        width: auto;
+    }
+
+    .warning p {
+        font-size: 12px;
+    }
+
+    .product-box {
+        width: 95vw;
+        margin-bottom: 20px;
     }
 }
 
@@ -2647,6 +2743,10 @@ td {
         width: 90vw;
     }
 
+    .section-about-img img {
+        width: 95vw;
+    }
+
     .footer-area-about-us {
         height: 100%;
     }
@@ -2665,6 +2765,10 @@ td {
     }
 
     .products-carrousell-tittle {
+        margin: 0;
+    }
+
+    .section-about {
         margin: 0;
     }
 
@@ -2700,4 +2804,6 @@ td {
     .login-form input {
         width: 290px;
     }
+
+    
 }
