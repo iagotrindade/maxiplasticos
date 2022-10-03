@@ -130,35 +130,8 @@
                 <button>ENVIAR</button>
             </form>
         </div>
-
-        <div class = "section-about-form-right">
-            <div class="about-area-more-contact">
-                <h3>OUTRAS FORMAS DE CONTATO</h3>
-                <ul>
-                    <li>
-                        <a href="">(31) 3333 - 3333</a>
-                    </li>
-
-                    <li>
-                        <a href="">(31) 3333 - 3333</a>
-                    </li>
-
-                    <li>
-                        <a href="">(31) 3333 - 3333</a>
-                    </li>
-
-                    <li>
-                        <a href="">exemplo@email.com</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
 </section>
-
-
-
-
 
 
 <?php $render('footer', ['categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol])?>

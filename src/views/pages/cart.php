@@ -1,89 +1,29 @@
-<?php $render ('header', ['categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol]); ?>
+<?php $render ('header', ['categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol, 'cartProducts' => $cartProducts]); ?>
 
 <section>
     <div class = "section-cart-area">
         <div class = "section-cart-area-left">
-            <h3>LISTA DE PRODUTOS</h3>   
+            <h3>LISTA DE PRODUTOS</h3> 
+
             <div class ="section-cart-products">
-                <div class = "section-cart-product">
-                    <p class = "cart-desc-tittle">Descrição</p>
-                    <p  class = "cart-qtd-tittle">Qtd</p>
+                <?php foreach($cartProducts as $product): ?>
+                    <div class = "section-cart-product">
+                        <p class = "cart-desc-tittle">Descrição</p>
+                        <p  class = "cart-qtd-tittle">Qtd</p>
 
-                    <img src = "assets/images/products/default_product_image.jpeg">
-                    <p class = "cart-desc-text">Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut</p>
+                        <img src = "assets/images/products/<?=$product["folder"].'/'.$product['image']?>">
+                        <p class = "cart-desc-text"><?=$product['description']?></p>
 
-                    <div class = "qtd-cart-buttons">
-                        <i class='bx bx-chevron-up cart-qt-more' data-action='increase'></i>
-                        <input class = "add-to-cart-qt 123" type = "text" name="qt" value ="1" id="input"></input>
-                        <i class='bx bx-chevron-down cart-qt-less' data-action='decrease'></i>
+                        <div class = "qtd-cart-buttons">
+                            <i class='bx bx-chevron-up cart-qt-more' data-action='increase' onclick="process_geral(1, this)"></i>
+                            <input class = "add-to-cart-qt" type = "text" name="qt" value ="<?=$product['qt']?>" id="input"></input>
+                            <i class='bx bx-chevron-down cart-qt-less' data-action='decrease' onclick="process_geral(-1, this)"></i>
+                        </div>
+
+                        <p class = "cart-del-button">x</p>
                     </div>
 
-                    <p class = "cart-del-button">x</p>
-                </div>
-
-                <div class = "section-cart-product">
-                    <p class = "cart-desc-tittle">Descrição</p>
-                    <p  class = "cart-qtd-tittle">Qtd</p>
-
-                    <img src = "assets/images/products/default_product_image.jpeg">
-                    <p class = "cart-desc-text">Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut</p>
-
-                    <div class = "qtd-cart-buttons">
-                        <i class='bx bx-chevron-up cart-qt-more' data-action='increase'></i>
-                        <input class = "add-to-cart-qt 123" type = "text" name="qt" value ="1" id="input"></input>
-                        <i class='bx bx-chevron-down cart-qt-less' data-action='decrease'></i>
-                    </div>
-
-                    <p class = "cart-del-button">x</p>
-                </div>
-
-                <div class = "section-cart-product">
-                    <p class = "cart-desc-tittle">Descrição</p>
-                    <p  class = "cart-qtd-tittle">Qtd</p>
-
-                    <img src = "assets/images/products/default_product_image.jpeg">
-                    <p class = "cart-desc-text">Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut</p>
-
-                    <div class = "qtd-cart-buttons">
-                        <i class='bx bx-chevron-up cart-qt-more' data-action='increase'></i>
-                        <input class = "add-to-cart-qt 123" type = "text" name="qt" value ="1" id="input"></input>
-                        <i class='bx bx-chevron-down cart-qt-less' data-action='decrease'></i>
-                    </div>
-
-                    <p class = "cart-del-button">x</p>
-                </div>
-
-                <div class = "section-cart-product">
-                    <p class = "cart-desc-tittle">Descrição</p>
-                    <p  class = "cart-qtd-tittle">Qtd</p>
-
-                    <img src = "assets/images/products/default_product_image.jpeg">
-                    <p class = "cart-desc-text">Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut</p>
-
-                    <div class = "qtd-cart-buttons">
-                        <i class='bx bx-chevron-up cart-qt-more' data-action='increase'></i>
-                        <input class = "add-to-cart-qt 123" type = "text" name="qt" value ="1" id="input"></input>
-                        <i class='bx bx-chevron-down cart-qt-less' data-action='decrease'></i>
-                    </div>
-
-                    <p class = "cart-del-button">x</p>
-                </div>
-
-                <div class = "section-cart-product">
-                    <p class = "cart-desc-tittle">Descrição</p>
-                    <p  class = "cart-qtd-tittle">Qtd</p>
-
-                    <img src = "assets/images/products/default_product_image.jpeg">
-                    <p class = "cart-desc-text">Lorem ipsum dolor sit amet. Aut voluptates consequatur nam vero iusto ut iste debitis ut</p>
-
-                    <div class = "qtd-cart-buttons">
-                        <i class='bx bx-chevron-up cart-qt-more' data-action='increase'></i>
-                        <input class = "add-to-cart-qt 123" type = "text" name="qt" value ="1" id="input"></input>
-                        <i class='bx bx-chevron-down cart-qt-less' data-action='decrease'></i>
-                    </div>
-
-                    <p class = "cart-del-button">x</p>
-                </div>
+                <?php endforeach; ?>
             </div>
             <div class ="botom-button">
                 <a class = "clear-list" href="">Limpar Lista</a><br>
@@ -137,26 +77,16 @@
 </section>
 
 <script>
-    document.querySelectorAll('.qtd-cart-buttons i').forEach(item => {
-        item.addEventListener("click", function() {
-            console.log();
-            var qt = parseInt(document.querySelector('.abcd').value);
-            var action = item.getAttribute('data-action');
-
-            if(action == 'decrease') {
-                if(qt - 1 >= 1) {
-                    qt = qt -1;
-                }
-            }
-
-            else if(action == 'increase') {
-                qt = qt + 1;
-            }
-
-            document.querySelector('.abcd').value = qt
-                
-        });
-    });
+    function process_geral(quant, element){
+        var classValue = parseInt(element.parentElement.querySelector('.add-to-cart-qt').value);
+        classValue+=quant;
+        //console.log(classValue); 
+        if(classValue < 1){
+            element.parentElement.querySelector("input.add-to-cart-qt").value = 1;
+            }else{ 
+        element.parentElement.querySelector("input.add-to-cart-qt").value = classValue;    
+        }
+    };  
 </script>
 
 <?php $render('footer', [ 'categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol])?>

@@ -54,8 +54,9 @@
                     </div>
 
                     <div class="product-buttons">
-                        <form class = "add-to-cart-form" method = "POST" action="addCart">
+                        <form class = "add-to-cart-form" method = "POST" action="<?=$base?>/addToCart">
                             <input type="submit" class="submit-order" value="ADICIONAR AO ORÇAMENTO"></input>
+                            <input type = "hidden" name="productId" value = <?=$product->id?>></input>
                             <div class = "buttons-qtd-area">
                                 <button class="qt-less" value='-'>-</button>
                                 <input class = "add-to-cart-qt" type = "text" name="qt" value ="1"></input>
