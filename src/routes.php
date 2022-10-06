@@ -15,6 +15,8 @@ $router->get('/cart', 'CartController@index');
 
 $router->post('/addToCart', 'CartController@addProduct');
 
+$router->get('/clearCart', 'CartController@clearCart');
+
 
 $router->get('/about', 'AboutController@aboutP');
 

@@ -11,6 +11,10 @@
     --primary-color: #fff;
 }
 
+body {
+    background-color: #fafafb;
+}
+
 .login-body {
     background-color: #161616   ;
 }
@@ -478,7 +482,7 @@ label p {
     transition: 200ms;
   }
 
-a:hover {
+#menu li a:hover {
     opacity:0.5;
   }
 
@@ -842,6 +846,7 @@ a:hover {
 }
 
 .section-catalog-text, .section-about-text {
+    padding-right: 10px;
     margin-bottom: 45px;
 }
 
@@ -869,6 +874,8 @@ a:hover {
 }
 
 .swiper-slide {
+    box-shadow: -1px 2px 4px rgb(0 0 0 / 10%);
+    border-radius: 10px;
     text-align: center;
     font-size: 18px;
     background: #fff;
@@ -912,8 +919,6 @@ a:hover {
     align-items: center;
     padding: 25px;
     background: #FFFFFF;
-    box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
     width: 250px;
     height: 350px;
 }
@@ -1516,12 +1521,13 @@ a:hover {
 }
 
 .section-cart-products {
+    width: 500px;
     background: #FFFFFF;
     box-shadow: 0px 0px 4px 3px rgba(0, 0, 0, 0.1);
     border-radius: 7px;
     padding: 30px 10px;
     height: 665px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .section-cart-product {
@@ -1560,7 +1566,9 @@ a:hover {
 
 .cart-desc-text {
     grid-area: area4;
-    max-width: 300px;
+    max-width: 200px;
+    min-width: 200px;
+    text-align: center;
 }
 
 .qtd-cart-buttons {
@@ -1578,6 +1586,12 @@ a:hover {
     font-size: 12px;
     margin: 5px;
     border: none;
+}
+
+.section-del-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cart-del-button {
@@ -1625,7 +1639,6 @@ a:hover {
     line-height: 16px;
     color: #F30000;
     border: 1px solid #F30000;
-    filter: drop-shadow(-1px 2px 4px rgba(0, 0, 0, 0.25));
     border-radius: 5px;
     background-color: #fff;
     padding: 6px 20px;
@@ -1695,7 +1708,7 @@ a:hover {
     color: #fff;
     box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-    padding: 5px 0; 
+    padding: 7px 0; 
     cursor: pointer;
     font-weight: 600;
 }

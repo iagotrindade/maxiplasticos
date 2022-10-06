@@ -1,17 +1,25 @@
 <?php $render ('header', ['categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol, 'cartProducts' => $cartProducts]); ?>
 
 <section>
+
     <div class = "section-cart-area">
         <div class = "section-cart-area-left">
             <h3>LISTA DE PRODUTOS</h3> 
-
             <div class ="section-cart-products">
                 <?php foreach($cartProducts as $product): ?>
                     <div class = "section-cart-product">
                         <p class = "cart-desc-tittle">Descrição</p>
                         <p  class = "cart-qtd-tittle">Qtd</p>
 
-                        <img src = "assets/images/products/<?=$product["folder"].'/'.$product['image']?>">
+                        <?php 
+                            if($product['image'] == 'default_product_image.jpeg') {
+                                echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg>");
+                            }
+
+                            else {
+                                echo("<img src = ".$base."/".$product['folder']."/".$product['image'].">");
+                            }
+                        ?>
                         <p class = "cart-desc-text"><?=$product['description']?></p>
 
                         <div class = "qtd-cart-buttons">
@@ -19,14 +27,16 @@
                             <input class = "add-to-cart-qt" type = "text" name="qt" value ="<?=$product['qt']?>" id="input"></input>
                             <i class='bx bx-chevron-down cart-qt-less' data-action='decrease' onclick="process_geral(-1, this)"></i>
                         </div>
-
-                        <p class = "cart-del-button">x</p>
+                        
+                        <div class = "section-del-button">
+                            <p class = "cart-del-button">x</p>
+                        </div>
                     </div>
 
                 <?php endforeach; ?>
             </div>
             <div class ="botom-button">
-                <a class = "clear-list" href="">Limpar Lista</a><br>
+                <a class = "clear-list" href="<?=$base?>/clearCart" onclick='return confirmDel("Tem certeza que deseja esvaziar seu carrinho?")'>Limpar Lista</a><br>
                 <a class = "more-products" href = "<?=$base?>">ESCOLHER MAIS PRODUTOS</a>
             </div>
         </div>
@@ -89,4 +99,5 @@
     };  
 </script>
 
+<script src="<?=$base;?>/assets/js/vanilla.js"></script>
 <?php $render('footer', [ 'categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol])?>

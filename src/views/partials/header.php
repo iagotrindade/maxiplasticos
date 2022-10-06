@@ -30,6 +30,13 @@
                                         </form>
                                     </div>
                                 </li>
+
+                                <li>
+                                    <a href="<?=$base?>/cart">
+                                        <p>Orçamento</p>
+                                    </a>
+                                </li>
+                                
                                 <li> 
                                     <a href="<?=$base;?>">Home</li>
                                 <li>
@@ -37,11 +44,15 @@
                                         <p>Fabricação</p>
                                     </a>
                                 </li>
+
                                 <li>
                                     <a href="<?=$base?>/produtos/categoria/<?=$categorieEsc->id?>">
                                         <p>Escritório</p>
                                     </a>
                                 </li>
+
+                                
+
                                 <li>
                                     <a href="<?=$base?>/produtos/categoria/<?=$categorieEscol->id?>">
                                         <p>Escolar</p>

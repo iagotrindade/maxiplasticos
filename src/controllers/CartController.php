@@ -28,6 +28,8 @@ class CartController extends Controller {
         $categorieEsc = CategorieHandler::getCategorieByName('Escritório');
         $categorieEscol = CategorieHandler::getCategorieByName('Escolar');
 
+        $cartProducts = CartHandler::getCartProducts();
+
         if(!empty($_POST['productId'])) {
             $id = filter_input(INPUT_POST, 'productId');
             $qt = filter_input(INPUT_POST, 'qt');
@@ -45,10 +47,19 @@ class CartController extends Controller {
             }
         }
 
-        $this->render('cart', [
+        $this->redirect('/cart', [
             'categorieFab' => $categorieFab,
             'categorieEsc' => $categorieEsc,
-            'categorieEscol' => $categorieEscol
+            'categorieEscol' => $categorieEscol,
+            'cartProducts' => $cartProducts
         ]);
+    }
+
+    public function clearCart() {
+        if(isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = array();   
+        }
+
+        $this->redirect("/cart");
     }
 }   
