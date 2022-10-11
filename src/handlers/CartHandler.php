@@ -6,13 +6,20 @@ class CartHandler {
     public static function getCartProducts() {
         
         $array = array();
-        $cart = $_SESSION['cart'];
+        if(isset($_SESSION['cart'])) {
+            $cart = $_SESSION['cart'];
+        }
 
+        else {
+            $cart = array();
+        }
+        
         foreach($cart as $id => $qt) {
             $productInfo = ProductHandler::getProductById($id);
 
             $array[] = array(
                 'id' => $id,
+                'name' => $productInfo->name,
                 'qt' => $qt,
                 'folder' => $productInfo->path,
                 'image' => $productInfo->mainI,

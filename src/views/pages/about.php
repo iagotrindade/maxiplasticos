@@ -1,4 +1,4 @@
-<?php $render ('header', ['categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol]);?>  
+<?php $render ('header', ['categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol, 'activeMenu' => 'about']);?>  
 
 <section class="section-about" style = "margin-top: 40px;">
     <div class="section-about-left" style = "margin-right: 40px;">

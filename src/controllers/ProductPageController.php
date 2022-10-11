@@ -23,7 +23,7 @@ class ProductPageController extends Controller {
         $products = ProductHandler::getRelatedProducts($product->category);
 
         if(!empty($product)) {
-            $this->render('product', [
+            $this->render('product', [ 
                 'product' => $product,
                 'products' =>$products,
                 'images' => $images,

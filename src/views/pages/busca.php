@@ -1,4 +1,4 @@
-<?php $render ('header', ['products' => $products, 'categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol]); ?>
+<?php $render ('header', ['products' => $products, 'categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol, 'activeMenu' => 'search']); ?>
 
 <section>
     <div class="products-area">

@@ -1,8 +1,66 @@
-<?php $render ('header', ['products' => $products, 'recentProducts' => $recentProducts, 'categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol]);?>  
+<?php $render ('header', ['products' => $products, 'recentProducts' => $recentProducts, 'categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol, 'activeMenu' => 'home']);?>  
         <section>
             <div class="banner-section-area">
-                <img src="<?=$base?>/assets/images/banners/banner-teste.png">
+                <div class="slider">
+                    <div class="slider--controls">
+                        <div class="slider--control" onclick="goPrev()">
+                            <i class='bx bx-chevron-left' ></i>
+                        </div>
+                        <div class="slider--control" onclick="goNext()">
+                            <i class='bx bx-chevron-right' ></i>
+                        </div>
+                    </div>
+                    <div class="slider--width">
+                        <div class="slider--item" style="background-image: url('<?=$base;?>/assets/images/banners/banner-teste.png');">
+                        </div>
+                        <div class="slider--item" style="background-image: url('<?=$base;?>/assets/images/banners/banner-teste.png');">
+                            
+                        </div>
+                        <div class="slider--item" style="background-image: url('<?=$base;?>/assets/images/banners/banner-teste.png');">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            <script>
+                let totalSlides = document.querySelectorAll('.slider--item').length;
+                let currentSlide = 0;
+
+                let sliderWidth = document.querySelector('.slider').clientWidth;
+
+                document.querySelector('.slider--width').style.width = 
+                    `${sliderWidth * totalSlides}px`;
+
+                document.querySelector('.slider--controls').style.width = 
+                    `${sliderWidth}px`;
+                document.querySelector('.slider--controls').style.height = 
+                    `${document.querySelector('.slider').clientHeight}px`;
+
+                function goPrev() {
+                    currentSlide--;
+                    if(currentSlide < 0) {
+                        currentSlide = totalSlides - 1;
+                    }
+                    updateMargin();
+                }
+                function goNext() {
+                    currentSlide++;
+                    if(currentSlide > (totalSlides-1)) {
+                        currentSlide = 0;
+                    }
+                    updateMargin();
+                }
+
+                function updateMargin() {
+                    let sliderItemWidth = document.querySelector('.slider--item').clientWidth;
+                    let newMargin = (currentSlide * sliderItemWidth);
+                    document.querySelector('.slider--width').style.marginLeft = 
+                        `-${newMargin}px`;
+                }
+
+                setInterval(goNext, 5000);
+            </script>
         </section>
 
         <section>
@@ -202,7 +260,7 @@
         </section>
             <!-- Swiper JS -->
             <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-        
+
             <!-- Initialize Swiper and Mouseover -->
             <script>
                 var width = window. screen. width;

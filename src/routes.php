@@ -15,7 +15,13 @@ $router->get('/cart', 'CartController@index');
 
 $router->post('/addToCart', 'CartController@addProduct');
 
+$router->post('/updateCart', 'CartController@updateCart');
+
+$router->get('/delCartItem/{id}', 'CartController@delItem');
+
 $router->get('/clearCart', 'CartController@clearCart');
+
+$router->post('/budgetMail', 'CartController@sendBudget');
 
 
 $router->get('/about', 'AboutController@aboutP');

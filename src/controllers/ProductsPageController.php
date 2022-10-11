@@ -26,6 +26,7 @@ class ProductsPageController extends Controller {
                 $_SESSION['flash'] = 'Exbindo os produtos mais recentes';
 
                 $this->render('products_page', [
+                    'id' => $id['id'],
                     'products' => $products,
                     'categories' => $categories,
                     'categorieFab' => $categorieFab,
@@ -42,6 +43,7 @@ class ProductsPageController extends Controller {
                 $_SESSION['flash'] = 'Exbindo produtos da categoria "'.$categorie->name.'"';
 
                 $this->render('products_page', [
+                    'id' => $id['id'],
                     'products' => $products,
                     'categories' => $categories,
                     'categorieFab' => $categorieFab,

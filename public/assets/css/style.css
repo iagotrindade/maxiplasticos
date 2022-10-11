@@ -460,9 +460,13 @@ label p {
     list-style: none;
 }
 
-.header-social-item a svg {
-    width: 18px;
-    height: 18px;
+.header-social-item a {
+    text-decoration: none;
+    color: #000;
+}
+
+.header-social-item a i {
+    font-size: 18px;
 }
 
 .mobile-menu {
@@ -557,6 +561,20 @@ label p {
                 background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
                 opacity 0.55s ease;
   }
+
+.mobile-header-social-list {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    list-style: none;
+}
+
+.mobile-header-social-item a i {
+    font-size: 25px;
+    color: #fff;
+    margin-right: 15px;
+}
+
   
 #menuToggle span:first-child {
     transform-origin: 0% 0%;
@@ -740,9 +758,52 @@ label p {
     width: 100%;
 }
 
-.banner-section-area img {
-    width: 100%;
-    height: 550px;
+.slider {
+    width: 99.1vw;
+    height: 800px;
+    overflow: hidden;
+}
+
+.slider--width {
+    height: 100%;
+    display: flex;
+    transition: all ease 0.3s;
+}
+
+.slider--item {
+    width: 100vw;
+    height: inherit;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    text-shadow: 0px 1px 1px #333;
+    font-size: 50px;
+}
+.slider--controls {
+    position: absolute;
+    z-index: 99;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.slider--control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 0 20px;
+}
+
+.slider--control i {
+    font-size: 80px;
+    color: #000;
 }
 
 .section-categories-area-tittle {
@@ -1582,10 +1643,20 @@ label p {
     cursor: pointer;
 }
 
+.qtd-cart-buttons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .qtd-cart-buttons input {
     font-size: 12px;
     margin: 5px;
     border: none;
+    background-color: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
 }
 
 .section-del-button {
@@ -1607,9 +1678,7 @@ label p {
     cursor: pointer;
     padding-bottom: 2px;
     font-size: 10px;
-}
-
-.cart-del-button p {
+    text-decoration: none;
     text-align: center;
 }
 
@@ -1643,9 +1712,10 @@ label p {
     background-color: #fff;
     padding: 6px 20px;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.more-products:hover {
+.more-products:hover, .update-cart:hover {
     color: #fff;
     background-color: #f30000;
 }
@@ -2589,6 +2659,10 @@ td {
         display: flex;
     }
 
+    .section-header-slogan {
+        display: none;
+    }
+
     .section-categories-groups {
         flex-direction: column;
     }
@@ -2682,6 +2756,22 @@ td {
         margin-bottom: 20px;
     }
 
+    .action-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .update-cart {
+        margin-top: 20px;
+        text-align: center;
+        width: inherit;
+    }
+
+    .more-products {
+        width: inherit;
+        text-align: center;
+    }
+
     .section-cart-area-right form .input-name, .section-cart-area-right form .input-cnpj, .section-cart-area-right form .input-email, .section-cart-area-right form .input-phone, .form-double-info label, .section-cart-area-right form textarea {
         width: 100%;
     }
@@ -2696,28 +2786,6 @@ td {
 }
 
 @media (max-width: 800px) {
-
-    .section-header-slogan {
-        grid-template-areas: 
-            "area2"
-            "area1";
-            justify-content: center;
-    }
-
-    .section-header-slogan-text p {
-        font-size: 12px;
-    }
-
-    .header-social-list {
-        width: auto;
-        justify-content: space-around;
-        margin-top: 10px;
-    }
-
-    .section-header-slogan-text p {
-        text-align: center;
-    }
-
     .section-catalog-img img {
         width: 100vw;
     }
@@ -2817,6 +2885,10 @@ td {
 }   
 
 @media (max-width: 545px) {
+    .cart-desc-text {
+        min-width: auto;
+    }
+
     .section-categories-area-tittle {
         margin-bottom: 20px;
     }

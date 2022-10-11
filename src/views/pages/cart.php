@@ -1,11 +1,22 @@
-<?php $render ('header', ['categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol, 'cartProducts' => $cartProducts]); ?>
+<?php $render ('header', ['categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol, 'cartProducts' => $cartProducts, 'activeMenu' => 'budget']); ?>
 
-<section>
-
+<section><?php if(!empty($_SESSION['flash'])): ?>
+            <div class="warning">
+                <p style = "margin-top: 10px; text-align: center;"><?php echo ($_SESSION['flash']);  $_SESSION['flash'] = '';?></p>
+            </div>
+        <?php endif; ?>
     <div class = "section-cart-area">
+        
         <div class = "section-cart-area-left">
             <h3>LISTA DE PRODUTOS</h3> 
             <div class ="section-cart-products">
+
+            <?php
+                if(empty($cartProducts)) {
+                    echo ('Ops, você não escolheu nenhum produto :(');
+                    exit;
+                }
+            ?>
                 <?php foreach($cartProducts as $product): ?>
                     <div class = "section-cart-product">
                         <p class = "cart-desc-tittle">Descrição</p>
@@ -23,48 +34,49 @@
                         <p class = "cart-desc-text"><?=$product['description']?></p>
 
                         <div class = "qtd-cart-buttons">
-                            <i class='bx bx-chevron-up cart-qt-more' data-action='increase' onclick="process_geral(1, this)"></i>
-                            <input class = "add-to-cart-qt" type = "text" name="qt" value ="<?=$product['qt']?>" id="input"></input>
-                            <i class='bx bx-chevron-down cart-qt-less' data-action='decrease' onclick="process_geral(-1, this)"></i>
+                            
+                            <form method = "POST" action = "<?=$base?>/updateCart">
+                                <input type="hidden" name="id_product" value="<?php echo $product['id']; ?>">
+                                <input type="hidden" name="qt_product" value="<?php echo $product['qt']; ?>">
+
+                                <input type="submit" name="-" value="-">
+                                <?php echo $product['qt']; ?>
+                                <input type="submit" name="+" value="+">
+                            </form>
                         </div>
                         
                         <div class = "section-del-button">
-                            <p class = "cart-del-button">x</p>
+                            <a href = "<?=$base?>/delCartItem/<?=$product['id'];?>" class = "cart-del-button" onclick='return confirmDel("Tem certeza que deseja remover esse item do seu orçamento?")'>x</a>
                         </div>
                     </div>
 
                 <?php endforeach; ?>
             </div>
             <div class ="botom-button">
-                <a class = "clear-list" href="<?=$base?>/clearCart" onclick='return confirmDel("Tem certeza que deseja esvaziar seu carrinho?")'>Limpar Lista</a><br>
+                <a class = "clear-list" href="<?=$base?>/clearCart" onclick='return confirmDel("Tem certeza que deseja esvaziar seu orçamento?")'>Limpar Lista</a><br>
+                
                 <a class = "more-products" href = "<?=$base?>">ESCOLHER MAIS PRODUTOS</a>
             </div>
         </div>
 
         <div class = "section-cart-area-right">
             <h3>SOLICITE UM ORÇAMENTO</h3>
-
-            <?php if(!empty($_SESSION['flash'])): ?>
-                <div class="warning">
-                    <p style = "margin-top: 10px; text-align: left;"><?php echo ($_SESSION['flash']);  $_SESSION['flash'] = '';?></p>
-                </div>
-            <?php endif; ?>
  
-            <form method = "POST" action = "contact_email" style="margin:0;">
+            <form method = "POST" action = "<?=$base;?>/budgetMail" style="margin:0;">
                 <label>
                     <p>NOME</p>
-                    <input class = "input-name" type="text" name="name">
+                    <input class = "input-name" type="text" name="name" required>
                 </label>
 
                 <div class = "form-double-info">
                     <label>
                         <p>E-MAIL</p>
-                        <input class = "input-email" type="text" name="email">
+                        <input class = "input-email" type="text" name="email" required>
                     </label>
 
                     <label>
                         <p>TELEFONE</p>
-                        <input class = "input-phone" type="text" name="phone">
+                        <input class = "input-phone" type="text" name="phone" required>
                     </label>
                 </div>
 
@@ -85,19 +97,6 @@
         </div>
     </div>
 </section>
-
-<script>
-    function process_geral(quant, element){
-        var classValue = parseInt(element.parentElement.querySelector('.add-to-cart-qt').value);
-        classValue+=quant;
-        //console.log(classValue); 
-        if(classValue < 1){
-            element.parentElement.querySelector("input.add-to-cart-qt").value = 1;
-            }else{ 
-        element.parentElement.querySelector("input.add-to-cart-qt").value = classValue;    
-        }
-    };  
-</script>
 
 <script src="<?=$base;?>/assets/js/vanilla.js"></script>
 <?php $render('footer', [ 'categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol])?>
