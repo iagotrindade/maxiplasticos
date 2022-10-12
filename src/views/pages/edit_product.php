@@ -27,14 +27,26 @@
                     <textarea type="text" name="desc"><?=$product->desc?></textarea>
                 </label> 
 
+                <?php 
+                echo(ucfirst($product->category)); ?>
                 <div class = "category-area">
                     <h4>Categorias de Produto</h4>
                     <div class = "category-list">
                         <fieldset>
                             <?php foreach($categories as $categorie):?>
                                 <div>
-                                    <input type="checkbox" name="category[]" value = "<?=$categorie->name?>" <?php if($product->category === $categorie->name) {echo("checked");}?>>
+                                    <input type="checkbox" name="category[]" value = "<?=$categorie->name?>" 
+                                    <?php   
+                                        $verify = strpos($product->category, $categorie->name);
+
+                                        if($verify !== false) {
+                                            echo("checked");
+                                        }
+                                              
+                                    ?>>
                                     <label for="category"><?=$categorie->name?></label>
+
+                                   
                                 </div>
                             <?php endforeach ?>
                         </fieldset>
@@ -97,6 +109,7 @@
                                         </div>"
                                     );
                                 }
+
                                 echo(
                                     "<div class = 'section-sec-photos'>
                                         <img src = '".$base.'/'.$img->path.'/'.$img->img."'>

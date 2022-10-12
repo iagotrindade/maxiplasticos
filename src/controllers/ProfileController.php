@@ -24,7 +24,7 @@ class ProfileController extends Controller {
         ]);
     }
     
-    public function updateAction() {
+    public function updateAction () {
         $name = filter_input(INPUT_POST, 'name');
         $phone = filter_input(INPUT_POST, 'phone');
         $ramal = filter_input(INPUT_POST, 'ramal');
@@ -38,13 +38,15 @@ class ProfileController extends Controller {
 
                 if(in_array($newAvatar['type'], ['image/jpeg', 'image/jpg', 'image/png'])) {
                     $avatarName = $this->cutImage($newAvatar, 110, 110, 'assets/images/avatars');
+
+                    unlink('assets/images/avatars/'.$this->loggedUser->img);
                 }
             }
                 
-            else {
+            elseif($_FILES['avatar']['tmp_name'] == '') {
                 $avatarName = $this->loggedUser->img;
             }
-            
+ 
             $status = ProfileHandler::updateUser($this->loggedUser->id, $name, $avatarName, $phone, $ramal, $email, $password);
             
             if($status) {

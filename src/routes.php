@@ -5,7 +5,7 @@ $router = new Router();
 
 $router->get('/', 'HomeController@index');
 
-$router->get('/procurar', 'SearchController@site');
+$router->get('/procurar', 'SiteSearchController@site');
 
 $router->get('/product/{id}', 'ProductPageController@productPage');
 
@@ -22,6 +22,8 @@ $router->get('/delCartItem/{id}', 'CartController@delItem');
 $router->get('/clearCart', 'CartController@clearCart');
 
 $router->post('/budgetMail', 'CartController@sendBudget');
+
+$router->get('/thanks', 'CartController@thanks');
 
 
 $router->get('/about', 'AboutController@aboutP');

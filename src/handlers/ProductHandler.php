@@ -30,22 +30,6 @@ class ProductHandler {
         return $id;
     }
 
-    public static function addMainImage($id) {
-        $images = ImageHandler::getImages($id);
-
-        if(!empty($images)) {
-            $mainImage = $images[0]->img;
-        }
-
-        else {
-            $mainImage = 'default_product_image.jpeg';
-        }
-
-        Product::update()
-            ->set('main_image', $mainImage)
-            ->where('id', $id)
-        ->execute();
-    }
 
     public static function editProduct($id, $name, $desc, $category, $code, $color, $format, $amount, $composition, $details, $path, $date) {
         if($name && $desc && $category && $code && $color && $format && $amount && $composition && $details && $path && $date) {
@@ -56,6 +40,7 @@ class ProductHandler {
                 ->set('category', $category)
                 ->set('color', $color)
                 ->set('format', $format)
+                ->set('amount', $amount)
                 ->set('composition', $composition)
                 ->set('details', $details)
                 ->set('folder_path', $path)
@@ -64,10 +49,6 @@ class ProductHandler {
             ->execute();
 
         }
-
-        $id = Product::select()->last();
-
-        $id = $id['id'];
 
         return $id;
     }

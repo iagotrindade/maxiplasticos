@@ -16,6 +16,7 @@
                         <div class = "profile-form-image">
                             <div class = "profile-form-image-circle">
                                 <input type = "hidden" name = "id" value = "<?=$user->id?>"/>
+                                <input type = "hidden" name = "user-image" value = "<?=$user->img?>"/>
                                 <input type="file" name="avatar" class = "input-file">
                                 <img src = "<?=$base;?>/assets/images/avatars/<?=$user->img?>"/>
                             </div>     

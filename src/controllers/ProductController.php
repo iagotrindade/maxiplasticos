@@ -94,7 +94,7 @@ class ProductController extends Controller {
                 }   
             }
 
-            $productImages = ProductHandler::addMainImage($id);
+            $productImages = ImageHandler::addMainImage($id);
 
             $_SESSION['flash'] = 'Produto adicionado com sucesso!';
 
@@ -150,13 +150,13 @@ class ProductController extends Controller {
         if (isset($_POST['category'])) {
             $category = $_POST['category'];
 
-            $category = implode(",",$category);
+            $category = implode(", ",$category);
         }
 
         if($id && $name && $desc && $category && $code && $color && $format && $amount && $composition && $details) {
             //Update das informações estáticas
             
-            $productId = ProductHandler::editProduct(
+            $productId = ProductHandler::editProduct (
                 $id, $name, $desc,
                 $category, $code,
                 $color, $format,
@@ -180,8 +180,6 @@ class ProductController extends Controller {
                     ImageHandler::updateImages($productId, $c_images[$i], $path);
                 }
             }
-
-            $productImages = ProductHandler::addMainImage($id);
             
             //Tratamento e update das novas imagens
                      
@@ -202,6 +200,8 @@ class ProductController extends Controller {
                     ImageHandler::addImages($productId, $secImgName, $path);
                 }   
             }
+
+            ImageHandler::addMainImage($id);
 
             $_SESSION['flash'] = 'Produto atualizado com sucesso!';
 

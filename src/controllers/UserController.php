@@ -107,6 +107,7 @@ class UserController extends Controller {
     public function editAction () {
         $id = filter_input(INPUT_POST, 'id');
         $name = filter_input(INPUT_POST, 'name');
+        $userImg = filter_input(INPUT_POST, 'user-image');
         $phone = filter_input(INPUT_POST, 'phone');
         $ramal = filter_input(INPUT_POST, 'ramal');
         $email = filter_input(INPUT_POST, 'email');
@@ -120,6 +121,8 @@ class UserController extends Controller {
 
                 if(in_array($newAvatar['type'], ['image/jpeg', 'image/jpg', 'image/png'])) {
                     $avatarName = $this->cutImage($newAvatar, 110, 110, 'assets/images/avatars');
+
+                    unlink('assets/images/avatars/'.$userImg);
                 }
 
                 else {
@@ -130,8 +133,8 @@ class UserController extends Controller {
                 }
             }
 
-            else {
-                $avatarName = 'default_avatar.png';
+            elseif($_FILES['avatar']['tmp_name'] == '') {
+                $avatarName = $userImg;
             }
 
             if(LoginHandler::emailExists($email) === true) {

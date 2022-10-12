@@ -9,7 +9,7 @@
         
         <div class = "section-cart-area-left">
             <h3>LISTA DE PRODUTOS</h3> 
-            <div class ="section-cart-products">
+            <div class ="section-cart-products" <?php if(empty($_SESSION['cart'])) { echo("style = 'height: 80px;'");}?>>
 
             <?php
                 if(empty($cartProducts)) {
@@ -81,8 +81,8 @@
                 </div>
 
                 <label>
-                    <p>CNPJ</p>
-                    <input  class = "input-cnpj" type="text" name="cnpj">
+                    <p>CNPJ/CPF</p>
+                    <input  class = "input-cnpj" type="text" name="cnpj" required>
                 </label>
 
                 <label>
@@ -97,6 +97,22 @@
         </div>
     </div>
 </section>
+
+<script src="https://unpkg.com/imask"></script>
+<script>
+    var maskCpfOuCnpj = IMask(document.querySelector('.input-cnpj'), {
+		mask:[
+			{
+				mask: '000.000.000-00',
+				maxLength: 11
+			},
+			{
+				mask: '00.000.000/0000-00'
+			}
+		]
+	});
+</script>
+
 
 <script src="<?=$base;?>/assets/js/vanilla.js"></script>
 <?php $render('footer', [ 'categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol])?>
