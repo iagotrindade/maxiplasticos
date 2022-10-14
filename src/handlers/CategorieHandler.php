@@ -51,15 +51,29 @@ class CategorieHandler {
 
     public static function getCategorieByName($name) {
         if($name) {
+            if(strpos($name, ',') == false) {
+                $data = Categorie::select()->where('name', $name)->one();
 
-            $data = Categorie::select()->where('name', $name)->one  ();
+                $categorie = new Categorie();
+                $categorie->id = ($data['id']);
+                $categorie->name = ($data['name']);
+                $categorie->desc = ($data['description']);
+                
+                return $categorie;
+            }
 
-            $categorie = new Categorie();
-            $categorie->id = ($data['id']);
-            $categorie->name =($data['name']);
-            $categorie->desc =($data['description']);
-  
-            return $categorie;
+            else {
+                $name = explode(',', $name);
+
+                $data = Categorie::select()->where('name', $name[0])->one();
+
+                $categorie = new Categorie();
+                $categorie->id = ($data['id']);
+                $categorie->name = ($data['name']);
+                $categorie->desc = ($data['description']);
+                
+                return $categorie;
+            }
         }
         
         else {

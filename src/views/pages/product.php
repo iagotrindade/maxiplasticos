@@ -103,7 +103,7 @@
                         </tr>
                         
                         <tr style="margin: 0;">
-                            <th>Categoria:</th>
+                            <th>Categoria(as):</th>
                             <td><?=$product->category?></td>
                         </tr>
 

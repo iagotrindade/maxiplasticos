@@ -118,7 +118,12 @@ class CartController extends Controller {
             CartHandler::sendClientEmail($name, $email, $phone, $cnpj, $msg);
             CartHandler::sendBudget($name, $email, $phone, $cnpj, $msg);
 
-            $this->redirect('/thanks');
+            $status = CartHandler::registerBudget($name, $email, $phone, $cnpj);
+
+            if ($status) {
+                $this->redirect('/thanks');
+            }
+            
         }
 
         else {
@@ -129,6 +134,11 @@ class CartController extends Controller {
     }
 
     public function thanks() {
+
+        if (isset($_SESSION['cart']) || !empty($_SESSION['cart'])) {
+            $this->redirect('home');
+        }
+        
         $categorieFab = CategorieHandler::getCategorieByName('Fabricação');
         $categorieEsc = CategorieHandler::getCategorieByName('Escritório');
         $categorieEscol = CategorieHandler::getCategorieByName('Escolar');

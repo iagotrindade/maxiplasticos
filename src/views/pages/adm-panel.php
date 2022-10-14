@@ -59,7 +59,7 @@
                 </div>
 
                 <div class = "home-info-area-graph">
-                    ...
+                    
                 </div>
             </div>
         </section>

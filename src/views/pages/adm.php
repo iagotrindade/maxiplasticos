@@ -32,12 +32,12 @@
                             <form class="login-form" method="POST" action="<?=$base;?>/login">
                                 <label>
                                     <p>E-MAIL</p>
-                                    <input type="text" name="email">
+                                    <input type="text" name="email"  autocomplete="username">
                                 </label>
                                 <div class = "password-hold">
                                     <label>
                                         <p>SENHA</p>
-                                        <input class = "password" type="password" name="password"> 
+                                        <input class = "password" type="password" name="password" autocomplete="new-password"> 
                                     </label>
                                     <i class='bx bx-show show-pass-icon'></i>
                                     <i class='hide-pass-icon bx bx-hide' style = "display: none;"></i>

@@ -17,7 +17,7 @@ class ProductPageController extends Controller {
         $categorieEscol = CategorieHandler::getCategorieByName('Escolar');
 
         $categorie = CategorieHandler::getCategorieByName($product->category);
-
+        
         $images = ImageHandler::getImages($id);
 
         $products = ProductHandler::getRelatedProducts($product->category);

@@ -351,6 +351,28 @@ label p {
     grid-area: area4;
 }
 
+.home-info-area-graph {
+    height: 480px;
+    width: 60vw;
+    border-radius: 5px;
+    background-color: #000;
+    margin-top: 20px;
+    padding: 10px;
+    color: #fff;
+    
+}
+
+.home-info-area-graph h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.home-info-area-graph ul li {
+    margin-bottom: 5px;
+}
+
 .header-adm-panel-logo {
     display: flex;
     margin: 0;
@@ -2945,12 +2967,7 @@ td {
     .product-box {
         width: 95vw ;
     }
-    .login-modal-area {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    
 
     .products-carrousell-tittle {
         margin: 0;
@@ -2981,6 +2998,13 @@ td {
     h1 {
         font-size: 16px;
     }
+
+    .thanks-area-modal {
+        width: 95vw;
+
+    }
+
+    
 }
 
 @media (max-width: 350px) {
@@ -2993,5 +3017,11 @@ td {
         width: 290px;
     }
 
-    
+    .thanks-area-modal h3 {
+        font-size: 14px;
+    }
+
+    .thanks-area-modal p {
+        font-size: 12px;
+    }
 }

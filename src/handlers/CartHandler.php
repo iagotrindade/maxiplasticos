@@ -1,6 +1,7 @@
 <?php
 namespace src\handlers;
 use \src\handlers\ProductHandler;
+use \src\models\Budget;
 
 class CartHandler {
     public static function getCartProducts() {
@@ -338,5 +339,25 @@ class CartHandler {
             mail($para, $assunto, $corpo, $headers);
 
             unset($_SESSION['cart']);
+    }
+
+    public static function registerBudget($name, $email, $phone, $cnpj) {
+        if($name && $email && $phone && $cnpj) {
+
+            Budget::insert([
+                'client_name' => $name,
+                'client_email' => $email,
+                'client_phone' => $phone,
+                'client_cnpj' => $cnpj
+            ])->execute();
+
+            return true;
+        }
+        
+        else {
+            return false;
+        }
+
+
     }
 }
