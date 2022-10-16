@@ -16,6 +16,7 @@
 
             gtag('config', 'G-C6LD7WMPE7');
         </script>
+
         <title>Maxíplasticos</title>
     </head>
     
@@ -83,7 +84,7 @@
                             </li>
                             
                             <li class="mobile-header-social-item">
-                                <a href="#">
+                                <a href="https://www.instagram.com/maxi.plasticos" target = _blank>
                                     <i class='bx bxl-instagram' ></i>
                                 </a>
                             </li>
@@ -114,7 +115,7 @@
                         </li>
                         
                         <li class="header-social-item">
-                            <a href="#">
+                            <a href="https://www.instagram.com/maxi.plasticos" target = _blank>
                                 <i class='bx bxl-instagram-alt bx-flip-horizontal' ></i>
                             </a>
                         </li>

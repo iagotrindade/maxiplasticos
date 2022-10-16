@@ -1,65 +1,65 @@
 <?php $render ('header', ['products' => $products, 'recentProducts' => $recentProducts, 'categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol, 'activeMenu' => 'home']);?>  
         <section>
             <div class="banner-section-area">
-                <div class="slider">
-                    <div class="slider--controls">
-                        <div class="slider--control" onclick="goPrev()">
-                            <i class='bx bx-chevron-left' ></i>
-                        </div>
-                        <div class="slider--control" onclick="goNext()">
-                            <i class='bx bx-chevron-right' ></i>
-                        </div>
+                 <!-- Slideshow container -->
+                <div class="slideshow-container fade">
+
+                    <!-- Full images with numbers and message Info -->
+                    <div class="Containers fade">
+                        <img src="<?=$base?>/assets/images/banners/banner-top1.png" style="width:100%">
                     </div>
-                    <div class="slider--width">
-                        <div class="slider--item" style="background-image: url('<?=$base;?>/assets/images/banners/banner-teste.png');">
-                        </div>
-                        <div class="slider--item" style="background-image: url('<?=$base;?>/assets/images/banners/banner-teste.png');">
-                            
-                        </div>
-                        <div class="slider--item" style="background-image: url('<?=$base;?>/assets/images/banners/banner-teste.png');">
-                            
-                        </div>
+
+                    <div class="Containers fade">
+                        <img src="<?=$base?>/assets/images/banners/banner-teste.png" style="width:100%">
                     </div>
+
+                    <!-- Back and forward buttons -->
+                    <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="forward" onclick="plusSlides(1)">&#10095;</a>
                 </div>
+                <br>
+
+                <!-- The circles/dots -->
+                <div style="text-align:center">
+                    <span class="dots" onclick="currentSlide(1)"></span>
+                    <span class="dots" onclick="currentSlide(2)"></span>
+
+                </div> 
             </div>
             
             <script>
-                let totalSlides = document.querySelectorAll('.slider--item').length;
-                let currentSlide = 0;
+                var slidePosition = 1;
+                SlideShow(slidePosition);
 
-                let sliderWidth = document.querySelector('.slider').clientWidth;
-
-                document.querySelector('.slider--width').style.width = 
-                    `${sliderWidth * totalSlides}px`;
-
-                document.querySelector('.slider--controls').style.width = 
-                    `${sliderWidth}px`;
-                document.querySelector('.slider--controls').style.height = 
-                    `${document.querySelector('.slider').clientHeight}px`;
-
-                function goPrev() {
-                    currentSlide--;
-                    if(currentSlide < 0) {
-                        currentSlide = totalSlides - 1;
-                    }
-                    updateMargin();
-                }
-                function goNext() {
-                    currentSlide++;
-                    if(currentSlide > (totalSlides-1)) {
-                        currentSlide = 0;
-                    }
-                    updateMargin();
+                // forward/Back controls
+                function plusSlides(n) {
+                SlideShow(slidePosition += n);
                 }
 
-                function updateMargin() {
-                    let sliderItemWidth = document.querySelector('.slider--item').clientWidth;
-                    let newMargin = (currentSlide * sliderItemWidth);
-                    document.querySelector('.slider--width').style.marginLeft = 
-                        `-${newMargin}px`;
+                //  images controls
+                function currentSlide(n) {
+                SlideShow(slidePosition = n);
                 }
 
-                setInterval(goNext, 5000);
+                function SlideShow(n) {
+                var i;
+                var slides = document.getElementsByClassName("Containers");
+                var circles = document.getElementsByClassName("dots");
+                if (n > slides.length) {slidePosition = 1}
+                if (n < 1) {slidePosition = slides.length}
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < circles.length; i++) {
+                    circles[i].className = circles[i].className.replace(" enable", "");
+                }
+                slides[slidePosition-1].style.display = "block";
+                circles[slidePosition-1].className += " enable";
+                } 
+ 
+                setInterval(function plusSlides(n=1) {
+                    SlideShow(slidePosition += 1);
+                }, 3500);
             </script>
         </section>
 
@@ -140,7 +140,9 @@
                     <div class="catalog-tittle-underline"></div>
                 </div>
                 <div class="section-catalog-text">
-                    <P>Com mais de 300 produtos, nosso catalogo irá ajuda-lo(a) a conhecer todos nossos produtos e decidir qual se encaixa melhor para sua necessidade <font color="#f30000">faça download clicando no botão abaixo.</font></P>
+                    <P>Tenha acesso ao nosso catálogo com mais de 250 itens 
+                        selecionados para você. <font color="#f30000">faça download clicando no botão abaixo.</font>
+                    </P>
                 </div>
                 <div class="section-catalog-button">
                     <a href="<?=$base;?>/assets/files/catalogo.pdf" download="catalogo.pdf">

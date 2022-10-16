@@ -170,8 +170,8 @@ class CartHandler {
         </tbody>
         </table>";
 
-        $headers = 'From: iagost1@hotmail.com' . "\r\n" .
-                    'Reply-To: iagost1@hotmail.com' . "\r\n" .
+        $headers = 'From: contato@overship.com.br' . "\r\n" .
+                    'Reply-To: contato@overship.com.br' . "\r\n" .
                     'Content-type: text/html; charset=utf8' . "\r\n" .
                         
                     'X-Mailer: PHP/' . phpversion();
@@ -331,8 +331,8 @@ class CartHandler {
         </tbody>
         </table>";
 
-            $headers = 'From: iagost1@hotmail.com' . "\r\n" .
-                        'Reply-To: iagost1@hotmail.com' . "\r\n" .
+            $headers = 'From: contato@overship.com.br' . "\r\n" .
+                        'Reply-To: contato@overship.com.br' . "\r\n" .
                         'Content-type: text/html; charset=utf8' . "\r\n" .
                         
                         'X-Mailer: PHP/' . phpversion();

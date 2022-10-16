@@ -28,7 +28,9 @@
                             }
 
                             else {
-                                echo("<img src = ".$base."/".$product['folder']."/".$product['image'].">");
+                                echo("<a href = '".$base."/product/".$product['id']."'>
+                                        <img src = ".$base."/".$product['folder']."/".$product['image'].">
+                                    </a>");
                             }
                         ?>
                         <p class = "cart-desc-text"><?=$product['description']?></p>

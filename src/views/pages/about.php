@@ -59,79 +59,171 @@
     <div class = "section-about-partners">
         <h3>NOSSOS PARCEIROS</h3>
 
-        <div class = "section-about-partners-banner">
-            <div class = "partner-box">
-                <img src = "<?=$base?>/assets/images/products/default_product_image.jpeg">
-            </div>
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
 
-            <div class = "partner-box">
-            <img src = "<?=$base?>/assets/images/products/default_product_image.jpeg">
-            </div>
+                <div class="swiper-slide" style = "background: none; box-shadow: none;">
+                    <div class = "partner-box">
+                        <img src = "<?=$base;?>/assets/images/banners/partner1.png">
+                    </div>
+                </div>
 
-            <div class = "partner-box">
-            <img src = "<?=$base?>/assets/images/products/default_product_image.jpeg">
-            </div>
+                <div class="swiper-slide" style = "background: none; box-shadow: none;">
+                    <div class = "partner-box">
+                        <img src = "<?=$base;?>/assets/images/banners/partner2.png">
+                    </div>
+                </div>
 
-            <div class = "partner-box">
-                <img src = "<?=$base?>/assets/images/products/default_product_image.jpeg">
-            </div>
+                <div class="swiper-slide" style = "background: none; box-shadow: none;">
+                    <div class = "partner-box">
+                        <img src = "<?=$base;?>/assets/images/banners/partner3.png">
+                    </div>
+                </div>
 
-            <div class = "partner-box">
-                <img src = "<?=$base?>/assets/images/products/default_product_image.jpeg">
-            </div>
+                <div class="swiper-slide" style = "background: none; box-shadow: none;">
+                    <div class = "partner-box">
+                        <img src = "<?=$base;?>/assets/images/banners/partner4.png">
+                    </div>
+                </div>
 
-            <div class = "partner-box">
-                <img src = "<?=$base?>/assets/images/products/default_product_image.jpeg">
+                <div class="swiper-slide" style = "background: none; box-shadow: none;">
+                    <div class = "partner-box">
+                        <img src = "<?=$base;?>/assets/images/banners/partner5.png">
+                    </div>
+                </div>
+
+                <div class="swiper-slide" style = "background: none; box-shadow: none;">
+                    <div class = "partner-box">
+                        <img src = "<?=$base;?>/assets/images/banners/partner6.png">
+                    </div>
+                </div>
+
+                <div class="swiper-slide" style = "background: none; box-shadow: none;">
+                    <div class = "partner-box">
+                        <img src = "<?=$base;?>/assets/images/banners/partner7.png">
+                    </div>
+                </div>
+
+                <div class="swiper-slide" style = "background: none; box-shadow: none;">
+                    <div class = "partner-box">
+                        <img src = "<?=$base;?>/assets/images/banners/partner8.png">
+                    </div>
+                </div>
+
+                <div class="swiper-slide" style = "background: none; box-shadow: none;">
+                    <div class = "partner-box">
+                        <img src = "<?=$base;?>/assets/images/banners/partner9.png">
+                    </div>
+                </div>
+
+                <div class="swiper-slide" style = "background: none; box-shadow: none;">
+                    <div class = "partner-box">
+                        <img src = "<?=$base;?>/assets/images/banners/partner10.png">
+                    </div>
+                </div>
+
+                <div class="swiper-slide" style = "background: none; box-shadow: none;">
+                    <div class = "partner-box">
+                        <img src = "<?=$base;?>/assets/images/banners/partner11.png">
+                    </div>
+                </div>
+
+                <div class="swiper-slide" style = "background: none; box-shadow: none;">
+                    <div class = "partner-box">
+                        <img src = "<?=$base;?>/assets/images/banners/partner12.png">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+            
+    <!-- Initialize Swiper and Mouseover -->
+    <script>
+        var width = window. screen. width;
 
-<section>
-    <div class = "section-about-form">
-        <div class = "section-about-form-left">
+        if(width < 1350 && width > 800) {
+            var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            });
+        }
 
-            <h3>FALE CONOSCO</h3>
+        else if(width < 800 && width > 600) {
+            var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            slidesPerGroup: 2,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            });
+        }
 
-            <?php if(!empty($_SESSION['flash'])): ?>
-                <div class="warning">
-                    <p style = "margin-top: 10px; text-align: left;"><?php echo ($_SESSION['flash']);  $_SESSION['flash'] = '';?></p>
-                </div>
-            <?php endif; ?>
+        else if (width < 600) {
+            var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            slidesPerGroup: 1,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            });
+        }
 
-            <form method = "POST" action = "contact_email">
-                <label>
-                    <p>NOME</p>
-                    <input class = "input-name" type="text" name="name">
-                </label>
-
-                <div class = "form-double-info">
-                    <label>
-                        <p>E-MAIL</p>
-                        <input class = "input-email" type="text" name="email">
-                    </label>
-
-                    <label>
-                        <p>TELEFONE</p>
-                        <input class = "input-phone" type="text" name="phone">
-                    </label>
-                </div>
-
-                <label>
-                    <p>ASSUNTO</p>
-                    <input class = "input-cc" type="text" name="cc">
-                </label>
-
-                <label>
-                    <p>MENSAGEM</p>
-                    <textarea name = 'msg'></textarea>
-                </label>
-                
-                <button>ENVIAR</button>
-            </form>
-        </div>
-    </div>
-</section>
-
-
+        else {
+            var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 5,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            slidesPerGroup: 5,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            
+            });
+        }
+</script>
 <?php $render('footer', ['categorieFab' => $categorieFab, 'categorieEsc' => $categorieEsc, 'categorieEscol' => $categorieEscol])?>

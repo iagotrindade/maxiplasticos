@@ -67,7 +67,7 @@
 
                     <div class="product-info">
                         <p>COD - <?=$product->code?></p>
-                        <a href="">VER ORÇAMENTO</a>
+                        <a href="<?=$base;?>/cart">VER ORÇAMENTO</a>
                     </div>
                 </div>
             </div>
