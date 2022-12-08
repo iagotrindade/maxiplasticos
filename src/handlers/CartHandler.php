@@ -17,7 +17,12 @@ class CartHandler {
         
         foreach($cart as $id => $qt) {
             $productInfo = ProductHandler::getProductById($id);
-
+            
+            if(strlen($productInfo->desc) > 160) {
+                $productInfo->desc = substr( $productInfo->desc, 0, 100)."...";
+                                            
+            }
+                                        
             $array[] = array(
                 'id' => $id,
                 'name' => $productInfo->name,
@@ -41,11 +46,12 @@ class CartHandler {
         $corpoProdutos = '';
 
             foreach($cartProducts as $item) {
-                $corpoProdutos .= "<tr class='x_order_item' style = 'width: 600px'>
-                <td class='x_td' style='color:#737373; border:1px solid #e4e4e4; padding:12px; text-align:center; vertical-align:middle; font-family: 'Montserrat', sans-serif;'>".$item['name']."</td>
+                $corpoProdutos .= "<tr class='x_order_item' style = 'width: 100%'>
+                <td class='x_td' style='color:#737373; border:1px solid #e4e4e4; padding:12px; text-align:center; vertical-align:middle; font-family: 'Montserrat', sans-serif; 'width: 100%''>".$item['name']."
                 </td>
                 
-                <td class='x_td' style='color:#737373; border:1px solid #e4e4e4; padding:12px; text-align:center; vertical-align:middle; font-family: 'Montserrat', sans-serif;'>".$item['qt']."</td>
+                <td class='x_td' style='color:#737373; border:1px solid #e4e4e4; padding:12px; text-align:center; vertical-align:middle; font-family: 'Montserrat', sans-serif; 'width: 100%''>".$item['qt']."
+                </td>
             </tr>";}
 
             
@@ -93,12 +99,12 @@ class CartHandler {
                                                                             <p style='margin:0 0 16px'>Olá ".$name.", seu orçamento foi enviado ao setor responsável e em breve entraremos em contato com você via E-mail ou Telefone, abaixo estão listados os itens selecionados por você.
                                                                             </p>
         
-                                                                            <h2 style='color:#f30000; display:block; font-family: 'Montserrat', sans-serif; font-size:18px; font-weight:bold; line-height:130%; margin:0 0 18px; text-align:left'>
+                                                                            <p style='color:#f30000; display:block; font-family: 'Montserrat', sans-serif; font-size:21px; font-weight:bold; line-height:130%; margin:0 0 18px; text-align:left'>
                                                                                 Orçamento solicitado em ".date("d/m/Y \à\s H:i")."
-                                                                            </h2>
+                                                                            </p>
                                                                         <div style='margin-bottom:40px'>
                                                                         
-                                                                        <table class='x_td' cellspacing='0' cellpadding='6' border='1' style='color:#737373; border:1px solid #e4e4e4; vertical-align:middle; width:100%; font-family: 'Montserrat', sans-serif;'>
+                                                                        <table class='x_td' cellspacing='0' cellpadding='6' border='1' style='color:#737373; border:1px solid #e4e4e4; vertical-align:middle; width:100% !important; font-family: 'Montserrat', sans-serif;'>
                                                                             <thead>
                                                                                 <tr style = 'width: 100%';>
                                                                                     <th class='x_td' scope='col' style='color:#737373; border:1px solid #e4e4e4; vertical-align:middle; padding:12px; text-align:center'>Produto
@@ -109,7 +115,7 @@ class CartHandler {
                                                                                 </tr>
                                                                             </thead>
                                                                             
-                                                                            <tbody>
+                                                                            <tbody style = 'width: 100%'>
                                                                                 
                                                                                 ".$corpoProdutos."
                                                                                
@@ -155,7 +161,7 @@ class CartHandler {
                                 <tbody>
                                     <tr>
                                         <td colspan='2' valign='middle' id='x_credit' style='border-radius:6px; border:0; color:#969696; font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif; font-size:12px; line-height:150%; text-align:center; padding:24px 0'>
-                                            <p style='margin:0 0 16px'>Plásticos Líder<br aria-hidden='true'>Rua dos Pampas, 700 – Bairro Prado – Cep 30410-580 – Belo Horizonte . MG<br aria-hidden='true'>Telefone: (31) 3372-7898<br aria-hidden='true'>Email: pedidos@plasticoslider.com.br
+                                            <p style='margin:0 0 16px'>Plásticos Líder<br aria-hidden='true'>Rua dos Pampas, 700 – Bairro Prado – Cep 30410-580 – Belo Horizonte . MG<br aria-hidden='true'>Telefone: (31) 3372-7898<br aria-hidden='true'>Email: orcamento@maxiplasticos.com
                                             </p>
                                         </td>
                                     </tr>
@@ -170,8 +176,8 @@ class CartHandler {
         </tbody>
         </table>";
 
-        $headers = 'From: contato@overship.com.br' . "\r\n" .
-                    'Reply-To: contato@overship.com.br' . "\r\n" .
+        $headers = 'From: orcamento@maxiplasticos.com' . "\r\n" .
+                    'Reply-To: orcamento@maxiplasticos.com' . "\r\n" .
                     'Content-type: text/html; charset=utf8' . "\r\n" .
                         
                     'X-Mailer: PHP/' . phpversion();
@@ -179,7 +185,7 @@ class CartHandler {
     }
 
     public static function sendBudget($name, $email, $phone, $cnpj, $msg) {
-        $para  = "iagost1@hotmail.com"; 
+        $para  = "orcamento@maxiplasticos.com"; 
             $assunto  = 'Solicitação de Orçamento de '.$name.'!';
 
             $cartProducts = CartHandler::getCartProducts();
@@ -187,14 +193,15 @@ class CartHandler {
             $corpoProdutos = '';
 
             foreach($cartProducts as $item) {
-                $corpoProdutos .= "<tr class='x_order_item' style = 'width: 600px'>
-                <td class='x_td' style='color:#737373; border:1px solid #e4e4e4; padding:12px; text-align:center; vertical-align:middle; font-family: 'Montserrat', sans-serif;'>".$item['name']."</td>
+                $corpoProdutos .= "<tr class='x_order_item' style = 'width: 100%'>
+                <td class='x_td' style='color:#737373; border:1px solid #e4e4e4; padding:12px; text-align:center; vertical-align:middle; font-family: 'Montserrat', sans-serif; 'width: 100%''>".$item['name']."
                 </td>
 
-                <td class='x_td' style='color:#737373; border:1px solid #e4e4e4; padding:12px; text-align:center; vertical-align:middle; font-family: 'Montserrat', sans-serif;'>".$item['code']."</td>
+                <td class='x_td' style='color:#737373; border:1px solid #e4e4e4; padding:12px; text-align:center; vertical-align:middle; font-family: 'Montserrat', sans-serif; 'width: 100%''>".$item['code']."
                 </td>
                 
-                <td class='x_td' style='color:#737373; border:1px solid #e4e4e4; padding:12px; text-align:center; vertical-align:middle; font-family: 'Montserrat', sans-serif;'>".$item['qt']."</td>
+                <td class='x_td' style='color:#737373; border:1px solid #e4e4e4; padding:12px; text-align:center; vertical-align:middle; font-family: 'Montserrat', sans-serif; 'width: 100%''>".$item['qt']."
+                </td>
             </tr>";}
             
 
@@ -217,8 +224,8 @@ class CartHandler {
                                             <tbody>
                                                 <tr>
                                                     <td id='x_header_wrapper' style='padding:36px 48px; display:block'>
-                                                        <h1 style='font-family: 'Montserrat', sans-serif;font-size:20px; font-weight:300; line-height:150%; margin:0; text-align:left; color:#fff;'>
-                                                            <p style = 'color: #fff; font-size 16px'>Nova solicitação de orçamento!</p>
+                                                        <h1 style='font-weight:300; line-height:150%; margin:0; text-align:left;  color: #fff; font-size 16px;'>
+                                            Nova solicitação de orçamento!
                                                         </h1>
                                                     </td>
                                                 </tr>
@@ -241,12 +248,12 @@ class CartHandler {
                                                                             <p style='margin:0 0 16px'>Você recebeu uma solicitação de orçamento de ".$name." contendo os itens abaixo:
                                                                             </p>
         
-                                                                            <h2 style='color:#f30000; display:block; font-family: 'Montserrat', sans-serif; font-size:18px; font-weight:bold; line-height:130%; margin:0 0 18px; text-align:left'>
+                                                                            <p style='color:#f30000; display:block; font-family: 'Montserrat', sans-serif; font-size:18px; font-weight:bold; line-height:130%; margin:0 0 18px; text-align:left'>
                                                                                 Orçamento solicitado em ".date("d/m/Y \à\s H:i")."
-                                                                            </h2>
+                                                                            </p>
                                                                         <div style='margin-bottom:40px'>
                                                                         
-                                                                        <table class='x_td' cellspacing='0' cellpadding='6' border='1' style='color:#737373; border:1px solid #e4e4e4; vertical-align:middle; width:100%; font-family: 'Montserrat', sans-serif;'>
+                                                                        <table class='x_td' cellspacing='0' cellpadding='6' border='1' style='color:#737373; border:1px solid #e4e4e4; vertical-align:middle; width:100% !important; font-family: 'Montserrat', sans-serif;'>
                                                                             <thead>
                                                                                 <tr style = 'width: 100%';>
                                                                                     <th class='x_td' scope='col' style='color:#737373; border:1px solid #e4e4e4; vertical-align:middle; padding:12px; text-align:center'>Produto
@@ -260,7 +267,7 @@ class CartHandler {
                                                                                 </tr>
                                                                             </thead>
                                                                             
-                                                                            <tbody>
+                                                                            <tbody style='width: 100%'>
                                                                                 
                                                                                 ".$corpoProdutos."
                                                                                
@@ -316,7 +323,7 @@ class CartHandler {
                                 <tbody>
                                     <tr>
                                         <td colspan='2' valign='middle' id='x_credit' style='border-radius:6px; border:0; color:#969696; font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif; font-size:12px; line-height:150%; text-align:center; padding:24px 0'>
-                                            <p style='margin:0 0 16px'>Plásticos Líder<br aria-hidden='true'>Rua dos Pampas, 700 – Bairro Prado – Cep 30410-580 – Belo Horizonte . MG<br aria-hidden='true'>Telefone: (31) 3372-7898<br aria-hidden='true'>Email: pedidos@plasticoslider.com.br
+                                            <p style='margin:0 0 16px'>Plásticos Líder<br aria-hidden='true'>Rua dos Pampas, 700 – Bairro Prado – Cep 30410-580 – Belo Horizonte . MG<br aria-hidden='true'>Telefone: (31) 3372-7898<br aria-hidden='true'>Email: orcamento@maxiplasticos.com
                                             </p>
                                         </td>
                                     </tr>
@@ -331,8 +338,8 @@ class CartHandler {
         </tbody>
         </table>";
 
-            $headers = 'From: contato@overship.com.br' . "\r\n" .
-                        'Reply-To: contato@overship.com.br' . "\r\n" .
+            $headers = 'From: orcamento@maxiplasticos.com' . "\r\n" .
+                        'Reply-To: orcamento@maxiplasticos.com' . "\r\n" .
                         'Content-type: text/html; charset=utf8' . "\r\n" .
                         
                         'X-Mailer: PHP/' . phpversion();

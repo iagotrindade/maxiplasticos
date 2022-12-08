@@ -35,16 +35,29 @@
                         <div class = "product-box-img">
                             <?php 
                                 if($product->main_image == 'default_product_image.jpeg') {
-                                    echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg>");
+                                    echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg alt='".$product->name."'>");
                                 }
 
                                 else {
-                                    echo("<img src = ".$base."/".$product->path."/".$product->main_image.">");
+                                    echo("<img src = ".$base."/".$product->path."/".$product->main_image." alt='".$product->name."'>");
                                 }
                             ?>
                         </div>
+                        
+                        <div class="product-box-name">
+                            <?=$product->name?>
+                        </div>
                         <div class = "product-box-description">
-                            <?=$product->desc?>
+                            <?php
+                                if(strlen($product->desc) > 160) {
+                                    echo(substr($product->desc, 0, 100)."...");
+                                            
+                                }
+                                        
+                                else {
+                                    echo($product->desc);
+                                }
+                            ?>
                         </div>
                     </a>
                     <div class="budget-button">

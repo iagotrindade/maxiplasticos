@@ -249,8 +249,8 @@ class ProductController extends Controller {
         }
 
         if(!empty($o_img)) {
-            $width = 400;
-            $height = 400;
+            $width = 600;
+            $height = 600;
             $ratio = $width / $height;
 
             list($o_width, $o_height) = getimagesize($tmp_name);

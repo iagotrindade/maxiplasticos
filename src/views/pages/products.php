@@ -91,7 +91,7 @@
     
     <div class = "add-product-area-button">
         <a class = "add-product-button" href = "add_product">ADICIONAR PRODUTO</a>
-        <a class = "trash-button" href = "#">Ver lixeira</a>
+        <!--<a class = "trash-button" href = "#">Ver lixeira</a>-->
     </div>
 </section>
 

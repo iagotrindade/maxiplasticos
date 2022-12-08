@@ -70,13 +70,13 @@
                 </label> 
                 
                 <div class = "photos-area">
-                    <div class = "section-photos-area">
+                    <div class = "section-photos-area main">
                         <p>Imagem principal</p>
                         <a class = "main-define">Definir imagem principal +</a>
                         <input type="file" name="images[]" class = "input-main-photo">
                     </div>
 
-                    <div class = "section-photos-area">
+                    <div class = "section-photos-area sec">
                         <p>Imagens secundarias</p>
                         <a class = "sec-define">Definir imagens secundárias +</a>
                         <input type="file" name="images[]" multiple="multiple" class = "input-sec-photo">
@@ -85,6 +85,7 @@
 
                 <div class = "add-product-form-button">
                     <button type="submit" for = ""class = "add-product-button">ADICIONAR</button>
+                    <a href = "<?=$base;?>/products">Voltar</a>
                 </div>
             </form>
         </div>
@@ -97,9 +98,20 @@
 
     mainPhoto.addEventListener('click', function(){
         photoMainFile.click();
+
+        let element = document.querySelector('.warnning-photos-main')
+        
+        element.parentNode.removeChild(element);
     });
 
-    photoMainFile.addEventListener('change', function(){         
+    photoMainFile.addEventListener('change', () => {
+        
+        let mainPhoto = document.querySelector('.main');
+        
+        
+        
+        
+        mainPhoto.insertAdjacentHTML('beforeend','<p class = "warnning-photos-main">Arquivo carregado</p>');
     });
 
 
@@ -108,8 +120,14 @@
 
     secPhoto.addEventListener('click', function(){
         secPhotoFile.click();
+        
+        let element = document.querySelector('.warnning-photos-sec');
+        element.parentNode.removeChild(element);
     });
 
-    secPhotoFile.addEventListener('change', function(){         
+    secPhotoFile.addEventListener('change', () => {
+
+        let secPhoto = document.querySelector('.sec');
+        secPhoto.insertAdjacentHTML('beforeend','<p class = "warnning-photos-sec">Arquivos carregados</p>');
     });
 </script>   

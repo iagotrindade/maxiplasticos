@@ -130,7 +130,9 @@
                 
 
                 <div class = "add-product-form-button">
+                    <a href = "<?=$base;?>/products">Voltar</a>
                     <button type="submit" for = ""class = "add-product-button">ATUALIZAR</button>
+                    
                 </div>
             </form>
         </div>

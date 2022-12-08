@@ -2,13 +2,13 @@
 namespace src;
 
 class Config {
-    const BASE_DIR = '/maxiplasticos/public';
+    const BASE_DIR = '';
 
     const DB_DRIVER = 'mysql';
-    const DB_HOST = 'localhost';
-    const DB_DATABASE = 'maxiplasticos';
-    CONST DB_USER = 'root';
-    const DB_PASS = '';
+    const DB_HOST = 'maxiplasticos.com';
+    const DB_DATABASE = 'maxiplas_maxiplasticos';
+    CONST DB_USER = 'maxiplas_dev';
+    const DB_PASS = '180707DBMAXI';
 
     const ERROR_CONTROLLER = 'ErrorController';
     const DEFAULT_ACTION = 'index';

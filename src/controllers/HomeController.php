@@ -8,20 +8,21 @@ use src\handlers\CategorieHandler;
 class HomeController extends Controller {
 
     public function index() {
-        $products = ProductHandler::getProducts();
+        $fabricProducts = ProductHandler::getProductByCategory('Fabricação');
 
         $categorieFab = CategorieHandler::getCategorieByName('Fabricação');
         $categorieEsc = CategorieHandler::getCategorieByName('Escritório');
         $categorieEscol = CategorieHandler::getCategorieByName('Escolar');
 
         $recentProducts = ProductHandler::getRecentProducts();
-
+        
         $this->render('home', [
-            'products' => $products,
+            'fabricProducts' => $fabricProducts,
             'recentProducts' => $recentProducts,
             'categorieFab' => $categorieFab,
             'categorieEsc' => $categorieEsc,
             'categorieEscol' => $categorieEscol
         ]);
+
     }
 }

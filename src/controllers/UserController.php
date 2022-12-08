@@ -165,6 +165,18 @@ class UserController extends Controller {
     }
 
     public function delete($id) {
+        
+        $user = UserHandler::getUser($id);
+        
+        if($user->id == 1 || $user->id == 2) {
+            $_SESSION['flash'] = 'Não é possível excluir este usuário!';
+    
+            $this->redirect('/users', [
+                "flash" => $_SESSION['flash']
+            ]);
+        }
+        
+        
         UserHandler::delUser($id);
         
         $_SESSION['flash'] = 'Usuário excluído com sucesso!';

@@ -16,7 +16,7 @@
                         <div class = "table-form-image-circle">
                             <label>Foto</label>
                             <input type="file" name="avatar" class = "input-file">
-                            <img class = "img-user" src = "<?=$base;?>/assets/images/avatars/default_avatar.png"/>
+                            <img class = "img-user" src = "<?=$base;?>/assets/images/avatars/default_avatar.png" id="imgPhoto"/>
                         </div>     
                     </div>
 
@@ -81,7 +81,7 @@
                                 </td>
 
                                 <td class = "td-users" style = "width: 75px">
-                                    <p>********</p>
+                                    <p>*****</p>
                                 </td>
 
                                 <td class = "td-users action-user-area" style = "width: 120px">
@@ -102,12 +102,25 @@
 <script src = "<?=$base?>/assets/js/vanilla.js"></script>
 <script type="text/javascript">
     let feedPhoto = document.querySelector('.img-user');
+    let img = document.getElementById('imgPhoto'); 
     let feedFile = document.querySelector('.input-file');
 
     feedPhoto.addEventListener('click', function(){
         feedFile.click();
+        
+        feedFile.addEventListener('change', () => {
+
+            if (feedFile.files.length <= 0) {
+                return;
+            }
+            
+            let reader = new FileReader();
+            
+            reader.onload = () => {
+                img.src = reader.result;
+            }
+            
+            reader.readAsDataURL(feedFile.files[0]);
         });
-    feedFile.addEventListener('change', function(){
-                
     });
 </script>       

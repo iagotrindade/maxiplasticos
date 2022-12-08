@@ -3,21 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <meta name="viewport" content="width=device-width, user-scalable=1.0">
+        <meta name="description" content="Na MaxiPlaticos você encontrará tudo que precisa no que se refere a materiais plásticos, escolares e de escritório além de uma linha de fabricação própria."/>
+        <meta name="keywords" content="maxiplasticos, maxi, plasticos, fabricação, MaxiPlasticos">
+        <meta name="google-site-verification" content="mRNaEqmNW1ifWidvvHoDI895a8SIuuuumiWSFSAXUoQ"/>
+        <meta name="robots" content="index,follow">
         <link rel="stylesheet" href="<?=$base?>/assets/css/style.css">
         <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+        <link rel="shortcut icon" href="<?=$base;?>/assets/images/icons/favicon.png" type="image/x-icon" />
         <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-C6LD7WMPE7"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-C6LD7WMPE7');
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLTCMQZ5Q1"></script>
+        <script assync>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-LLTCMQZ5Q1');
         </script>
 
-        <title>Maxíplasticos</title>
+        <title>MaxiPlasticos – Atacado e distribuição de produtos de papelaria</title>
     </head>
     
     <body>
@@ -26,7 +31,7 @@
                 <div class="content">
                     <nav class = 'mobile-nav' role="navigation" onclick="verifyMenu()">
                         <div id="menuToggle">
-                            <input class="sandwiche-button" type="checkbox" />
+                            <input class="sandwiche-button" type="checkbox"/>
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -34,20 +39,20 @@
                                 <li>
                                     <div class="mobile-search-form">
                                         <form class="mobile-form-search-index" name = 'search' method = 'GET' action = '<?=$base;?>/procurar'>
-                                            
                                             <input type="text" placeholder="Buscar produto..." name = "procurando_por" required>
                                         </form>
                                     </div>
                                 </li>
 
                                 <li>
-                                    <a href="<?=$base?>/cart">
+                                    <a href="<?=$base?>/cart" aria-label="Página Inicial">
                                         <p>Orçamento</p>
                                     </a>
                                 </li>
                                 
                                 <li> 
-                                    <a href="<?=$base;?>">Home</li>
+                                    <a href="<?=$base;?>" aria-label="Página Inicial">Home</a>
+                                </li>
                                 <li>
                                     <a href="<?=$base?>/produtos/categoria/<?=$categorieFab->id?>">
                                         <p>Fabricação</p>
@@ -78,25 +83,25 @@
 
                         <ul class="mobile-header-social-list">
                             <li class="mobile-header-social-item">
-                                <a href="#">
+                                <a href="https://goo.gl/maps/k8qnZn4Wqngeoc3VA" target = '_blank'  aria-label="Venha nos conhecer!">
                                     <i class='bx bx-map'></i>                           
                                 </a>
                             </li>
                             
                             <li class="mobile-header-social-item">
-                                <a href="https://www.instagram.com/maxi.plasticos" target = _blank>
+                                <a href="https://www.instagram.com/maxi.plasticos" target = _blank  aria-label="Acesse nosso Instagram!">
                                     <i class='bx bxl-instagram' ></i>
                                 </a>
                             </li>
 
                             <li class="mobile-header-social-item">
-                                <a href="#">
+                                <a href="mailto:orcamento@maxiplasticos.com" aria-label="Nos mande um Email!">
                                     <i class='bx bx-envelope' ></i>
                                 </a>
                             </li>
 
                             <li class="mobile-header-social-item">
-                                <a href="#">
+                                <a href="tel:+555133727898" aria-label="Entre em contato pelo nosso telefone!">
                                     <i class='bx bx-phone' ></i>
                                 </a>
                             </li>
@@ -109,25 +114,25 @@
                 <div class="section-header-social">
                     <ul class="header-social-list">
                         <li class="header-social-item">
-                            <a href="#">
+                            <a href="https://goo.gl/maps/k8qnZn4Wqngeoc3VA" target = '_blank' aria-label="Venha nos conhecer!">
                                 <i class='bx bxs-map bx-flip-horizontal' ></i>                                
                             </a>
                         </li>
                         
                         <li class="header-social-item">
-                            <a href="https://www.instagram.com/maxi.plasticos" target = _blank>
+                            <a href="https://www.instagram.com/maxi.plasticos" target = _blank aria-label="Conheça nosso Instagram!">
                                 <i class='bx bxl-instagram-alt bx-flip-horizontal' ></i>
                             </a>
                         </li>
 
                         <li class="header-social-item">
-                            <a href="#">
+                            <a href="mailto:orcamento@maxiplasticos.com"  aria-label="Nos mande um Email!">
                                 <i class='bx bxs-envelope bx-flip-horizontal' ></i>
                             </a>
                         </li>
 
                         <li class="header-social-item">
-                            <a href="#">
+                            <a href="tel:+555133727898" aria-label="Entre em contato pelo nosso telefone!">
                                 <i class='bx bxs-phone' ></i>
                             </a>
                         </li>
@@ -142,8 +147,8 @@
                 <div class="section-header-menu">
                     <div class="header-menu-logo">
                         <a href="<?=$base;?>">
-                            <img src="<?=$base?>/assets/images/icons/logo-maxi.png"> 
-                            <p class="text-logo"><strong>MAXI</strong>Pásticos</p>
+                            <img src="<?=$base?>/assets/images/icons/logo-maxi.png" alt="MaxiPlasticos"> 
+                            <h1 class="text-logo">MAXIPLÁSTICOS</h1>
                         </a>
                     </div>
 

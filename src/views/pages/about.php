@@ -3,7 +3,7 @@
 <section class="section-about" style = "margin-top: 40px;">
     <div class="section-about-left" style = "margin-right: 40px;">
         <div class="section-about-img">
-            <img src="<?=$base;?>/assets/images/banners/maxi.png">
+            <img src="<?=$base;?>/assets/images/banners/maxi.png" alt="Maxiplasticos">
         </div>
     </div>
 
@@ -65,73 +65,73 @@
 
                 <div class="swiper-slide" style = "background: none; box-shadow: none;">
                     <div class = "partner-box">
-                        <img src = "<?=$base;?>/assets/images/banners/partner1.png">
+                        <img src = "<?=$base;?>/assets/images/banners/partner1.png" alt="Logotipo do Patrocinador">
                     </div>
                 </div>
 
                 <div class="swiper-slide" style = "background: none; box-shadow: none;">
                     <div class = "partner-box">
-                        <img src = "<?=$base;?>/assets/images/banners/partner2.png">
+                        <img src = "<?=$base;?>/assets/images/banners/partner2.png" alt="Logotipo do Patrocinador">
                     </div>
                 </div>
 
                 <div class="swiper-slide" style = "background: none; box-shadow: none;">
                     <div class = "partner-box">
-                        <img src = "<?=$base;?>/assets/images/banners/partner3.png">
+                        <img src = "<?=$base;?>/assets/images/banners/partner3.png" alt="Logotipo do Patrocinador">
                     </div>
                 </div>
 
                 <div class="swiper-slide" style = "background: none; box-shadow: none;">
                     <div class = "partner-box">
-                        <img src = "<?=$base;?>/assets/images/banners/partner4.png">
+                        <img src = "<?=$base;?>/assets/images/banners/partner4.png" alt="Logotipo do Patrocinador">
                     </div>
                 </div>
 
                 <div class="swiper-slide" style = "background: none; box-shadow: none;">
                     <div class = "partner-box">
-                        <img src = "<?=$base;?>/assets/images/banners/partner5.png">
+                        <img src = "<?=$base;?>/assets/images/banners/partner5.png" alt="Logotipo do Patrocinador">
                     </div>
                 </div>
 
                 <div class="swiper-slide" style = "background: none; box-shadow: none;">
                     <div class = "partner-box">
-                        <img src = "<?=$base;?>/assets/images/banners/partner6.png">
+                        <img src = "<?=$base;?>/assets/images/banners/partner6.png" alt="Logotipo do Patrocinador">
                     </div>
                 </div>
 
                 <div class="swiper-slide" style = "background: none; box-shadow: none;">
                     <div class = "partner-box">
-                        <img src = "<?=$base;?>/assets/images/banners/partner7.png">
+                        <img src = "<?=$base;?>/assets/images/banners/partner7.png" alt="Logotipo do Patrocinador">
                     </div>
                 </div>
 
                 <div class="swiper-slide" style = "background: none; box-shadow: none;">
                     <div class = "partner-box">
-                        <img src = "<?=$base;?>/assets/images/banners/partner8.png">
+                        <img src = "<?=$base;?>/assets/images/banners/partner8.png" alt="Logotipo do Patrocinador">
                     </div>
                 </div>
 
                 <div class="swiper-slide" style = "background: none; box-shadow: none;">
                     <div class = "partner-box">
-                        <img src = "<?=$base;?>/assets/images/banners/partner9.png">
+                        <img src = "<?=$base;?>/assets/images/banners/partner9.png" alt="Logotipo do Patrocinador">
                     </div>
                 </div>
 
                 <div class="swiper-slide" style = "background: none; box-shadow: none;">
                     <div class = "partner-box">
-                        <img src = "<?=$base;?>/assets/images/banners/partner10.png">
+                        <img src = "<?=$base;?>/assets/images/banners/partner10.png" alt="Logotipo do Patrocinador">
                     </div>
                 </div>
 
                 <div class="swiper-slide" style = "background: none; box-shadow: none;">
                     <div class = "partner-box">
-                        <img src = "<?=$base;?>/assets/images/banners/partner11.png">
+                        <img src = "<?=$base;?>/assets/images/banners/partner11.png" alt="Logotipo do Patrocinador">
                     </div>
                 </div>
 
                 <div class="swiper-slide" style = "background: none; box-shadow: none;">
                     <div class = "partner-box">
-                        <img src = "<?=$base;?>/assets/images/banners/partner12.png">
+                        <img src = "<?=$base;?>/assets/images/banners/partner12.png" alt="Logotipo do Patrocinador">
                     </div>
                 </div>
             </div>

@@ -24,12 +24,12 @@
 
                         <?php 
                             if($product['image'] == 'default_product_image.jpeg') {
-                                echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg>");
+                                echo("<img src = ".$base."/assets/images/products/default_product_image.jpeg alt='<?=$product[name];?>'>");
                             }
 
                             else {
                                 echo("<a href = '".$base."/product/".$product['id']."'>
-                                        <img src = ".$base."/".$product['folder']."/".$product['image'].">
+                                        <img src = ".$base."/".$product['folder']."/".$product['image']." alt='<?=$product[name];?>'>
                                     </a>");
                             }
                         ?>

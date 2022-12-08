@@ -1,5 +1,5 @@
 <?php
-use core\Router;
+use \core\Router;
 
 $router = new Router();
 
@@ -86,5 +86,7 @@ $router->post('/update_categorie', 'CategorieController@updateCategorie');
 
 
 $router->get('/search', 'SearchController@panel');
+
+$router->get('/search_by_code', 'SearchController@panelCode');
 
 $router->get('/filter/{id}', 'FilterController@index');

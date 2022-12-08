@@ -12,9 +12,9 @@
         </div>
 
         <div class = "search-area">
-            <form name = 'search' method = 'GET' action = '<?=$base;?>/search'>
+            <form name = 'search' method = 'GET' action = '<?=$base;?>/search_by_code'>
                 <i class='search-area-lupa bx bx-search' ></i>
-                <input type="text" placeholder="Pesquisar por produtos..." name = "searching">
+                <input type="text" placeholder="Pesquisar por código..." name = "searching">
             </form>
         </div>
     </div>

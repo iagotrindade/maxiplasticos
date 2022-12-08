@@ -54,7 +54,7 @@ class ProductHandler {
     }
 
 
-    public static function getProducts () {
+    public static function getProducts() {
         $productList = Product::select()->orderBy('inclusion_date', 'desc')->get();
             
         $products = [];
@@ -119,6 +119,39 @@ class ProductHandler {
 
         return $products;
     }
+    
+    public static function searchProductsByCode ($term) {
+        $productList = Product::select()->orderBy('inclusion_date', 'desc')->where('code', 'like', '%'.$term.'%')->get();
+            
+        $products = [];
+
+        foreach($productList as $product) {
+            $category = explode(',' ,$product['category']);
+
+            if(count($category) > 2) {
+                $category = explode(',' ,$product['category'], -1);
+            }
+
+            $newProduct = new Product();
+            $newProduct->id = $product['id']; 
+            $newProduct->main_image  = $product['main_image'];
+            $newProduct->name = $product['name']; 
+            $newProduct->code = $product['code'];
+            $newProduct->desc = $product['description'];
+
+            $newProduct->category = $category; 
+
+            $newProduct->category = $category;
+            
+            $newProduct->path = $product['folder_path']; ;
+
+            $newProduct->date = $product['inclusion_date']; 
+    
+            $products [] = $newProduct;
+        }
+
+        return $products;
+    }
 
     public static function getProductById ($id) {
         if($id) {
@@ -144,6 +177,39 @@ class ProductHandler {
         else {
             return false;
         }
+    }
+    
+    public static function getProductByCategory ($category) {
+        $productList = Product::select()->where('category', $category)->get();
+            
+        $products = [];
+
+        foreach($productList as $product) {
+            $category = explode(',' ,$product['category']);
+
+            if(count($category) > 2) {
+                $category = explode(',' ,$product['category'], -1);
+            }
+
+            $newProduct = new Product();
+            $newProduct->id = $product['id']; 
+            $newProduct->main_image  = $product['main_image'];
+            $newProduct->name = $product['name']; 
+            $newProduct->code = $product['code'];
+            $newProduct->desc = $product['description'];
+
+            $newProduct->category = $category; 
+
+            $newProduct->category = $category;
+            
+            $newProduct->path = $product['folder_path']; ;
+
+            $newProduct->date = $product['inclusion_date']; 
+    
+            $products [] = $newProduct;
+        }
+
+        return $products;
     }
 
     public static function getRelatedProducts($productCategorie) {

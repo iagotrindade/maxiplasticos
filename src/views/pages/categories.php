@@ -5,8 +5,8 @@
 <section class = "section-category-table">
     <h3>CATEGORIAS</h3>
     <?php if(!empty($_SESSION['flash'])): ?>
-        <div class="warning">
-            <p style = "width: 60vw; padding-left: 20px; text-align: left;"><?php echo ($_SESSION['flash']);  $_SESSION['flash'] = '';?></p>
+        <div class="warning" style = "width: 100%;">
+            <p style = "width: 60vw; padding-left: 40px; text-align: left;"><?php echo ($_SESSION['flash']);  $_SESSION['flash'] = '';?></p>
         </div>
     <?php endif; ?>
     <div class = "section-area-categories-table">

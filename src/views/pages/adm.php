@@ -48,14 +48,14 @@
                                     <button class="login-button-submit" type="submit">Login</button>
                                 </div>
 
-                                <div class="recover-password-link">
+                                <!--<div class="recover-password-link">
                                     <div class = "remember-pass-area">
                                         <input type = "checkbox" placeholder ="Lembrar senha"/>
                                         Lembrar senha
                                     </div>
 
                                     <p>Esqueceu sua senha? <a href="<?=$base;?>/recover">Clique aqui!</a></p>
-                                </div>
+                                </div>-->
                             </form>
                         </div>
                     </div>

@@ -16,7 +16,7 @@
                         <div class = "profile-form-image">
                             <div class = "profile-form-image-circle">
                                 <input type="file" name="avatar" class = "input-file">
-                                <img src = "<?=$base;?>/assets/images/avatars/<?=$loggedUser->img?>"/>
+                                <img src = "<?=$base;?>/assets/images/avatars/<?=$loggedUser->img?>" id="imgPhoto"/>
                             </div>     
                         </div>
 
@@ -62,14 +62,30 @@
 
         <script type="text/javascript">
             let photo = document.querySelector('.profile-name p');
+            let img = document.getElementById('imgPhoto'); 
             let photoFile = document.querySelector('.input-file');
 
             photo.addEventListener('click', function(){
                 photoFile.click();
-            });
-            photoFile.addEventListener('change', function(){
                 
+                photoFile.addEventListener('change', () => {
+
+                if (photoFile.files.length <= 0) {
+                    return;
+                }
+            
+                let reader = new FileReader();
+            
+                reader.onload = () => {
+                    img.src = reader.result;
+                }
+            
+                reader.readAsDataURL(photoFile.files[0]);
+                });
             });
+
         </script>                 
+        
+        <script src="<?=$base;?>/assets/js/vanilla.js"></script>
     </body>
 </html>

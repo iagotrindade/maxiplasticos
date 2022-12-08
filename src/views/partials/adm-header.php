@@ -8,11 +8,12 @@
       
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="<?=$base?>/assets/css/style.css">
+    <link rel="shortcut icon" href="<?=$base;?>/assets/images/icons/favicon.png" type="image/x-icon"/>
     
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>Painel Administrativo Maxiplásticos</title>
+    <title>Painel Administrativo MaxiPlásticos</title>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
                 <div class="header-adm-panel-logo">
                     <a href="<?=$base;?>/adm-panel">
                         <img src="<?=$base?>/assets/images/icons/logo-maxi.png"> 
-                        <p class="text-logo"><strong>MAXI</strong>Pásticos</p>
+                        <p class="text-logo"><strong>MAXI</strong>PLÁSTICOS</p>
                     </a>
                 </div>
 
@@ -35,8 +36,7 @@
 
                 <div class = "header-adm-panel-user-info">
                     <div class = "user-picture">
-                        <img src="">
-                        <i class='bx bx-user'></i>
+                        <img src="<?=$base.'/assets/images/avatars/'.$loggedUser->img?>">
                     </div>
     
                     <h4>Bem Vindo (a) <?=$loggedUser->name?></h4>

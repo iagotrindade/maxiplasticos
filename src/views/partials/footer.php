@@ -13,7 +13,7 @@
                             </li>
 
                             <li>
-                                <a href="" target = _blank>exemplo@email.com</a>
+                                <a href="mailto:orcamento@maxiplasticos.com" target = _blank>orcamento@maxiplasticos.com</a>
                             </li>
                         </ul>
                     </div>
@@ -38,7 +38,7 @@
                             </li>
                             
                             <li>
-                                <a href="">ORÇAMENTO</a>
+                                <a href="<?=$base?>/cart">ORÇAMENTO</a>
                             </li>
                         </ul>
                     </div>
@@ -68,7 +68,7 @@
                     <div class="footer-area-location">
                         <h4>LOCALIZAÇÃO
                         </h4>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7502.245428452392!2d-43.96389!3d-19.919233!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5415bfeb979a7323!2zUGzDoXN0aWNvcyBsw61kZXI!5e0!3m2!1spt-BR!2sbr!4v1659634845652!5m2!1spt-BR!2sbr" width="270" height="270" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe title="Localização da empresa" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7502.245428452392!2d-43.96389!3d-19.919233!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5415bfeb979a7323!2zUGzDoXN0aWNvcyBsw61kZXI!5e0!3m2!1spt-BR!2sbr!4v1659634845652!5m2!1spt-BR!2sbr" width="270" height="270" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         <P>
                             Rua dos pampas, 700 - Prado BH/MG
                         </P>
@@ -76,6 +76,6 @@
                 </div>
             </div>
             <div class="footer-area-copyrights">
-                <a href="">Desenvolvido por OVERSHIP</a>
+                <a href="https://api.whatsapp.com/send?phone=5551991657516" target='_blank'>Desenvolvido por OVERSHIP</a>
             </div>
         </footer>

@@ -21,5 +21,6 @@ class Router extends RouterBase {
     public function delete($endpoint, $trigger) {
         $this->routes['delete'][$endpoint] = $trigger;
     }
-
+    
+    
 }

@@ -41,6 +41,7 @@ class RouterBase {
                     $controller = $callbackSplit[0];
                     if(isset($callbackSplit[1])) {
                         $action = $callbackSplit[1];
+                        
                     }
 
                     break;
@@ -52,6 +53,7 @@ class RouterBase {
         $definedController = new $controller();
 
         $definedController->$action($args);
+        
     }
     
 }

@@ -18,7 +18,7 @@
                                 <input type = "hidden" name = "id" value = "<?=$user->id?>"/>
                                 <input type = "hidden" name = "user-image" value = "<?=$user->img?>"/>
                                 <input type="file" name="avatar" class = "input-file">
-                                <img src = "<?=$base;?>/assets/images/avatars/<?=$user->img?>"/>
+                                <img src = "<?=$base;?>/assets/images/avatars/<?=$user->img?>" id="imgPhoto"/>
                             </div>     
                         </div>
 
@@ -64,13 +64,26 @@
 
         <script type="text/javascript">
             let feedPhoto = document.querySelector('.profile-name p');
+            let img = document.getElementById('imgPhoto'); 
             let feedFile = document.querySelector('.input-file');
 
             feedPhoto.addEventListener('click', function(){
                 feedFile.click();
-            });
-            feedFile.addEventListener('change', function(){
                 
+                feedFile.addEventListener('change', () => {
+
+                if (feedFile.files.length <= 0) {
+                    return;
+                }
+            
+                let reader = new FileReader();
+            
+                reader.onload = () => {
+                    img.src = reader.result;
+                }
+            
+                reader.readAsDataURL(feedFile.files[0]);
+                });
             });
         </script>                 
     </body>

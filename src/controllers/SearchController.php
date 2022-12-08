@@ -57,6 +57,45 @@ class SearchController extends Controller {
         }
     }
 
+
+    public function panelCode () {
+
+        $term = filter_input(INPUT_GET, 'searching');
+
+        if(empty($term)) {
+
+            $_SESSION['flash'] = 'Ops, você não digitou nada no campo de busca!';
+
+            $this->redirect('/products');
+        }
+
+        $categories = CategorieHandler::getCategories();
+
+        if (!empty($products = ProductHandler::searchProductsByCode($term))) {
+
+            $_SESSION['flash'] = 'Exibindo os produtos encontrados para '.$term.'';
+            
+            $this->render('/search', [
+                'loggedUser' => $this->loggedUser,
+                'searchTerm' => $term,
+                'products' => $products,
+                'categories' => $categories
+            ]);
+
+        } 
+
+        else {
+            $_SESSION['flash'] = 'Nenhum produto encontrado para '.$term.'';
+
+            $this->render('/search', [
+                'loggedUser' => $this->loggedUser,
+                'searchTerm' => $term,
+                'products' => $products,
+                'categories' => $categories
+            ]);
+        }
+    }
+
     public function site() {
         $term = filter_input(INPUT_GET, 'procurando_por');
 
